@@ -1,6 +1,7 @@
+import { Button } from "@/components";
 
 export default function Home() {
   return (
-    <p>Hello Word</p>
+    <Button texto="teste"></Button>
   );
 }
