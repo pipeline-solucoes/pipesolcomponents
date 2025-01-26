@@ -1,7 +1,12 @@
-import { Button } from "@/components";
+"use client";
+
+import { Button, themePS } from "@/index";
+import { ThemeProvider } from "styled-components";
 
 export default function Home() {
   return (
-    <Button texto="teste"></Button>
+    <ThemeProvider theme={themePS}>
+      <Button texto="funcionou..."></Button>
+    </ThemeProvider>    
   );
 }

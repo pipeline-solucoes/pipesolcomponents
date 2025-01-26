@@ -8,15 +8,12 @@ interface ButtonProps {
 }
 
 const CustomSpan = styled.span`
-  color: red;
+  color:  ${props => props.theme.palette.primary.main};
 `;
 
-const Button: React.FC<ButtonProps> = ({texto}) => {
-  
-  return ( 
-    <CustomSpan>
-      {texto}
-    </CustomSpan> );
+const Button: React.FC<ButtonProps>= ({texto}) => {
+
+  return ( <CustomSpan>{texto}</CustomSpan> );
 };
 
 export default Button;
