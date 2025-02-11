@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import styled from 'styled-components';
 
@@ -23,13 +21,13 @@ const AreaTexto = styled.div`
     align-items: center;    
 `;
 
-interface AreaBannerProps {
+interface AreaBannerMenuTitleProps {
   renderMenu: () => React.ReactElement;
   renderContent: () => React.ReactElement;
   background_color_menu: string;
 }
 
-const AreaBanner: React.FC<AreaBannerProps> = ({ renderMenu, renderContent, background_color_menu }) => {  
+const AreaBannerMenuTitle: React.FC<AreaBannerMenuTitleProps> = ({ renderMenu, renderContent, background_color_menu }) => {  
 
   return (    
     <Area>
@@ -43,4 +41,4 @@ const AreaBanner: React.FC<AreaBannerProps> = ({ renderMenu, renderContent, back
   );
 };
 
-export default AreaBanner;
+export default AreaBannerMenuTitle;

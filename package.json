@@ -1,6 +1,6 @@
 {
   "name": "pipesolcomponents",
-  "version": "0.1.39",
+  "version": "0.1.44",
   "main": "dist/index.js",
   "scripts": {
     "dev": "next dev --turbopack",

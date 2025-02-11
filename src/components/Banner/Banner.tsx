@@ -1,61 +1,59 @@
-"use client";
-
 import React from 'react';
 import styled from 'styled-components';
 import { ContainerSafe } from '../ContainerSafe';
-import { useMediaQuery, useTheme } from '@mui/material';
+import Image, { StaticImageData } from 'next/image';
 
-const BannerWrapper = styled.div<{ background_image: string }>`
+const Container = styled.div`
   width: 100%;
   height: 600px;
-  background-image: url(${(props) => props.background_image});
-  background-size: cover;
-  background-position: center;   
+  position: relative;
+  overflow: hidden;       
 `;
 
-const BannerSombreamento = styled.div<{ background_color: string }>`
-    background-color: ${props => props.background_color};                  
-    height: 100%;  
-    width: 100%;
-    display: flex;     
-    justify-content: center;            
+const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+`;
+
+const Content = styled.div`
+  position: relative;
+  z-index: 1;
+  color: white;
+  display: flex;     
+  justify-content: center; 
 `;
 
 interface BannerProps {  
-  background_image_1920X600: string;
-  background_image_1080X600: string;  
-  background_color: string;
-  renderContent: () => React.ReactElement;
+  src: StaticImageData; 
+  alt: string;        
+  children: React.ReactNode;
 }
 
-const Banner: React.FC<BannerProps> = ({ background_image_1920X600, 
-  background_image_1080X600 , background_color, renderContent }) => {  
-
-    const theme = useTheme();
-  
-    const isXs = useMediaQuery(theme.breakpoints.only('xs')); 
-    const isSm = useMediaQuery(theme.breakpoints.only('sm')); 
-    const isMd = useMediaQuery(theme.breakpoints.only('md')); 
-    const isLg = useMediaQuery(theme.breakpoints.only('lg')); 
-    const isXl = useMediaQuery(theme.breakpoints.only('xl'));
-
-    const getImage = () => { 
-      if (isXs) return background_image_1080X600;  // telas extra pequenas 
-      if (isSm) return background_image_1080X600;  // telas pequenas 
-      if (isMd) return background_image_1080X600;  // telas médias 
-      if (isLg) return background_image_1920X600;  // telas grandes 
-      if (isXl) return background_image_1920X600;  // telas extra grandes 
-      return background_image_1920X600; 
-    };
+const Banner: React.FC<BannerProps> = ({ src, alt, children }) => {  
 
   return (
-    <BannerWrapper background_image={getImage()}>
-      <BannerSombreamento background_color={background_color}>
-          <ContainerSafe>
-             { renderContent() }
-          </ContainerSafe>                 
-      </BannerSombreamento>
-    </BannerWrapper>);
+    <Container>
+      <BackgroundImage>
+        <Image 
+          src={src} 
+          alt={alt} 
+          fill 
+          style={{ objectFit: 'cover', objectPosition: 'center' }}           
+          quality={100} 
+          priority
+        />
+      </BackgroundImage>
+      <Content>
+        <ContainerSafe>
+          {children}
+        </ContainerSafe> 
+      </Content>                 
+    </Container>    
+  );
 };
 
 export default Banner;
