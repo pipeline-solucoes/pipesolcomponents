@@ -50,7 +50,7 @@ const themePS = createTheme({
   },
   typography: {
     fontFamily: 'Roboto, Arial, sans-serif',
-    h1: { 
+    h1: {       
       fontSize: '2.5rem', // Desktop     
       lineHeight: '1.5',
       letterSpacing: '0.01em',
@@ -64,7 +64,7 @@ const themePS = createTheme({
         fontSize: '40px', // Tablet
       },
     },
-    h2: {
+    h2: {      
       fontSize: '2rem', // Desktop
       lineHeight: '1.5',
       letterSpacing: '0.01em',

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const H1Styled = styled.h1`
-
-  font-family:  ${props => props.theme.typography.fontFamily};               
+   
+  font-family:  ${props => props.theme.typography.fontFamily};  
   font-weight: ${props => props.theme.typography.h1.fontWeight}; 
   font-style: ${props => props.theme.typography.h1.fontStyle};       
   line-height: ${props => props.theme.typography.h1.lineHeight};          
@@ -20,9 +20,8 @@ export const H1Styled = styled.h1`
 `;
 
 export const H2Styled = styled.h2`
-
-  color: ${(props) => props.color}; 
-  font-family:  ${props => props.theme.typography.fontFamily};             
+  
+  font-family:  ${props => props.theme.typography.fontFamily};   
   font-weight: ${props => props.theme.typography.h2.fontWeight}; 
   font-style: ${props => props.theme.typography.h2.fontStyle};       
   line-height: ${props => props.theme.typography.h2.lineHeight};          

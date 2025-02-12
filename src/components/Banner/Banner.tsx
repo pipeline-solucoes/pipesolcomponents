@@ -24,7 +24,8 @@ const Content = styled.div`
   z-index: 1;
   color: white;
   display: flex;     
-  justify-content: center; 
+  justify-content: center;
+  height: 100%; 
 `;
 
 interface BannerProps {  

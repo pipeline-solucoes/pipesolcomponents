@@ -15,7 +15,7 @@ const ContainerSection = styled.div<{background_color?: string}>`
 `; 
 
 interface SectionProps {   
-  children: () => React.ReactNode;    
+  children: React.ReactNode;   
   background_color?: string;  
 }
 
@@ -26,7 +26,7 @@ const Section: React.FC<SectionProps> = ({ children,
       <SectionStyled>
           <ContainerSection background_color={background_color} >
               <ContainerSafe>                                   
-                { children() }                        
+                { children }                        
               </ContainerSafe>
           </ContainerSection>              
       </SectionStyled>

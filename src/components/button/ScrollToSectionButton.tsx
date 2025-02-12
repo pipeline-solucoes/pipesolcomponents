@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Body2Styled } from '../Typography';
 
-const BotaoStyled = styled.button<{color: string, background_color: string}>`
+const BotaoStyled = styled.button<{color: string, background_color: string, 
+  border_color?: string, border_radius?: string, background_color_hover?: string}>`
     height: auto;
     width: auto;
     border: none;  
@@ -10,7 +11,12 @@ const BotaoStyled = styled.button<{color: string, background_color: string}>`
     padding: 8px 24px;  
     background-color: ${props => props.background_color};
     color: ${props => props.color};
-    border-radius: ${props => props.theme.shape.borderRadius}px;          
+    border-radius: ${props => props.border_radius ? props.border_radius : 0}px;
+    border: 1px solid ${props => props.border_color ? props.border_color : 'transparent'};
+
+    &:hover{
+      background-color: ${props => props.background_color_hover ? props.background_color_hover : 'transparent'};
+    }
 `;
 
 export interface ScrollToSectionButtonProps {      
@@ -18,10 +24,13 @@ export interface ScrollToSectionButtonProps {
     color: string;
     background_color: string;    
     sectionId: string;
+    border_color?: string;
+    border_radius?: string;
+    background_color_hover?: string;
   }
 
 const ScrollToSectionButton: React.FC<ScrollToSectionButtonProps> = ({ text, color, 
-    background_color, sectionId }) => {            
+    background_color, sectionId, border_color, border_radius, background_color_hover}) => {            
     
    const handleClick = () => { 
       const section = document.getElementById(sectionId); 
@@ -31,7 +40,10 @@ const ScrollToSectionButton: React.FC<ScrollToSectionButtonProps> = ({ text, col
     };
 
     return(
-      <BotaoStyled color={color} background_color={background_color} onClick={handleClick}>
+      <BotaoStyled color={color} background_color={background_color}
+       border_color={border_color} border_radius={border_radius}
+       background_color_hover={background_color_hover} 
+       onClick={handleClick}>
         <Body2Styled>{text}</Body2Styled>
       </BotaoStyled>
     );         

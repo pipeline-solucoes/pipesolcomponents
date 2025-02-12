@@ -18,7 +18,7 @@ export const ContainerSafe = styled.div`
     }
 
     @media (min-width:1280px) {
-        width: calc(100% - 72px); 
+        width: 1200px; 
     }
 
     @media (min-width: 1920px) {

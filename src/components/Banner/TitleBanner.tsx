@@ -9,7 +9,7 @@ const Titulo = styled(H1Styled)<{color?: string}>`
   color: ${props => props.color};
 `;
 
-interface TitleBanner01Props {  
+interface TitleBannerProps {  
   children: React.ReactNode;
   color: string; 
   text_CTA?: string;  
@@ -19,7 +19,7 @@ interface TitleBanner01Props {
   width: string;
 }
 
-const TitleBanner: React.FC<TitleBanner01Props> = ({ children, color, text_CTA, 
+const TitleBanner: React.FC<TitleBannerProps> = ({ children, color, text_CTA, 
     background_color_CTA, color_CTA, sectionId, width }) => {  
 
   const theme = useTheme();
