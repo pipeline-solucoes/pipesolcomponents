@@ -4,6 +4,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components';
 import { cache } from '@emotion/css';
 import { themePS } from '../theme';
+import { AppType } from "next/app";
 
 export default class MyDocument extends Document {
   render() {
@@ -33,7 +34,7 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App: any) => (props) =>
+      enhanceApp: (App: AppType) => (props) =>
         styledComponentSheet.collectStyles(<App {...props} />),
     });
 

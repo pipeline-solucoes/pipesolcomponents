@@ -12,7 +12,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "module": "ESNext",
     "outDir": "./dist",
@@ -22,6 +22,11 @@
     "declaration": true,
     "moduleResolution": "node",
     "noEmit": false,
+    "forceConsistentCasingInFileNames": true,            
+    "declarationDir": "dist",
+    "sourceMap": true,
+    "baseUrl": ".",                        
+    "emitDeclarationOnly": false,
     "plugins": [
       {
         "name": "next"
@@ -31,13 +36,11 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
   },
-  "include": [
-    "src",
-    ".next/types/**/*.ts"
-  ],
+  "include": ["src/**/*"], 
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }

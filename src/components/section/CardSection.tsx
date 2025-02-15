@@ -23,7 +23,7 @@ const CardSection: React.FC<CardSectionProps> = ({renderTitle, description,
         { renderTitle && renderTitle() }
         <div>        
           {description.map((item, index) => ( 
-            <p>
+            <p key={index}>
               <SpanDefault key={index} text={item}></SpanDefault> 
             </p>            
           ))}

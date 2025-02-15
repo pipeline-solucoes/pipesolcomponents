@@ -1,13 +1,21 @@
 {
   "name": "pipesolcomponents",
-  "version": "0.1.55",
+  "version": "0.1.71",
   "main": "dist/index.js",
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {     
+    "build": "tsc",
+    "prepare": "npm run build",
     "start": "next start",
-    "lint": "next lint",
-    "build:lib": "tsc"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/css": "^11.13.5",
