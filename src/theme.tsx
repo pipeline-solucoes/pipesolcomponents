@@ -1,4 +1,3 @@
-// theme.tsx
 import { createGlobalStyle } from 'styled-components';
 import { createTheme } from '@mui/material/styles';
 
@@ -10,6 +9,21 @@ const GlobalStyle = createGlobalStyle`
     padding: ${props => props.theme.spacing(4)}px;    
   }
 `;
+
+declare module '@mui/material/styles' {
+  
+  interface PaletteOptions {
+    custom?: {
+      backgroundSectionMain?: string;      
+      backgroundSectionAlternative?: string;
+      backgroundSectionHighlight?: string;
+
+      colorSectionMain?: string;
+      colorSectionAlternative?: string;
+      colorSectionHighlight?: string;
+    };
+  }
+}
 
 // Definindo o tema personalizado
 const themePS = createTheme({
@@ -27,69 +41,74 @@ const themePS = createTheme({
   },
   palette: {
     primary: {
-      main: '#4a90e2', // Azul personalizado
+      main: "#007E6A", // Verde Musgo
+      contrastText: "#ffffff" //Branco
     },
     secondary: {
-      main: '#d32f2f', // Vermelho personalizado
-    },
+      main: '#C4A27D', // Dourado Leve
+      contrastText: "#ffffff" //Branco
+    },    
     text: {
-      primary: '#333',
-      secondary: '#666',
-      disabled: '#999',
-    }, 
-    background: {
-      default: '#f5f5f5',
-      paper: '#f5f5f5',
+      primary: '#707070',
+      secondary: '#ffffff',
+      disabled: '#707070',
+    },       
+    custom: {
+      backgroundSectionMain: '#f0f8ff',
+      backgroundSectionAlternative: '#ffe4e1',
+
+      colorSectionMain:'#707070',
+      colorSectionAlternative: '#707070',
     },
     info: {
       main: '#4a90e2',
     },
     error: {
       main: '#4a90e2',
-    }     
+    }    
   },
   typography: {
-    fontFamily: 'Roboto, Arial, sans-serif',
+    fontFamily: 'Inter, Arial, sans-serif',
     h1: {       
-      fontSize: '2.5rem', // Desktop     
-      lineHeight: '1.5',
+      fontSize: '58px', // Desktop     
+      lineHeight: '1',
       letterSpacing: '0.01em',
-      fontWeight: 400,
+      fontWeight: 600,
       margin: 0,
-      fontStyle: 'normal', 
-      '@media (max-width:600px)': {
-        fontSize: '48px', // Mobile
-      },
+      fontStyle: 'normal',       
       '@media (min-width:601px) and (max-width:960px)': {
         fontSize: '40px', // Tablet
       },
+      '@media (max-width:600px)': {
+        fontSize: '48px', // Mobile
+      },
     },
     h2: {      
-      fontSize: '2rem', // Desktop
+      fontSize: '16px', // Desktop
       lineHeight: '1.5',
       letterSpacing: '0.01em',
       fontWeight: 400,
-      margin: 0,
+      margin: 0,      
+      '@media (min-width:601px) and (max-width:960px)': {
+        fontSize: '16px', // Tablet
+      },
       fontStyle: 'normal',
       '@media (max-width:600px)': {
-        fontSize: '1.25rem', // Mobile
-      },
-      '@media (min-width:601px) and (max-width:960px)': {
-        fontSize: '1.75rem', // Tablet
+        fontSize: '16px', // Mobile
       },
     },
     h3: {
-      fontSize: '2rem', // Desktop
+      fontSize: '32px', // Desktop
       lineHeight: '1.5',
       letterSpacing: '0.01em',
       fontWeight: 400,
       margin: 0,
-      fontStyle: 'normal',
-      '@media (max-width:600px)': {
-        fontSize: '1.25rem', // Mobile
-      },
+      fontStyle: 'normal',      
       '@media (min-width:601px) and (max-width:960px)': {
-        fontSize: '1.75rem', // Tablet
+        fontSize: '32px', // Tablet
+      },
+      '@media (max-width:600px)': {
+        fontSize: '32px', // Mobile
       },
     },
     h4: {
@@ -98,38 +117,38 @@ const themePS = createTheme({
       letterSpacing: '0.01em',
       fontWeight: 400,
       margin: 0,
-      fontStyle: 'normal',
-      '@media (max-width:600px)': {
-        fontSize: '1.25rem', // Mobile
-      },
+      fontStyle: 'normal',      
       '@media (min-width:601px) and (max-width:960px)': {
         fontSize: '1.75rem', // Tablet
       },
+      '@media (max-width:600px)': {
+        fontSize: '1.25rem', // Mobile
+      },
     },
     body1: { //Normal
-      fontSize: '1rem', // Desktop
+      fontSize: '16px', // Desktop
       lineHeight: '1.5',
       letterSpacing: '0.01em',
       fontWeight: 400,      
-      fontStyle: 'normal',
-      '@media (max-width:600px)': {
-        fontSize: '0.875rem', // Mobile
-      },
+      fontStyle: 'normal',      
       '@media (min-width:601px) and (max-width:960px)': {
-        fontSize: '0.95rem', // Tablet
+        fontSize: '16px', // Tablet
+      },
+      '@media (max-width:600px)': {
+        fontSize: '16px', // Mobile
       },
     },
     body2: { //Destaque
-      fontSize: '1rem', // Desktop
+      fontSize: '16px', // Desktop
       lineHeight: '1.5',
       letterSpacing: '0.01em',
       fontWeight: 600,     
-      fontStyle: 'normal',
-      '@media (max-width:600px)': {
-        fontSize: '0.875rem', // Mobile
-      },
+      fontStyle: 'normal',      
       '@media (min-width:601px) and (max-width:960px)': {
-        fontSize: '0.95rem', // Tablet
+        fontSize: '16px', // Tablet
+      },
+      '@media (max-width:600px)': {
+        fontSize: '16px', // Mobile
       },
     },
   },

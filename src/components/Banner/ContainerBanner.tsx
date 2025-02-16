@@ -1,5 +1,4 @@
 import { Box, Stack } from '@mui/material';
-import Image, { StaticImageData } from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -15,14 +14,13 @@ const AreaMenu = styled.div`
     width: 100%;                          
 `;
 
-interface AreaBannerMenuTitleImageProps {
+interface ContainerBannerProps {
   renderMenu: () => React.ReactElement;
-  renderTitle: () => React.ReactElement;
-  image: StaticImageData;  
-  altimage: string;
+  renderCol1: () => React.ReactElement;
+  renderCol2?: () => React.ReactElement; 
 }
 
-const AreaBannerMenuTitleImage: React.FC<AreaBannerMenuTitleImageProps> = ({ renderMenu, renderTitle, image, altimage }) => {  
+const ContainerBanner: React.FC<ContainerBannerProps> = ({ renderMenu, renderCol1, renderCol2 }) => {  
 
   return (    
     <Area>
@@ -31,20 +29,14 @@ const AreaBannerMenuTitleImage: React.FC<AreaBannerMenuTitleImageProps> = ({ ren
       </AreaMenu>
       <Stack direction={{ xs: 'column', md: 'row' }} alignItems='center' spacing={4}>                   
         <Box flex={1}>
-          {renderTitle()}
+          {renderCol1()}
         </Box>
         <Box flex={1}>
-          <Image
-            src={image} 
-            alt={altimage}
-            style={{ objectFit: 'cover', objectPosition: 'center' }}           
-            quality={100} 
-            priority
-          />
+          {renderCol2 && renderCol2()}
         </Box>
       </Stack>          
     </Area> 
   );
 };
 
-export default AreaBannerMenuTitleImage;
+export default ContainerBanner;

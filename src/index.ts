@@ -1,8 +1,6 @@
 export { default as Banner } from './components/banner/Banner';
-export { default as AreaBannerMenuTitle } from './components/banner/AreaBannerMenuTitle';
-export { default as AreaBannerMenuTitleImage } from './components/banner/AreaBannerMenuTitleImage';
+export { default as ContainerBanner } from './components/banner/ContainerBanner';
 export { default as TitleBanner } from './components/banner/TitleBanner';
-export { default as TitleSubTitleBanner } from './components/banner/TitleSubTitleBanner';
 
 export { default as ScrollToSectionButton} from './components/button/ScrollToSectionButton';
 
@@ -16,5 +14,6 @@ export { default as SpanDefault} from './components/text/SpanDefault';
 export { default as SpanDestaque} from './components/text/SpanDestaque';
 
 export { H2Styled, H3Styled, H4Styled, Body1Styled, Body2Styled } from './components/Typography';
+export { default as ResponsiveImage } from './components/ResponsiveImage';
 
 export { themePS, GlobalStyle } from './theme';

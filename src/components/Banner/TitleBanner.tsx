@@ -1,26 +1,31 @@
 import React from 'react';
 import { Stack, useMediaQuery, useTheme } from '@mui/material';
-import { H1Styled } from '../Typography';
+import { H1Styled, H2Styled } from '../Typography';
 import styled from 'styled-components';
-import ScrollToSectionButton from '../button/ScrollToSectionButton';
 
-const Titulo = styled(H1Styled)<{color?: string}>`
+const Title = styled(H1Styled)<{color?: string}>`
           
   color: ${props => props.color};
 `;
 
-interface TitleBannerProps {  
+const SubTitle = styled(H2Styled)<{color?: string}>`
+          
+  color: ${props => props.color};
+  width: 100%;
+  text-align: center;
+`;
+
+interface TitleBannerProps {    
   children: React.ReactNode;
-  color: string; 
-  text_CTA?: string;  
-  background_color_CTA?: string;
-  color_CTA?: string; 
-  sectionId?: string;
-  width: string;
+  textTitle: string;
+  textSubTitle?: string;
+  color_title: string;
+  color_subtitle: string;  
 }
 
-const TitleBanner: React.FC<TitleBannerProps> = ({ children, color, text_CTA, 
-    background_color_CTA, color_CTA, sectionId, width }) => {  
+
+const TitleBanner: React.FC<TitleBannerProps> = ({ children, textTitle, textSubTitle,
+  color_title, color_subtitle }) => {  
 
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only('xs')); 
@@ -33,22 +38,17 @@ const TitleBanner: React.FC<TitleBannerProps> = ({ children, color, text_CTA,
     if (isXs) return '16px'; // telas extra pequenas 
     if (isSm) return '24px'; // telas pequenas 
     if (isMd) return '24px';  // telas médias 
-    if (isLg) return '32px';  // telas grandes 
-    if (isXl) return '32px';  // telas extra grandes 
+    if (isLg) return '24px';  // telas grandes 
+    if (isXl) return '24px';  // telas extra grandes 
     return '100%'; 
   };  
 
   return (
       <Stack direction="column" justifyContent="flex-start" alignItems="flex-start" 
-        sx={{ gap: getGap(), width: {width}}}>
-        <Titulo color={color}>{children}</Titulo>             
-        { text_CTA && 
-          <ScrollToSectionButton 
-            text={text_CTA}
-            color={color_CTA ? color_CTA : 'black'} 
-            background_color={background_color_CTA ? background_color_CTA : 'black'} 
-            sectionId={sectionId ? sectionId : " "}>
-          </ScrollToSectionButton>}     
+        sx={{ gap: getGap(), width: 'fit-content'}}>          
+        <Title color={color_title}>{textTitle}</Title>
+        {textSubTitle && <SubTitle color={color_subtitle}>{textSubTitle}</SubTitle>}
+        {children}
       </Stack>
   );
     

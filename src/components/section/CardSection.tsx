@@ -1,12 +1,10 @@
 import React from 'react';
-import SpanDefault from '../text/SpanDefault';
 import { Stack } from '@mui/material';
 import styled from 'styled-components';
 
-interface CardSectionProps {
-  description: string[];
-  renderTitle?: () => React.ReactElement; 
-  renderContent?: () => React.ReactElement;
+interface CardSectionProps {  
+  renderTitle: () => React.ReactElement; 
+  renderContent: () => React.ReactElement;
 }
 
 const StyledStack = styled(Stack)` 
@@ -15,20 +13,13 @@ const StyledStack = styled(Stack)`
     padding: ${props => props.theme.spacing(4, 2)},    
 `;
 
-const CardSection: React.FC<CardSectionProps> = ({renderTitle, description, 
+const CardSection: React.FC<CardSectionProps> = ({renderTitle, 
   renderContent}) => {
 
   return (  
       <StyledStack>
-        { renderTitle && renderTitle() }
-        <div>        
-          {description.map((item, index) => ( 
-            <p key={index}>
-              <SpanDefault key={index} text={item}></SpanDefault> 
-            </p>            
-          ))}
-        </div>     
-        {renderContent && renderContent()}      
+        { renderTitle && renderTitle() }         
+        { renderContent && renderContent() }       
       </StyledStack>                                
   );
 };
