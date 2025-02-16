@@ -10,14 +10,14 @@ const BotaoStyled = styled.button<{color: string, background_color?: string,
     border: none;  
     cursor: pointer;
     padding: 8px 24px;  
-    background-color: ${(props) => props.background_color ? props.background_color : '#00000000'};
+    background-color: ${(props) => props.background_color || '#00000000'};
     color: ${(props) => props.color};
-    border-radius: ${(props) => props.border_radius ? props.border_radius : 0}px;
-    border: 1px solid ${(props) => props.border_color ? props.border_color : '#00000000'};
+    border-radius: ${(props) => props.border_radius || 0}px;
+    border: 1px solid ${(props) => props.border_color || '#00000000'};
 
     &:hover{
-      border: 1px solid ${(props) => props.border_color_hover ? props.border_color_hover : '#00000000'};
-      background-color: ${(props) => props.background_color_hover ? props.background_color_hover : '#00000000'};
+      border: 1px solid ${(props) => props.border_color_hover || '#00000000'};
+      background-color: ${(props) => props.background_color_hover || '#00000000'};
     }
 `;
 

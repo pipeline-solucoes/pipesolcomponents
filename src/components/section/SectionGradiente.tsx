@@ -5,8 +5,8 @@ const SectionStyled = styled('section') `
   margin: '0 auto'  
 `;
 
-const ContainerSection = styled.div<{background_color?: string}>`
-    background-color: ${(props) => props.background_color};
+const ContainerSection = styled.div<{color1: string, color2: string}>`
+    background: linear-gradient(to bottom, ${(props) => props.color1}, ${(props) => props.color1}, ${(props) => props.color2});
     display: flex;      
     flex-direction: column;
     align-items: center;
@@ -16,15 +16,15 @@ const ContainerSection = styled.div<{background_color?: string}>`
 
 interface SectionProps {   
   children: React.ReactNode;   
-  background_color: string;  
+  color1: string;
+  color2: string;
 }
 
-const Section: React.FC<SectionProps> = ({ children,
-  background_color }) => {
+const SectionGradiente: React.FC<SectionProps> = ({ children, color1, color2}) => {
   
     return (
       <SectionStyled>
-        <ContainerSection background_color={background_color}>
+        <ContainerSection color1={color1} color2={color2}>
           <ContainerSafe>                                   
             { children }                        
           </ContainerSafe>
@@ -33,4 +33,4 @@ const Section: React.FC<SectionProps> = ({ children,
     );  
 };
 
-export default Section;
+export default SectionGradiente;

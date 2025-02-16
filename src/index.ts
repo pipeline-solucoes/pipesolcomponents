@@ -5,10 +5,13 @@ export { default as TitleBanner } from './components/banner/TitleBanner';
 export { default as ScrollToSectionButton} from './components/button/ScrollToSectionButton';
 
 export { default as Section} from './components/section/Section';
+export { default as SectionGradiente} from './components/section/SectionGradiente';
 export { default as ContentSection} from './components/section/ContentSection';
 export { default as CardSection} from './components/section/CardSection';
+export { default as TitleCenterSection} from './components/section/TitleCenterSection';
 export { default as TitleTagSection} from './components/section/TitleTagSection';
 export { default as TitleBorderLeftSection} from './components/section/TitleBorderLeftSection';
+export { default as SubTitleSeparadorSection} from './components/section/SubTitleSeparadorSection';
 
 export { default as SpanDefault} from './components/text/SpanDefault';
 export { default as SpanDestaque} from './components/text/SpanDestaque';
