@@ -1,17 +1,19 @@
 {
   "name": "pipesolcomponents",
-  "version": "0.1.79",
+  "version": "0.1.81",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     }
   },
-  "scripts": {     
+  "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
     "start": "next start",
@@ -22,7 +24,8 @@
     "@emotion/react": "^11.14.0",
     "@emotion/server": "^11.11.0",
     "@emotion/styled": "^11.14.0",
-    "@mui/material": "^6.4.1",
+    "@mui/icons-material": "^6.4.4",
+    "@mui/material": "^6.4.4",
     "next": "15.1.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

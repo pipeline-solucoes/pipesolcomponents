@@ -3,6 +3,7 @@ export { default as ContainerBanner } from './components/banner/ContainerBanner'
 export { default as TitleBanner } from './components/banner/TitleBanner';
 
 export { default as ScrollToSectionButton} from './components/button/ScrollToSectionButton';
+export { default as WhatsAppButton} from './components/button/WhatsAppButton';
 
 export { default as Section} from './components/section/Section';
 export { default as SectionGradiente} from './components/section/SectionGradiente';
