@@ -14,8 +14,12 @@ export { default as TitleTagSection} from './components/section/TitleTagSection'
 export { default as TitleBorderLeftSection} from './components/section/TitleBorderLeftSection';
 export { default as SubTitleSeparadorSection} from './components/section/SubTitleSeparadorSection';
 
+export { default as TestimonialCard} from './components/cards/TestimonialCard';
+
 export { default as SpanDefault} from './components/text/SpanDefault';
 export { default as SpanDestaque} from './components/text/SpanDestaque';
+export { default as SpanBody1} from './components/text/SpanBody1';
+export { default as SpanBody2} from './components/text/SpanBody2';
 
 export { H2Styled, H3Styled, H4Styled, Body1Styled, Body2Styled } from './components/Typography';
 export { default as ResponsiveImage } from './components/ResponsiveImage';
