@@ -2,8 +2,14 @@ export { default as Banner } from './components/banner/Banner';
 export { default as ContainerBanner } from './components/banner/ContainerBanner';
 export { default as TitleBanner } from './components/banner/TitleBanner';
 
+export { default as BarraDeFerramentas } from './components/barra_ferramentas/BarraFerramentas';
+
 export { default as ScrollToSectionButton} from './components/button/ScrollToSectionButton';
 export { default as WhatsAppButton} from './components/button/WhatsAppButton';
+export { default as SectionLink} from './components/button/SectionLink';
+export { default as PageLink} from './components/button/PageLink';
+
+export { default as SocialMediaIconLink} from './components/social_media/SocialMediaIconLink';
 
 export { default as Section} from './components/section/Section';
 export { default as SectionGradiente} from './components/section/SectionGradiente';
