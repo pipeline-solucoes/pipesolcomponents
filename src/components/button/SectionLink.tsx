@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 
 interface SectionLinkProps {
   href: string;
   children: React.ReactNode;
 }
+
+const AStyled = styled.a`
+   text-decoration: none;
+`;
 
 const SectionLink: React.FC<SectionLinkProps> = ({ href, children }) => {
   
@@ -17,9 +22,9 @@ const SectionLink: React.FC<SectionLinkProps> = ({ href, children }) => {
   };
 
   return (
-    <a href={href} onClick={handleClick}>
+    <AStyled href={href} onClick={handleClick}>
       {children}
-    </a>
+    </AStyled>
   );
 };
 

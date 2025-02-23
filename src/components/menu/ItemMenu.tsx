@@ -21,7 +21,7 @@ const ItemMenu: React.FC<ItemMenuProps> = ({sectionId, url, text, color, color_h
     );
   } 
   
-  if (url){
+  else if (url){
     return (          
         <PageLink href={url}>        
             <ItemMenuText color={color} color_hover={color_hover}>{text}</ItemMenuText>               

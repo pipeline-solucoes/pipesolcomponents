@@ -21,8 +21,8 @@ interface BarraFerramentasProps {
     background_color: string;
     color: string;    
     color_hover: string;
-    color_menu_hamburguer?: string;
-    color_hover_menu_hamburguer?: string;
+    color_menu_hamburguer: string;
+    color_hover_menu_hamburguer: string;
     renderSocialMedia: () => React.ReactElement;
     renderSocialMediaMenuHamburguer: () => React.ReactElement; 
     renderLogo: () => React.ReactElement;
@@ -43,6 +43,8 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  console.log(listaItemMenu);
 
   const renderComMenu = () => {
     return(
@@ -87,11 +89,13 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
             sx={{ display: { xs: 'block', md: 'none' } }}
           >
             <Box sx={{ padding: "16px" }}>                
-              {listaItemMenu?.map((item) => (
-                  <MenuItem key={item.text} onClick={handleCloseNavMenu}>
-                    <ItemMenu sectionId={item.url} text={item.text} 
-                        color={color_menu_hamburguer ? color_menu_hamburguer : 'black'} 
-                        color_hover={color_hover_menu_hamburguer ? color_hover_menu_hamburguer : 'black'}>                        
+              {listaItemMenu?.map((item, index) => (
+                  <MenuItem key={index} onClick={handleCloseNavMenu}>
+                    <ItemMenu sectionId={item.url} 
+                        url={item.url}
+                        text={item.text} 
+                        color={color_menu_hamburguer} 
+                        color_hover={color_hover_menu_hamburguer}>                        
                     </ItemMenu>
                   </MenuItem>
               ))}
@@ -104,12 +108,15 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
         {/* Menu Horizontal */}
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                       
-          {listaItemMenu?.map((item) => (
+          {listaItemMenu?.map((item, index) => (
               <Button
-                  key={item.text}
+                  key={index}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: {}, display: 'block' }}>                    
-                  <ItemMenu sectionId={item.url} text={item.text} 
+                  <ItemMenu 
+                      sectionId={item.url} 
+                      url={item.url}
+                      text={item.text} 
                       color={color} 
                       color_hover={color_hover}>                        
                   </ItemMenu>                    

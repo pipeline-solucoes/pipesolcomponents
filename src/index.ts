@@ -1,6 +1,7 @@
 export { default as Banner } from './components/banner/Banner';
 export { default as ContainerBanner } from './components/banner/ContainerBanner';
 export { default as TitleBanner } from './components/banner/TitleBanner';
+export { default as SubTitleSeparadorBanner } from './components/banner/SubTitleSeparadorBanner';
 
 export { default as BarraDeFerramentas } from './components/barra_ferramentas/BarraFerramentas';
 
@@ -21,6 +22,8 @@ export { default as TitleBorderLeftSection} from './components/section/TitleBord
 export { default as SubTitleSeparadorSection} from './components/section/SubTitleSeparadorSection';
 
 export { default as TestimonialCard} from './components/cards/TestimonialCard';
+
+export { default as ItemMenu} from './components/menu/ItemMenu';
 
 export { default as SpanDefault} from './components/text/SpanDefault';
 export { default as SpanDestaque} from './components/text/SpanDestaque';

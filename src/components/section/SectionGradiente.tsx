@@ -5,8 +5,8 @@ const SectionStyled = styled('section') `
   margin: '0 auto'  
 `;
 
-const ContainerSection = styled.div<{color1: string, color2: string}>`
-    background: linear-gradient(to bottom, ${(props) => props.color1}, ${(props) => props.color1}, ${(props) => props.color2});
+const ContainerSection = styled.div<{$color1: string, $color2: string}>`
+    background: linear-gradient(to bottom, ${(props) => props.$color1}, ${(props) => props.$color1}, ${(props) => props.$color2});
     display: flex;      
     flex-direction: column;
     align-items: center;
@@ -24,7 +24,7 @@ const SectionGradiente: React.FC<SectionProps> = ({ children, color1, color2}) =
   
     return (
       <SectionStyled>
-        <ContainerSection color1={color1} color2={color2}>
+        <ContainerSection $color1={color1} $color2={color2}>
           <ContainerSafe>                                   
             { children }                        
           </ContainerSafe>

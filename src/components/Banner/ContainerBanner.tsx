@@ -15,17 +15,17 @@ const AreaMenu = styled.div`
 `;
 
 interface ContainerBannerProps {
-  renderMenu: () => React.ReactElement;
+  renderBarraFerramenta: () => React.ReactElement;
   renderCol1: () => React.ReactElement;
   renderCol2?: () => React.ReactElement; 
 }
 
-const ContainerBanner: React.FC<ContainerBannerProps> = ({ renderMenu, renderCol1, renderCol2 }) => {  
+const ContainerBanner: React.FC<ContainerBannerProps> = ({ renderBarraFerramenta, renderCol1, renderCol2 }) => {  
 
   return (    
     <Area>
       <AreaMenu>
-        {renderMenu()}
+        {renderBarraFerramenta()}
       </AreaMenu>
       <Stack direction={{ xs: 'column', md: 'row' }} alignItems='center' spacing={4}>                   
         <Box flex={1}>
