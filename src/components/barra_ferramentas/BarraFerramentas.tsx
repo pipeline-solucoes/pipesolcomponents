@@ -147,9 +147,9 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: background_color }}>
+    <AppBar position="static" elevation={0} sx={{ backgroundColor: background_color }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx={{ padding: 0 }}>
           {listaItemMenu !== undefined ? renderComMenu() : renderSemMenu()}         
         </Toolbar>
       </Container>

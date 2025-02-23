@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stack, useMediaQuery, useTheme } from '@mui/material';
-import { H1Styled, H2Styled } from '../Typography';
+import { H1Styled } from '../Typography';
 import styled from 'styled-components';
 
 const Title = styled(H1Styled)<{color?: string}>`
@@ -8,24 +8,17 @@ const Title = styled(H1Styled)<{color?: string}>`
   color: ${props => props.color};
 `;
 
-const SubTitle = styled(H2Styled)<{color?: string}>`
-          
-  color: ${props => props.color};
-  width: 100%;
-  text-align: center;
-`;
-
 interface TitleBannerProps {    
   children: React.ReactNode;
-  textTitle: string;
-  textSubTitle?: string;
+  width: string;
+  textTitle: string;  
   color_title: string;
-  color_subtitle: string;  
+  renderSubtitle?: () => React.ReactElement;
 }
 
 
-const TitleBanner: React.FC<TitleBannerProps> = ({ children, textTitle, textSubTitle,
-  color_title, color_subtitle }) => {  
+const TitleBanner: React.FC<TitleBannerProps> = ({ children, textTitle,
+  color_title, renderSubtitle, width }) => {  
 
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only('xs')); 
@@ -44,10 +37,10 @@ const TitleBanner: React.FC<TitleBannerProps> = ({ children, textTitle, textSubT
   };  
 
   return (
-      <Stack direction="column" justifyContent="flex-start" alignItems="flex-start" 
-        sx={{ gap: getGap(), width: 'fit-content'}}>          
+      <Stack direction="column" justifyContent="flex-start" alignItems="center" 
+        sx={{ gap: getGap(), width: width}}>          
         <Title color={color_title}>{textTitle}</Title>
-        {textSubTitle && <SubTitle color={color_subtitle}>{textSubTitle}</SubTitle>}
+        {renderSubtitle && renderSubtitle()}
         {children}
       </Stack>
   );

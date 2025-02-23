@@ -11,7 +11,11 @@ interface SubTitleSeparadorBannerProps {
 const SubTitleSeparadorBanner: React.FC<SubTitleSeparadorBannerProps> = ({children, color}) => {
 
   return (
-    <Divider sx={{ bgcolor: {color}, width: '100%', paddingTop:'16px', paddingBottom:'16px' }}>
+    <Divider sx={{ bgcolor: 'transparent', 
+      '&::before, &::after': {
+          borderColor: color, 
+        },
+      width: '100%', paddingTop:'16px', paddingBottom:'16px' }}>
       <H2Styled>{children}</H2Styled>
     </Divider> 
   );
