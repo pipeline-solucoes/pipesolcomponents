@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Body1Styled } from '../Typography';
+import { Body2Styled } from '../Typography';
 
-export const TextoStyled = styled(Body1Styled)<{color: string}>`
+export const TextoStyled = styled(Body2Styled)<{color: string}>`
   color: ${(props) => props.color};                 
 `;
 

@@ -14,14 +14,16 @@ export interface ItemMenuProps {
 const ItemMenu: React.FC<ItemMenuProps> = ({sectionId, url, text, color, color_hover}) => {
   
   if (sectionId){
+    console.log("SectionLink" + text);
     return (        
         <SectionLink href={sectionId}>        
-            <ItemMenuText color={color} color_hover={color_hover}>{text}</ItemMenuText>               
+          <ItemMenuText color={color} color_hover={color_hover}>{text}</ItemMenuText>               
         </SectionLink>   
-    );
+    );    
   } 
   
   else if (url){
+    console.log("PageLink" + text);
     return (          
         <PageLink href={url}>        
             <ItemMenuText color={color} color_hover={color_hover}>{text}</ItemMenuText>               

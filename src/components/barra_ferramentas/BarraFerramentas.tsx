@@ -44,8 +44,6 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
     setAnchorElNav(null);
   };
 
-  console.log(listaItemMenu);
-
   const renderComMenu = () => {
     return(
       <>
@@ -88,7 +86,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
             onClose={handleCloseNavMenu}
             sx={{ display: { xs: 'block', md: 'none' } }}
           >
-            <Box sx={{ padding: "16px" }}>                
+            <Box sx={{ padding: "16px" }}>   
               {listaItemMenu?.map((item, index) => (
                   <MenuItem key={index} onClick={handleCloseNavMenu}>
                     <ItemMenu sectionId={item.url} 
