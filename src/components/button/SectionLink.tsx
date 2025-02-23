@@ -8,6 +8,7 @@ interface SectionLinkProps {
 
 const AStyled = styled.a`
    text-decoration: none;
+   text-transform: none;
 `;
 
 const SectionLink: React.FC<SectionLinkProps> = ({ href, children }) => {

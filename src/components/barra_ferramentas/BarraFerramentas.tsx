@@ -25,8 +25,8 @@ interface BarraFerramentasProps {
     color_hover_menu_hamburguer: string;
     renderSocialMedia: () => React.ReactElement;
     renderSocialMediaMenuHamburguer: () => React.ReactElement; 
-    renderLogo: () => React.ReactElement;
-    renderImageHamburguer?: () => React.ReactElement;
+    renderLogo?: () => React.ReactElement;
+    renderImageHamburguer: () => React.ReactElement;
 }
 
 const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu, 
@@ -49,12 +49,12 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
       <>
         {/* Logo  */}
         <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
-          {renderLogo()}
+          {renderLogo && renderLogo()}
         </Box>
 
         {/* Logo  */}
         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, mr: 1 }}>
-          {renderLogo()}
+          {renderLogo && renderLogo()}
         </Box>          
 
         {/*  Menu Hamburguer  */}
@@ -67,7 +67,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
             onClick={handleOpenNavMenu}
             color="inherit"
           >
-            {renderImageHamburguer && renderImageHamburguer()}
+            {renderImageHamburguer()}
           </IconButton>
 
           <Menu
@@ -89,7 +89,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
             <Box sx={{ padding: "16px" }}>   
               {listaItemMenu?.map((item, index) => (
                   <MenuItem key={index} onClick={handleCloseNavMenu}>
-                    <ItemMenu sectionId={item.url} 
+                    <ItemMenu sectionId={item.sectionId} 
                         url={item.url}
                         text={item.text} 
                         color={color_menu_hamburguer} 
@@ -112,7 +112,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: {}, display: 'block' }}>                    
                   <ItemMenu 
-                      sectionId={item.url} 
+                      sectionId={item.sectionId} 
                       url={item.url}
                       text={item.text} 
                       color={color} 
@@ -134,7 +134,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
     return(
     <>        
         <Box sx={{ mr: 1 }}>
-          {renderLogo()}
+          {renderLogo && renderLogo()}
         </Box> 
 
         <Box sx={{ flexGrow: 1 }}>                                

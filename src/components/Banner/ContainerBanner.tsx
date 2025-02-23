@@ -10,8 +10,9 @@ const Area = styled.div`
   align-items: center;
 `;
 
-const AreaMenu = styled.div`
-    width: 100%;                          
+const AreaBarraFerramenta = styled.div`
+    width: 100%;
+    padding: 0;                          
 `;
 
 interface ContainerBannerProps {
@@ -24,9 +25,9 @@ const ContainerBanner: React.FC<ContainerBannerProps> = ({ renderBarraFerramenta
 
   return (    
     <Area>
-      <AreaMenu>
+      <AreaBarraFerramenta>
         {renderBarraFerramenta()}
-      </AreaMenu>
+      </AreaBarraFerramenta>
       <Stack direction={{ xs: 'column', md: 'row' }} alignItems='center' spacing={4}>                   
         <Box flex={1}>
           {renderCol1()}
