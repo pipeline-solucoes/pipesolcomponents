@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ContainerSafe } from '../ContainerSafe';
+import { ContainerSafeSemMargem } from '../ContainerSafe';
 import Image, { StaticImageData } from 'next/image';
 
 const Container = styled.div`
@@ -49,9 +49,9 @@ const Banner: React.FC<BannerProps> = ({ src, alt, children }) => {
         />
       </BackgroundImage>
       <Content>
-        <ContainerSafe>
+        <ContainerSafeSemMargem>
           {children}
-        </ContainerSafe> 
+        </ContainerSafeSemMargem> 
       </Content>                 
     </Container>    
   );

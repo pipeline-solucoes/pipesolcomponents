@@ -105,25 +105,28 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
 
         {/* Menu Horizontal */}
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                      
-          {listaItemMenu?.map((item, index) => (
-              <Button
-                  key={index}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: {}, display: 'block' }}>                    
-                  <ItemMenu 
-                      sectionId={item.sectionId} 
-                      url={item.url}
-                      text={item.text} 
-                      color={color} 
-                      color_hover={color_hover}>                        
-                  </ItemMenu>                    
-              </Button>
-          ))}
+
+          <Stack direction="row" justifyContent="center" sx={{ flexGrow: 1, gap: '16px' }}>            
+            {listaItemMenu?.map((item, index) => (
+                <Button
+                    key={index}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: {}, display: 'block' }}>                    
+                    <ItemMenu 
+                        sectionId={item.sectionId} 
+                        url={item.url}
+                        text={item.text} 
+                        color={color} 
+                        color_hover={color_hover}>                        
+                    </ItemMenu>                    
+                </Button>
+            ))}
+          </Stack>
           
-          <Stack direction="row" justifyContent="flex-end" sx={{ flexGrow: 1, margin: '16px 0px' }}>
+          <Stack direction="row" justifyContent="flex-end" sx={{  margin: '16px 0px' }}>
             {renderSocialMedia && renderSocialMedia()}
-          </Stack>            
+          </Stack> 
+
         </Box>
 
       </>

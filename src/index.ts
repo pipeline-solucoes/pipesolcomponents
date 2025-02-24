@@ -1,9 +1,11 @@
 export { default as Banner } from './components/banner/Banner';
 export { default as ContainerBanner } from './components/banner/ContainerBanner';
+export { default as ContainerBannerCenter } from './components/banner/ContainerBannerCenter';
 export { default as TitleBanner } from './components/banner/TitleBanner';
 export { default as SubTitleSeparadorBanner } from './components/banner/SubTitleSeparadorBanner';
 
 export { default as BarraDeFerramentas } from './components/barra_ferramentas/BarraFerramentas';
+export { default as ContainerBarraFerramentas } from './components/barra_ferramentas/ContainerBarraFerramentas';
 
 export { default as ScrollToSectionButton} from './components/button/ScrollToSectionButton';
 export { default as WhatsAppButton} from './components/button/WhatsAppButton';
