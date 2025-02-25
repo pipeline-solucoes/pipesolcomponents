@@ -13,6 +13,7 @@ export { default as SectionLink} from './components/button/SectionLink';
 export { default as PageLink} from './components/button/PageLink';
 
 export { default as SocialMediaIconLink} from './components/social_media/SocialMediaIconLink';
+export { default as SocialMediaIconLinkWithBorder} from './components/social_media/SocialMediaIconLinkWithBorder';
 
 export { default as Section} from './components/section/Section';
 export { default as SectionGradiente} from './components/section/SectionGradiente';
@@ -27,8 +28,6 @@ export { default as TestimonialCard} from './components/cards/TestimonialCard';
 
 export { default as ItemMenu} from './components/menu/ItemMenu';
 
-export { default as SpanDefault} from './components/text/SpanDefault';
-export { default as SpanDestaque} from './components/text/SpanDestaque';
 export { default as SpanBody1} from './components/text/SpanBody1';
 export { default as SpanBody2} from './components/text/SpanBody2';
 

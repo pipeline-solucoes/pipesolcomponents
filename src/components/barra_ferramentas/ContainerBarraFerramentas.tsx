@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { ContainerSafeSemMargem } from '../ContainerSafe';
 
 
-const AreaBarraFerramenta = styled.div<{background_color: string}>`    
+const AreaBarraFerramenta = styled.div<{$background_color: string}>`    
     height: fit-content;    
-    background-color: ${(props) => props.background_color };
+    background-color: ${(props) => props.$background_color };
     display: flex;     
     justify-content: center;
 `;
@@ -20,7 +20,7 @@ const ContainerBarraFerramentas: React.FC<ContainerBarraFerramentasProps> = ({ c
 
   return (    
     
-    <AreaBarraFerramenta background_color={background_color}>
+    <AreaBarraFerramenta $background_color={background_color}>
       <ContainerSafeSemMargem>
         {children()}
       </ContainerSafeSemMargem>      

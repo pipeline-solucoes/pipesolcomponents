@@ -86,7 +86,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
             onClose={handleCloseNavMenu}
             sx={{ display: { xs: 'block', md: 'none' } }}
           >
-            <Box sx={{ padding: "16px" }}>   
+            <Box sx={{ padding: "8px" }}>   
               {listaItemMenu?.map((item, index) => (
                   <MenuItem key={index} onClick={handleCloseNavMenu}>
                     <ItemMenu sectionId={item.sectionId} 
@@ -97,7 +97,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
                     </ItemMenu>
                   </MenuItem>
               ))}
-              <Divider variant="middle" sx={{ margin: "16px 0px" }}/>
+              <Divider variant="middle" sx={{ margin: "8px 0px" }}/>
               {renderSocialMediaMenuHamburguer && renderSocialMediaMenuHamburguer()}
             </Box>
           </Menu>            
@@ -123,7 +123,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
             ))}
           </Stack>
           
-          <Stack direction="row" justifyContent="flex-end" sx={{  margin: '16px 0px' }}>
+          <Stack direction="row" justifyContent="flex-end" sx={{  margin: '8px 0px' }}>
             {renderSocialMedia && renderSocialMedia()}
           </Stack> 
 
@@ -142,7 +142,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
 
         <Box sx={{ flexGrow: 1 }}>                                
           <Stack direction="row" justifyContent="flex-end"
-              sx={{ flexGrow: 1, margin: '16px 0px' }}>
+              sx={{ flexGrow: 1, margin: '8px 0px' }}>
               {renderSocialMedia && renderSocialMedia()}
           </Stack>            
         </Box>

@@ -8,10 +8,10 @@ export interface SocialMediaIconLinkProps {
 
 const SocialMediaIconLink: React.FC<SocialMediaIconLinkProps> = ({ url, children }) => {
   
-  return (
-    <IconButton onClick={() => window.open(url, '_blank', 'noopener noreferrer')}>
-      {children}
-    </IconButton>
+  return (    
+      <IconButton onClick={() => window.open(url, '_blank', 'noopener noreferrer')}>
+        {children}
+      </IconButton>    
   );
 };
 
