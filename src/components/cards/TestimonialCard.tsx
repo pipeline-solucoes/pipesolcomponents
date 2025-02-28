@@ -14,31 +14,33 @@ interface TestimonialCardProps {
   color_icon: string;
   height: string;
   width: string;
+  color_boxshadow?: string;
 }
 
 const StyledStack = styled(Stack)<{$background_color?: string, 
-  height: string, width: string}>` 
+  $color_boxshadow?: string, height: string, width: string}>` 
   margin: 20px auto;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px ${(props) => props.$color_boxshadow ?? "#00000000"};
   background-color: ${(props) => props.$background_color ?? "#00000000"};
   width: ${(props) => props.width };
   height: ${(props) => props.height };
   gap: 16px;
 `;
 
-const QuoteIcon = styled(FormatQuoteIcon)<{color: string}>`
-  color: ${(props) => props.color};
+const QuoteIcon = styled(FormatQuoteIcon)<{$color: string}>`
+  color: ${(props) => props.$color};
   font-size: 40px;
   margin-right: 10px;
 `;
   
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ children, name, socialMedia, 
-  background_color , color, color_icon, height,  width}) => {
+  background_color, color, color_icon, color_boxshadow, height,  width}) => {
   return (
-    <StyledStack $background_color={background_color} width={width} height={height}> 
+    <StyledStack $background_color={background_color} $color_boxshadow={color_boxshadow} 
+      width={width} height={height}> 
       <Box>
-        <QuoteIcon color={color_icon} />
+        <QuoteIcon $color={color_icon} />
       </Box>     
       <Box flex={1}>                  
         {children}                        

@@ -9,12 +9,21 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Divider, Stack } from '@mui/material';
 import ItemMenu from '../menu/ItemMenu';
+import styled from 'styled-components';
 
 export interface ItemMenuProps {
     sectionId?: string;
     url?: string;    
     text: string;   
 } 
+
+export const ButtonStyled = styled(Button)<{$color_hover: string, text_decoration: 'none' | 'underline'}>`         
+    
+    border-radius: 0px;
+    &:hover {                        
+        border-bottom: 2px solid ${(props) => (props.text_decoration == 'none') ? '#00000000' : props.$color_hover};        
+    }
+`;
 
 interface BarraFerramentasProps {    
     listaItemMenu?: ItemMenuProps[];   
@@ -23,6 +32,7 @@ interface BarraFerramentasProps {
     color_hover: string;
     color_menu_hamburguer: string;
     color_hover_menu_hamburguer: string;
+    text_decoration: 'none' | 'underline';
     renderSocialMedia: () => React.ReactElement;
     renderSocialMediaMenuHamburguer: () => React.ReactElement; 
     renderLogo?: () => React.ReactElement;
@@ -32,7 +42,8 @@ interface BarraFerramentasProps {
 const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu, 
     renderSocialMedia, renderSocialMediaMenuHamburguer, 
     background_color, color, color_hover, color_menu_hamburguer, 
-    color_hover_menu_hamburguer, renderLogo, renderImageHamburguer}) => {
+    color_hover_menu_hamburguer, renderLogo, renderImageHamburguer,
+    text_decoration}) => {
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
@@ -108,10 +119,13 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
 
           <Stack direction="row" justifyContent="center" sx={{ flexGrow: 1, gap: '16px' }}>            
             {listaItemMenu?.map((item, index) => (
-                <Button
+                <ButtonStyled
                     key={index}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: {}, display: 'block' }}>                    
+                    sx={{ my: 2, color: {}, display: 'block' }}
+                    $color_hover={color_hover}
+                    text_decoration={text_decoration}
+                    >                    
                     <ItemMenu 
                         sectionId={item.sectionId} 
                         url={item.url}
@@ -119,7 +133,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
                         color={color} 
                         color_hover={color_hover}>                        
                     </ItemMenu>                    
-                </Button>
+                </ButtonStyled>
             ))}
           </Stack>
           
