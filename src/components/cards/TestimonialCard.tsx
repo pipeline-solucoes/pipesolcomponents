@@ -42,8 +42,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ children, name, socia
       <Box>
         <QuoteIcon $color={color_icon} />
       </Box>     
-      <Box flex={1}>                  
-        {children}                        
+      <Box flex={1}>
+        {children}
       </Box>
       <Box>
         <Stack direction='column' justifyContent="center">

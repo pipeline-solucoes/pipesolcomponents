@@ -19,6 +19,7 @@ export interface ItemMenuProps {
 
 export const ButtonStyled = styled(Button)<{$color_hover: string, text_decoration: 'none' | 'underline'}>`         
     
+    border-bottom: 2px solid #00000000;
     border-radius: 0px;
     &:hover {                        
         border-bottom: 2px solid ${(props) => (props.text_decoration == 'none') ? '#00000000' : props.$color_hover};        
