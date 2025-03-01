@@ -24,7 +24,8 @@ export interface CopywriteProps {
 const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, children }) => (
     
   <Container $color_border={color_border}>  
-      <Stack direction="row" justifyContent="center" alignItems="center" sx={{ width: '100%' }}>        
+      <Stack direction={{xs: 'column', md: 'row' }} 
+        justifyContent="center" alignItems="center" sx={{ width: '100%', gap: '16px' }}>        
         <Box flex={1}>
             <SpanBody1 color={color}>
               Copyright ©{ano} todos os direitos reservados. | Criado por <StyledLink href='https://www.instagram.com/pipelinesolucoes/'
@@ -39,5 +40,7 @@ const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, childre
       </Stack>
     </Container>
 );
+
+
 
 export default Copywrite;

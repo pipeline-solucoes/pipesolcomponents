@@ -17,6 +17,7 @@ export { default as TestimonialCard} from './components/cards/TestimonialCard';
 
 export { default as Copywrite} from './components/footer/Copywrite';
 export { default as Footer} from './components/footer/Footer';
+export { default as NotificationBar} from './components/footer/NotificationBar';
 
 export { default as ItemMenu} from './components/menu/ItemMenu';
 
