@@ -5,22 +5,22 @@ import { Stack, Box } from '@mui/material';
 import React, {useState} from 'react';
 import SpanBody2 from '../text/SpanBody2';
 
-const Container = styled.div<{show: string, background_color: string}>`
+const Container = styled.div<{$show: string, $background_color: string}>`
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: ${props => props.background_color};  
-  display: ${props => (props.show == 'true' ? 'block' : 'none')};
+  background-color: ${props => props.$background_color};  
+  display: ${props => (props.$show == 'true' ? 'block' : 'none')};
   z-index: 4000;    
 `;
 
-const BotaoNotificationBar = styled.button<{background: string,
-  color: string}>`
-  background-color: ${props => props.background};
-  color: ${props => props.color};
+const BotaoNotificationBar = styled.button<{$background_color: string,
+  $color: string}>`
+  background-color: ${props => props.$background_color};
+  color: ${props => props.$color};
   padding: 10px 20px;
   border: none;
-  border-radius: ${props => props.theme.shape.borderRadius}px; 
+  border-radius: ${props => props.theme.shape.borderRadius}; 
   cursor: pointer;
   margin-left: 20px;
   height: auto;
@@ -49,7 +49,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,
     };
     
     return (
-      <Container show={showNotification.toString()} background_color={background_color}>
+      <Container $show={showNotification.toString()} $background_color={background_color}>
         <Stack direction="row" justifyContent="center" alignItems="center" 
           sx={{ padding: "16px", 
                 margin: { xs: "0px 40px", sm: "0px 72px", md: "0px 64px" } }}> 
@@ -57,8 +57,8 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,
             {children}
           </Box>                      
           <Box sx={{padding: "16px"}}>
-            <BotaoNotificationBar color={color_button} background={background_color_button} 
-              onClick={handleAccept}>
+            <BotaoNotificationBar $color={color_button} 
+              $background_color={background_color_button} onClick={handleAccept}>
               <SpanBody2 color={color_button}>{text_button}</SpanBody2>
             </BotaoNotificationBar>
           </Box>

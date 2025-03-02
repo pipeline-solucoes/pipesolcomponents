@@ -6,8 +6,7 @@ const BotaoStyled = styled.button<{$color: string, $background_color?: string,
   $border_color?: string, $border_radius: string, $background_color_hover?: string,
   $border_color_hover?: string}>`
     height: auto;
-    width: auto;
-    border: none;  
+    width: auto;  
     cursor: pointer;
     padding: 8px 24px;  
     background-color: ${(props) => props.$background_color || '#00000000'};

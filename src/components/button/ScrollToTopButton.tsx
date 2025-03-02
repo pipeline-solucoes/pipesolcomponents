@@ -4,11 +4,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import IconButton from '@mui/material/IconButton';
 
-const ButtonStyled = styled(IconButton)<{show: string, 
+const ButtonStyled = styled(IconButton)<{$show: string, 
   $background_color?: string, $border_radius: string, 
   $background_color_hover?: string}>`
 
-  display: ${(props) => ((props.show == 'true') ? 'flex' : 'none')};
+  display: ${(props) => ((props.$show == 'true') ? 'flex' : 'none')};
   position: fixed;
   bottom: 165px;
   right: 20px;
@@ -63,7 +63,7 @@ const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({show, border_radiu
             $border_radius={border_radius}
             $background_color_hover={background_color_hover}             
             onClick={scrollToTop} aria-label="ir para o topo" 
-            show={showButton.toString()}>
+            $show={showButton.toString()}>
             {children}
           </ButtonStyled>
         );

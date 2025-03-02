@@ -39,4 +39,6 @@ export { default as SpanBody2} from './components/text/SpanBody2';
 export { H2Styled, H3Styled, H4Styled, Body1Styled, Body2Styled } from './components/Typography';
 export { default as ResponsiveImage } from './components/ResponsiveImage';
 
+export { default as Form } from './components/form/Form';
+
 export { themePS, GlobalStyle } from './theme';
