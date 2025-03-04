@@ -1,6 +1,6 @@
 export { default as Banner } from './components/banner/Banner';
 export { default as ContainerBanner } from './components/banner/ContainerBanner';
-export { default as ContainerBannerCenter } from './components/banner/ContainerBannerCenter';
+export { default as ContainerBannerVertical } from './components/banner/ContainerBannerVertical';
 export { default as TitleBanner } from './components/banner/TitleBanner';
 export { default as SubTitleSeparadorBanner } from './components/banner/SubTitleSeparadorBanner';
 
@@ -12,6 +12,7 @@ export { default as WhatsAppButton} from './components/button/WhatsAppButton';
 export { default as SectionLink} from './components/button/SectionLink';
 export { default as PageLink} from './components/button/PageLink';
 export { default as ScrollToTopButton} from './components/button/ScrollToTopButton';
+export { default as ButtonNewPage} from './components/button/ButtonNewPage';
 
 export { default as TestimonialCard} from './components/cards/TestimonialCard';
 
@@ -35,6 +36,7 @@ export { default as SocialMediaIconLinkWithBorder} from './components/social_med
 
 export { default as SpanBody1} from './components/text/SpanBody1';
 export { default as SpanBody2} from './components/text/SpanBody2';
+export { default as IconText} from './components/text/IconText';
 
 export { H2Styled, H3Styled, H4Styled, Body1Styled, Body2Styled } from './components/Typography';
 export { default as ResponsiveImage } from './components/ResponsiveImage';
