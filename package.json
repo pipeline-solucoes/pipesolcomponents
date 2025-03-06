@@ -1,6 +1,6 @@
 {
   "name": "pipesolcomponents",
-  "version": "0.2.46",
+  "version": "0.2.48",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -29,6 +29,7 @@
     "next": "15.1.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-responsive-carousel": "^3.2.23",
     "styled-components": "^6.1.14"
   },
   "devDependencies": {

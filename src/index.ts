@@ -16,6 +16,8 @@ export { default as ButtonNewPage} from './components/button/ButtonNewPage';
 
 export { default as TestimonialCard} from './components/cards/TestimonialCard';
 
+export { CarouselStyled} from './components/carousel/CarouselStyled';
+
 export { default as Copywrite} from './components/footer/Copywrite';
 export { default as Footer} from './components/footer/Footer';
 export { default as NotificationBar} from './components/footer/NotificationBar';

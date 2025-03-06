@@ -9,7 +9,7 @@ const ContainerBannerVertical: React.FC<ContainerBannerVerticalProps> = ({childr
 
   return (    
     <Stack direction="column" sx={{ width: '100%', height: '100%' }}
-      alignItems= {{ xs: 'center', md: "flex-start" }} >       
+      alignItems="flex-start">       
       {children()}
     </Stack> 
   );

@@ -26,12 +26,17 @@ const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, childre
   <Container $color_border={color_border}>  
       <Stack direction={{xs: 'column', md: 'row' }} 
         justifyContent="center" alignItems="center" sx={{ width: '100%', gap: '16px' }}>        
-        <Box flex={1}>
+        <Box>
             <SpanBody1 color={color}>
-              Copyright ©{ano} todos os direitos reservados. | Criado por <StyledLink href='https://www.instagram.com/pipelinesolucoes/'
+              Copyright ©{ano} todos os direitos reservados.               
+            </SpanBody1>            
+        </Box>
+        <Box flex={1}>
+            <SpanBody1 color={color}>              
+              Criado por <StyledLink href='https://www.instagram.com/pipelinesolucoes/'
                 target="_blank" rel="noopener noreferrer" $color={color}>
                 <SpanBody1 color={color}>Pipeline Soluções</SpanBody1>
-              </StyledLink>             
+              </StyledLink>
             </SpanBody1>            
         </Box> 
         <Box>
