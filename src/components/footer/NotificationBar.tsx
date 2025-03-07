@@ -50,9 +50,9 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,
     
     return (
       <Container $show={showNotification.toString()} $background_color={background_color}>
-        <Stack direction="row" justifyContent="center" alignItems="center" 
+        <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="center" alignItems="center" 
           sx={{ padding: "16px", 
-                margin: { xs: "0px 40px", sm: "0px 72px", md: "0px 64px" } }}> 
+                margin: { xs: "0px 16px", sm: "0px 40px" } }}> 
           <Box sx={{ flexGrow: 1 }}>
             {children}
           </Box>                      
