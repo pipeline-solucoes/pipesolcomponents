@@ -21,6 +21,9 @@ export const ButtonStyled = styled(Button)<{$color_hover: string, text_decoratio
     
     border-bottom: 2px solid #00000000;
     border-radius: 0px;
+    margin: 0px;
+    padding: 8px 24px;
+    
     &:hover {                        
         border-bottom: 2px solid ${(props) => (props.text_decoration == 'none') ? '#00000000' : props.$color_hover};        
     }
@@ -118,7 +121,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
         {/* Menu Horizontal */}
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
-          <Stack direction="row" justifyContent="center" sx={{ flexGrow: 1, gap: '16px' }}>            
+          <Stack direction="row" justifyContent="center" alignItems="center" sx={{ flexGrow: 1, gap: '16px' }}>            
             {listaItemMenu?.map((item, index) => (
                 <ButtonStyled
                     key={index}
@@ -138,7 +141,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
             ))}
           </Stack>
           
-          <Stack direction="row" justifyContent="flex-end" sx={{  margin: '8px 0px' }}>
+          <Stack direction="row" justifyContent="flex-end" sx={{  margin: '16px 0px' }}>
             {renderSocialMedia && renderSocialMedia()}
           </Stack> 
 
@@ -157,7 +160,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
 
         <Box sx={{ flexGrow: 1 }}>                                
           <Stack direction="row" justifyContent="flex-end"
-              sx={{ flexGrow: 1, margin: '8px 0px' }}>
+              sx={{ flexGrow: 1, margin: '16px 0px' }}>
               {renderSocialMedia && renderSocialMedia()}
           </Stack>            
         </Box>

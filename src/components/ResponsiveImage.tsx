@@ -14,7 +14,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({ src, alt, width, heig
       <Image 
         src={src} 
         alt={alt} 
-        fill 
+        fill
         style={{ objectFit: 'scale-down', objectPosition: 'center' }}
         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 100vw, 100vw"
       />      

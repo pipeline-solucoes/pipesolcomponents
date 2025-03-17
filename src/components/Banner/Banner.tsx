@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ContainerSafeSemMargem } from '../ContainerSafe';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
 const Container = styled.div`
   width: 100%;
@@ -29,7 +29,7 @@ const Content = styled.div`
 `;
 
 interface BannerProps {  
-  src: StaticImageData; 
+  src: string; 
   alt: string;        
   children: React.ReactNode;
 }
@@ -44,7 +44,7 @@ const Banner: React.FC<BannerProps> = ({ src, alt, children }) => {
           alt={alt} 
           fill 
           style={{ objectFit: 'cover', objectPosition: 'center' }}           
-          quality={100} 
+          quality={80} 
           priority
         />
       </BackgroundImage>

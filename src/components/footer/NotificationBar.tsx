@@ -33,12 +33,14 @@ export interface NotificationBarProps {
     background_color: string;    
     background_color_button: string;
     color_button: string;
-    text_button: string;    
+    text_button_accept: string; 
+    text_button_notaccept: string;   
     children: React.ReactNode;
   }
 
 const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,  
-  background_color, background_color_button, color_button, text_button }) =>  {            
+  background_color, background_color_button, color_button, 
+  text_button_accept, text_button_notaccept }) =>  {            
 
     const [showNotification, setShowNotification] = useState(show);
 
@@ -47,21 +49,38 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,
       show = false; 
       setShowNotification(false);     
     };
+
+    const handleNotAccept = () => {
+      // Lógica para salvar a aceitação do usuário pode ser adicionada aqui
+      show = false; 
+      setShowNotification(false);     
+    };
     
     return (
       <Container $show={showNotification.toString()} $background_color={background_color}>
         <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="center" alignItems="center" 
-          sx={{ padding: "16px", 
-                margin: { xs: "0px 16px", sm: "0px 40px" } }}> 
+          sx={{ padding: "16px", margin: { xs: "0px 16px", sm: "0px 40px" } }}> 
+          
           <Box sx={{ flexGrow: 1 }}>
             {children}
-          </Box>                      
-          <Box sx={{padding: "16px"}}>
-            <BotaoNotificationBar $color={color_button} 
-              $background_color={background_color_button} onClick={handleAccept}>
-              <SpanBody2 color={color_button}>{text_button}</SpanBody2>
-            </BotaoNotificationBar>
           </Box>
+
+          <Box sx={{padding: "16px"}}>
+            <Stack direction='row' justifyContent="center" alignItems="center" sx={{ gap: "16px" }}>
+              
+              <BotaoNotificationBar $color={background_color_button} 
+                $background_color={color_button} onClick={handleNotAccept}>
+                <SpanBody2 color={background_color_button}>{text_button_notaccept}</SpanBody2>
+              </BotaoNotificationBar>
+
+              <BotaoNotificationBar $color={color_button} 
+                $background_color={background_color_button} onClick={handleAccept}>
+                <SpanBody2 color={color_button}>{text_button_accept}</SpanBody2>
+              </BotaoNotificationBar>
+              
+            </Stack>             
+          </Box>       
+          
         </Stack>
       </Container>);           
 };

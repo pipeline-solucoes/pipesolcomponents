@@ -25,7 +25,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({whatsapp}) => {
   };
 
   return (
-    <StyledFab aria-label="whatsapp" onClick={handleClick}>
+    <StyledFab aria-label="button whatsapp" onClick={handleClick}>
       <WhatsApp />
     </StyledFab>
   );

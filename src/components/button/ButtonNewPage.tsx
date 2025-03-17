@@ -8,10 +8,12 @@ interface ButtonNewPageProps {
   border_radius?: string;
   children: React.ReactNode;
   width?: string;
+  aria_label: string;
 }
 
 const BotaoStyled = styled.button<{$background_color?: string, 
-  $border_color?: string, $border_radius?: string, $background_color_hover?: string,
+  $border_color?: string, $border_radius?: string, 
+  $background_color_hover?: string,
   $width?: string}>`
 
     height: auto;
@@ -28,14 +30,16 @@ const BotaoStyled = styled.button<{$background_color?: string,
 `;
 
 const ButtonNewPage: React.FC<ButtonNewPageProps> = ({ url, 
-  background_color, background_color_hover, border_radius, width, children }) => {
+  background_color, background_color_hover, border_radius, 
+  width, aria_label, children }) => {
   
   return (
     <BotaoStyled $width={width}
       $background_color={background_color} 
       $background_color_hover={background_color_hover}
       $border_radius={border_radius}    
-      onClick={() => window.open(url, '_blank', 'noopener noreferrer')}>
+      onClick={() => window.open(url, '_blank', 'noopener noreferrer')}
+      aria-label={aria_label}>
       {children}
     </BotaoStyled>
   );

@@ -3,13 +3,16 @@ import { IconButton } from '@mui/material';
 
 export interface SocialMediaIconLinkProps {
   children: React.ReactNode; 
-  url: string;  
+  url: string;
+  aria_label: string;
 }
 
-const SocialMediaIconLink: React.FC<SocialMediaIconLinkProps> = ({ url, children }) => {
+const SocialMediaIconLink: React.FC<SocialMediaIconLinkProps> = ({ url, children,
+  aria_label}) => {
   
   return (    
-      <IconButton onClick={() => window.open(url, '_blank', 'noopener noreferrer')}>
+      <IconButton aria-label={aria_label}
+        onClick={() => window.open(url, '_blank', 'noopener noreferrer')}>
         {children}
       </IconButton>    
   );

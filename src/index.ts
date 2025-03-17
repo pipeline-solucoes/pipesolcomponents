@@ -42,6 +42,8 @@ export { default as IconText} from './components/text/IconText';
 
 export { H2Styled, H3Styled, H4Styled, Body1Styled, Body2Styled } from './components/Typography';
 export { default as ResponsiveImage } from './components/ResponsiveImage';
+export { TabStyled, TabsStyled } from './components/TabStyled';
+export { default as useResponsive } from './components/useResponsive';
 
 export { default as Form } from './components/form/Form';
 

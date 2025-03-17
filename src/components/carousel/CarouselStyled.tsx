@@ -11,7 +11,7 @@ export const CarouselStyled = styled(Carousel)<{$height: string, $width: string,
 
   .carousel .slider-wrapper {
     background: #00000000 !important; 
-    height:  ${(props) => props.$height};   
+    height:  ${(props) => props.$height};
   }
 
   .carousel .control-dots .dot {
@@ -27,7 +27,7 @@ export const CarouselStyled = styled(Carousel)<{$height: string, $width: string,
   }  
 
   .carousel .control-arrow {
-    background: ${(props) => props.$color_indicator_focus};; 
+    background: ${(props) => props.$color_indicator_focus};
   }
 
   .carousel .control-arrow:hover {
