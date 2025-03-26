@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -5,29 +7,15 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import { Divider, Stack } from '@mui/material';
 import ItemMenu from '../menu/ItemMenu';
-import styled from 'styled-components';
+
 
 export interface ItemMenuProps {
     sectionId?: string;
     url?: string;    
     text: string;   
 } 
-
-export const ButtonStyled = styled(Button)<{$color_hover: string, text_decoration: 'none' | 'underline'}>`         
-    
-    border-bottom: 2px solid #00000000;
-    border-radius: 0px;
-    margin: 0px;
-    padding: 8px 24px;
-    
-    &:hover {                        
-        border-bottom: 2px solid ${(props) => (props.text_decoration == 'none') ? '#00000000' : props.$color_hover};        
-    }
-`;
 
 interface BarraFerramentasProps {    
     listaItemMenu?: ItemMenuProps[];   
@@ -101,16 +89,17 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
             onClose={handleCloseNavMenu}
             sx={{ display: { xs: 'block', md: 'none' } }}
           >
-            <Box sx={{ padding: "8px" }}>   
-              {listaItemMenu?.map((item, index) => (
-                  <MenuItem key={index} onClick={handleCloseNavMenu}>
-                    <ItemMenu sectionId={item.sectionId} 
-                        url={item.url}
-                        text={item.text} 
-                        color={color_menu_hamburguer} 
-                        color_hover={color_hover_menu_hamburguer}>                        
-                    </ItemMenu>
-                  </MenuItem>
+            <Box display='flex' flexDirection='column' sx={{ padding: "8px" }}>   
+              {listaItemMenu?.map((item, index) => (                  
+                <ItemMenu key={index}
+                    sectionId={item.sectionId} 
+                    url={item.url}
+                    text={item.text} 
+                    color={color_menu_hamburguer} 
+                    color_hover={color_hover_menu_hamburguer}
+                    text_decoration={text_decoration}
+                    afterNavigation={handleCloseNavMenu}>                        
+                </ItemMenu>                 
               ))}
               <Divider variant="middle" sx={{ margin: "8px 0px" }}/>
               {renderSocialMediaMenuHamburguer && renderSocialMediaMenuHamburguer()}
@@ -122,22 +111,16 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
           <Stack direction="row" justifyContent="center" alignItems="center" sx={{ flexGrow: 1, gap: '16px' }}>            
-            {listaItemMenu?.map((item, index) => (
-                <ButtonStyled
-                    key={index}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: {}, display: 'block' }}
-                    $color_hover={color_hover}
-                    text_decoration={text_decoration}
-                    >                    
-                    <ItemMenu 
-                        sectionId={item.sectionId} 
-                        url={item.url}
-                        text={item.text} 
-                        color={color} 
-                        color_hover={color_hover}>                        
-                    </ItemMenu>                    
-                </ButtonStyled>
+            {listaItemMenu?.map((item, index) => (              
+                <ItemMenu key={index}
+                  sectionId={item.sectionId} 
+                  url={item.url}
+                  text={item.text} 
+                  color={color} 
+                  color_hover={color_hover}
+                  text_decoration={text_decoration}
+                  afterNavigation={handleCloseNavMenu}>                        
+                </ItemMenu> 
             ))}
           </Stack>
           

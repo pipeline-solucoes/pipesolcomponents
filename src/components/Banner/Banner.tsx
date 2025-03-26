@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ContainerSafeSemMargem } from '../ContainerSafe';
 import Image from 'next/image';
+import { ContainerSafeSemMargem } from '../ContainerSafe';
 
 const Container = styled.div`
   width: 100%;
   height: 600px;
   position: relative;
-  overflow: hidden;       
+  overflow: hidden;
 `;
 
 const BackgroundImage = styled.div`
@@ -21,8 +21,7 @@ const BackgroundImage = styled.div`
 
 const Content = styled.div`
   position: relative;
-  z-index: 1;
-  color: white;
+  z-index: 1;  
   display: flex;     
   justify-content: center;
   height: 100%; 
@@ -50,8 +49,8 @@ const Banner: React.FC<BannerProps> = ({ src, alt, children }) => {
       </BackgroundImage>
       <Content>
         <ContainerSafeSemMargem>
-          {children}
-        </ContainerSafeSemMargem> 
+        {children}        
+        </ContainerSafeSemMargem>                
       </Content>                 
     </Container>    
   );

@@ -9,12 +9,11 @@ export { default as ContainerBarraFerramentas } from './components/barra_ferrame
 
 export { default as ScrollToSectionButton} from './components/button/ScrollToSectionButton';
 export { default as WhatsAppButton} from './components/button/WhatsAppButton';
-export { default as SectionLink} from './components/button/SectionLink';
-export { default as PageLink} from './components/button/PageLink';
+export { default as GoToButton} from './components/button/GoToButton';
 export { default as ScrollToTopButton} from './components/button/ScrollToTopButton';
-export { default as ButtonNewPage} from './components/button/ButtonNewPage';
 
 export { default as TestimonialCard} from './components/cards/TestimonialCard';
+export { default as ImageCard} from './components/cards/ImageCard';
 
 export { CarouselStyled} from './components/carousel/CarouselStyled';
 
@@ -36,8 +35,6 @@ export { default as SubTitleSeparadorSection} from './components/section/SubTitl
 export { default as SocialMediaIconLink} from './components/social_media/SocialMediaIconLink';
 export { default as SocialMediaIconLinkWithBorder} from './components/social_media/SocialMediaIconLinkWithBorder';
 
-export { default as SpanBody1} from './components/text/SpanBody1';
-export { default as SpanBody2} from './components/text/SpanBody2';
 export { default as IconText} from './components/text/IconText';
 
 export { H2Styled, H3Styled, H4Styled, Body1Styled, Body2Styled } from './components/Typography';
@@ -46,5 +43,8 @@ export { TabStyled, TabsStyled } from './components/TabStyled';
 export { default as useResponsive } from './components/useResponsive';
 
 export { default as Form } from './components/form/Form';
+
+export { default as SubstackPage } from './components/substask/SubstackPage';
+export { default as SubstackPosts } from './components/substask/SubstackPosts';
 
 export { themePS, GlobalStyle } from './theme';

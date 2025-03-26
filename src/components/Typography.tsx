@@ -1,3 +1,5 @@
+'use client';
+
 import styled from 'styled-components';
 
 export const H1Styled = styled.h1`
@@ -9,6 +11,7 @@ export const H1Styled = styled.h1`
   letter-spacing: ${props => props.theme.typography.h1.letterSpacing};    
   font-size: ${props => props.theme.typography.h1.fontSize}; 
   margin: ${props => props.theme.typography.h1.margin};
+  color: ${props => props.theme.typography.h1.color};
   
   @media (max-width: 600px) { 
     font-size: ${(props) => props.theme.typography.h1['@media (max-width:600px)'].fontSize}; 
@@ -28,6 +31,7 @@ export const H2Styled = styled.h2`
   letter-spacing: ${props => props.theme.typography.h2.letterSpacing};    
   font-size: ${props => props.theme.typography.h2.fontSize}; 
   margin: ${props => props.theme.typography.h2.margin};
+  color: ${props => props.theme.typography.h2.color};
   
   @media (max-width: 600px) { 
     font-size: ${(props) => props.theme.typography.h2['@media (max-width:600px)'].fontSize}; 

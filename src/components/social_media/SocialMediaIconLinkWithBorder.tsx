@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Box, IconButton } from '@mui/material';
 import styled from 'styled-components'; 
@@ -9,8 +11,11 @@ export interface SocialMediaIconLinkWithBorderProps {
   aria_label: string;
 }
 
-const StyledBox = styled(Box)<{$background_color: string}>`   
-  background-color: ${(props) => props.$background_color};
+const StyledBox = styled(Box).withConfig({
+  shouldForwardProp: (prop) =>
+    !['background_color'].includes(prop)})
+  <{background_color: string}>`
+  background-color: ${(props) => props.background_color};
   padding: 4px;
   border-radius: 50%; 
   display: inline-block;
@@ -21,7 +26,7 @@ const SocialMediaIconLinkWithBorder: React.FC<SocialMediaIconLinkWithBorderProps
    background_color, aria_label, children }) => {
   
   return (   
-      <StyledBox $background_color={background_color}>
+      <StyledBox background_color={background_color}>
         <IconButton aria-label={aria_label} 
           onClick={() => window.open(url, '_blank', 'noopener noreferrer')}>
           {children}

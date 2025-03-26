@@ -20,7 +20,9 @@ export const StyledTextField = styled(TextField)<{$background_color?: string,
   line-height: ${props => props.theme.typography.body1.lineHeight};          
   letter-spacing: ${props => props.theme.typography.body1.letterSpacing};    
   font-size: ${props => props.theme.typography.body1.fontSize};
-  margin: ${props => props.theme.typography.body1.margin};     
+  margin: ${props => props.theme.typography.body1.margin};
+  color: ${(props) => props.$color };
+
   @media (max-width: 600px) { 
     font-size: ${(props) => props.theme.typography.body1['@media (max-width:600px)'].fontSize}; 
   } 

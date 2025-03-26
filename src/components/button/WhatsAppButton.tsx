@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Fab } from '@mui/material';
 import { WhatsApp } from '@mui/icons-material';
@@ -26,7 +28,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({whatsapp}) => {
 
   return (
     <StyledFab aria-label="button whatsapp" onClick={handleClick}>
-      <WhatsApp />
+      <WhatsApp></WhatsApp>
     </StyledFab>
   );
 };

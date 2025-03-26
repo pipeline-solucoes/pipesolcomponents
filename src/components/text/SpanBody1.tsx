@@ -1,10 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Body1Styled } from '../Typography';
 
-export const TextoStyled = styled(Body1Styled)<{color: string}>`
-  color: ${(props) => props.color};                 
-`;
+import React from 'react';
+import { Body1Styled } from '../Typography';
 
 export interface SpanBody1Props {      
     children: React.ReactNode;
@@ -14,9 +10,9 @@ export interface SpanBody1Props {
 const SpanBody1: React.FC<SpanBody1Props> = ({ children, color }) => {            
 
     return(
-      <TextoStyled color={color}>
+      <Body1Styled style={{ color: color }}>
         {children}
-      </TextoStyled>
+      </Body1Styled> 
     );         
 };
 

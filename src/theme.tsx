@@ -75,7 +75,8 @@ const themePS = createTheme({
       letterSpacing: '0.01em',
       fontWeight: 600,
       margin: 0,
-      fontStyle: 'normal',       
+      fontStyle: 'normal',
+      color: '#ffffff',
       '@media (min-width:601px) and (max-width:960px)': {
         fontSize: '40px', // Tablet
       },
@@ -89,6 +90,7 @@ const themePS = createTheme({
       letterSpacing: '0.01em',
       fontWeight: 400,
       margin: 0,      
+      color: '#ffffff',
       '@media (min-width:601px) and (max-width:960px)': {
         fontSize: '16px', // Tablet
       },

@@ -1,9 +1,13 @@
+'use client';
+
 import React, { useRef, useEffect, useState } from 'react';
 import { TextField, Button, Container } from '@mui/material';
 import styled from 'styled-components';
 import { StyledTextField } from './FormStyled';
+import { Body1Styled } from '../Typography';
 
 const FormContainer = styled(Container)`
+
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -21,7 +25,8 @@ const StyledButton = styled(Button)<{$background_color?: string,
   text-transform: none;
   border: none;  
   cursor: pointer;
-  padding: 8px 24px; 
+  padding: 8px 24px;
+  box-shadow: none;
 
   font-family:  ${props => props.theme.typography.fontFamily};             
   font-weight: ${props => props.theme.typography.body1.fontWeight}; 
@@ -64,11 +69,13 @@ export interface FormProps {
     background_color_button: string;
     border_radius_button: string;
     text_button: string;
+    token: string;
   }
 
 const Form: React.FC<FormProps> = ({ color, background_color, border_radius, color_button,
-    background_color_button, border_radius_button, text_button }) => {
+    background_color_button, border_radius_button, text_button, token }) => {
 
+  const [mensagemApi, setMensagemApi] = useState('');
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -108,16 +115,37 @@ const Form: React.FC<FormProps> = ({ color, background_color, border_radius, col
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const hasErrors = Object.keys(errors).some(key => errors[key]);
+    const hasErrors = Object.keys(errors).some((key) => errors[key]);
 
     if (!hasErrors) {
-      const data = { nome, email, telefone, mensagem };
-      // Enviar dados para a API
-      console.log('Dados enviados:', data);
+      
+      try {
+        
+        const formData = new FormData();
+        formData.append('nome', nome); 
+        formData.append('email', email); 
+        formData.append('telefone', telefone); 
+        formData.append('mensagem', mensagem); 
+
+        const response = await fetch('https://api.pipelinesolucoes.com.br/fale-conosco/envia-email?token='+token, {
+          method: 'POST',              
+          body: formData,
+        });        
+
+        if (response.status === 200){  
+          setMensagemApi('Dados enviados com sucesso!');
+        } else {
+          setMensagemApi('Erro ao enviar dados.');
+          console.log('Erro ao enviar dados:', response.statusText);
+        }
+      } catch (error) {
+        setMensagemApi('Erro ao enviar dados.');
+        console.log('Erro na solicitação:', error);
+      }
     } else {
-      console.log('Formulário contém erros');
+      setMensagemApi('Formulário contém erros');
     }
   };
 
@@ -176,6 +204,7 @@ const Form: React.FC<FormProps> = ({ color, background_color, border_radius, col
         $border_radius={border_radius_button}>
         {text_button}
       </StyledButton>
+      {mensagemApi && <Body1Styled>{mensagemApi}</Body1Styled>}
     </FormContainer>
      );
     };
