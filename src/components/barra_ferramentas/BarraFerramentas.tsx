@@ -9,6 +9,46 @@ import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import { Divider, Stack } from '@mui/material';
 import ItemMenu from '../menu/ItemMenu';
+import styled from 'styled-components';
+
+const CustomContainer = styled(Container)`
+
+    margin: 0px 0px; ,
+    width: '100%', 
+
+    @media (max-width: 600px) { 
+        width: calc(100% - 32px) 
+    }
+
+    @media (min-width: 600px) {
+        width: calc(100% - 48px) 
+    }
+
+    @media (min-width: 960px) {
+        width: calc(100% - 54px); 
+    }
+
+    @media (min-width:1280px) {
+        width: 1200px; 
+    }
+
+    @media (min-width: 1920px) {
+        width: 1200px; 
+    }    
+`;
+
+const Bar = styled.div.withConfig({
+  shouldForwardProp: (prop) =>
+    !['background_color'].includes(prop), })
+<{background_color?: string;}>`  
+
+  display: flex;    
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  background-color: ${props =>props.background_color || '#00000000'};
+  width: 100%;
+`;
 
 
 export interface ItemMenuProps {
@@ -64,8 +104,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>            
           <IconButton
             size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
+            aria-label="menu hamburguer"            
             aria-haspopup="true"
             onClick={handleOpenNavMenu}
             color="inherit"
@@ -73,8 +112,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
             {renderImageHamburguer()}
           </IconButton>
 
-          <Menu
-            id="menu-appbar"
+          <Menu            
             anchorEl={anchorElNav}
             anchorOrigin={{
               vertical: 'bottom',
@@ -97,11 +135,11 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
                     text={item.text} 
                     color={color_menu_hamburguer} 
                     color_hover={color_hover_menu_hamburguer}
-                    text_decoration={text_decoration}
+                    text_decoration="none"
                     afterNavigation={handleCloseNavMenu}>                        
-                </ItemMenu>                 
+                </ItemMenu>
               ))}
-              <Divider variant="middle" sx={{ margin: "8px 0px" }}/>
+              <Divider variant="middle" sx={{ margin: "8px 0px" }}></Divider>
               {renderSocialMediaMenuHamburguer && renderSocialMediaMenuHamburguer()}
             </Box>
           </Menu>            
@@ -151,13 +189,13 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({listaItemMenu,
   };
 
   return (
-    <AppBar position="static" elevation={0} sx={{ backgroundColor: background_color }}>
-      <Container maxWidth="xl">
+    <Bar background_color={background_color}>
+      <CustomContainer>
         <Toolbar disableGutters sx={{ padding: 0 }}>
           {listaItemMenu !== undefined ? renderComMenu() : renderSemMenu()}         
         </Toolbar>
-      </Container>
-    </AppBar>
+      </CustomContainer>
+    </Bar>
   );
 }
 

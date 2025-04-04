@@ -19,7 +19,7 @@ const FormContainer = styled(Container)`
 const StyledButton = styled(Button)<{$background_color?: string, 
     $border_radius: string, $color: string}>`
 
-  color: ${(props) => props.$color };
+  color: ${(props) => props.$color};
   background-color: ${(props) => props.$background_color || '#00000000'};
   border-radius:${(props) => props.$border_radius};
   text-transform: none;
@@ -44,21 +44,41 @@ const StyledButton = styled(Button)<{$background_color?: string,
   }    
 `;
 
-const FixedSizeTextField = styled(TextField)<{$background_color?: string, 
-    $border_radius: string, $color: string}>`
+const FixedSizeTextField = styled(TextField).withConfig({
+  shouldForwardProp: (prop) =>
+    !['background_color',
+      'color',        
+      'border_radius'].includes(prop), })
+<{
+  background_color?: string;
+  color: string;   
+  border_radius?: string
+}>`  
 
-  & .MuiInputBase-root {   
+  .MuiInputLabel-root {
+    color: ${(props) => props.color};
+  }
+
+  .MuiInputBase-input::placeholder {
+    color: ${(props) => props.color}; 
+    opacity: 1;
+  }
+
+  & .MuiInputBase-root {  
+    transition: none !important;
+    align-items: flex-start; 
     width: 100%;         
     overflow-y: auto;  
     height: 150px;
-    background-color: ${(props) => props.$background_color || '#00000000'};
-    border-radius:${(props) => props.$border_radius};
-    color: ${(props) => props.$color };
+    background-color: ${(props) => props.background_color || 'transparent'};
+    border-radius:${(props) => props.border_radius || '0px'};
+    color: ${(props) => props.color};
   }
 
   & .MuiOutlinedInput-notchedOutline {
     border-color: transparent;
-  }  
+  }
+
 `;
 
 export interface FormProps {                    
@@ -129,12 +149,12 @@ const Form: React.FC<FormProps> = ({ color, background_color, border_radius, col
         formData.append('telefone', telefone); 
         formData.append('mensagem', mensagem); 
 
-        const response = await fetch('https://api.pipelinesolucoes.com.br/fale-conosco/envia-email?token='+token, {
+        const response = await fetch(`https://api.pipelinesolucoes.com.br/fale-conosco/envia-email?token=${token}`, {
           method: 'POST',              
           body: formData,
         });        
 
-        if (response.status === 200){  
+        if (response.status == 200){  
           setMensagemApi('Dados enviados com sucesso!');
         } else {
           setMensagemApi('Erro ao enviar dados.');
@@ -153,27 +173,29 @@ const Form: React.FC<FormProps> = ({ color, background_color, border_radius, col
     <FormContainer>
       <StyledTextField
         label="Nome"
+        placeholder='Nome'
         value={nome}
         onChange={(e) => setNome(e.target.value)}
         onBlur={() => handleBlur('nome')}
         error={errors.nome}        
-        required
-        $background_color={background_color}
-        $color={color}
-        $border_radius={border_radius}
-      />
+        required={true}
+        backgroundColor={background_color}
+        color={color}
+        borderRadius={border_radius}
+      ></StyledTextField>
       <StyledTextField
         label="Email"
+        placeholder='Email'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         onBlur={() => handleBlur('email')}
         error={errors.email}
         helperText={errors.email && 'Email inválido'}        
-        required
-        $background_color={background_color}
-        $color={color}
-        $border_radius={border_radius}
-      />
+        required={true}
+        backgroundColor={background_color}
+        color={color}
+        borderRadius={border_radius}
+      ></StyledTextField>
       <StyledTextField
         label="Telefone"
         value={telefone}
@@ -181,24 +203,25 @@ const Form: React.FC<FormProps> = ({ color, background_color, border_radius, col
         onBlur={() => handleBlur('telefone')}
         error={errors.telefone}
         helperText={errors.telefone && 'Telefone inválido'}
-        required
+        required={true}
         placeholder="(99) 99999-9999"
-        $background_color={background_color}
-        $color={color}
-        $border_radius={border_radius}
-      />      
+        backgroundColor={background_color}
+        color={color}
+        borderRadius={border_radius}
+      ></StyledTextField>      
       <FixedSizeTextField
         label="Mensagem"
+        placeholder='Mensagem'
         value={mensagem}
         onChange={(e) => setMensagem(e.target.value)}
         onBlur={() => handleBlur('mensagem')}
         error={errors.mensagem}
-        required
+        required={true}
         multiline
-        $background_color={background_color}
-        $color={color}
-        $border_radius={border_radius}
-      />
+        background_color={background_color}
+        color={color}
+        border_radius={border_radius}
+      ></FixedSizeTextField>
       <StyledButton variant="contained" onClick={handleSubmit}  
         $background_color={background_color_button} $color={color_button}
         $border_radius={border_radius_button}>

@@ -2,24 +2,36 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styled from 'styled-components';
 
-export const CarouselStyled = styled(Carousel)<{$height: string, $width: string,
-    $color_indicator_focus: string, $color_indicators: string, $margin: string }>`
-
-  margin-top: ${(props) => props.$margin};
-  margin-bottom: ${(props) => props.$margin}; 
-  width: ${(props) => props.width}; 
+export const CarouselStyled = styled(Carousel).withConfig({
+  shouldForwardProp: (prop) =>
+    !['width',
+      'height',
+      'margin',        
+      'color_indicators',
+      'color_indicator_focus'
+    ].includes(prop), })
+<{
+  width?: string;
+  height: string;
+  margin: string;   
+  color_indicators: string;
+  color_indicator_focus: string;
+}>`  
+  margin-top: ${(props) => props.margin};
+  width: ${(props) => props.width || 'auto'};
+  max-width: 100%;
 
   .carousel .slider-wrapper {
     background: #00000000 !important; 
-    height:  ${(props) => props.$height};
+    height:  ${(props) => props.height};
   }
 
   .carousel .control-dots .dot {
-    background-color: ${(props) => props.$color_indicators}; 
+    background-color: ${(props) => props.color_indicators}; 
   }
 
   .carousel .control-dots .dot.selected {
-    background-color: ${(props) => props.$color_indicator_focus};
+    background-color: ${(props) => props.color_indicator_focus};
   }
 
   .carousel .slide img {    
@@ -27,10 +39,10 @@ export const CarouselStyled = styled(Carousel)<{$height: string, $width: string,
   }  
 
   .carousel .control-arrow {
-    background: ${(props) => props.$color_indicator_focus};
+    background-color: ${(props) => props.color_indicator_focus};
   }
 
   .carousel .control-arrow:hover {
-    background: ${(props) => props.$color_indicator_focus};
+    background-color: ${(props) => props.color_indicator_focus};
   }
 `;

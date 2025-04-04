@@ -1,21 +1,29 @@
 import React from 'react';
-import SpanBody1 from './SpanBody1';
-import { Stack } from '@mui/material';
+import styled from 'styled-components';
 
+const DivStyled = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  width: fit-content;
+  flex-grow: 1;
+`;
 
 export interface SpanBody1Props {      
-    children: React.ReactNode;
-    color: string;
+    children: React.ReactNode;    
     renderIcon: () => React.ReactElement;     
 }
 
-const IconText: React.FC<SpanBody1Props> = ({ children, color, renderIcon }) => {            
+const IconText: React.FC<SpanBody1Props> = ({ children, renderIcon }) => {            
 
     return(
-        <Stack direction="row" justifyContent="flex-start" sx={{ flexGrow: 1, gap: '16px', width: 'fit-content' }}> 
+        <DivStyled> 
             {renderIcon()}
-            <SpanBody1 color={color}>{children}</SpanBody1>
-        </Stack>
+            {children}
+        </DivStyled>
     );         
 };
 

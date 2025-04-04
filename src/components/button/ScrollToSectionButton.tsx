@@ -52,7 +52,7 @@ const ScrollToSectionButton: React.FC<ScrollToSectionButtonProps> = ({ text, col
        $background_color_hover={background_color_hover} 
        $border_color_hover={border_color_hover}
        onClick={handleClick}
-       aria-label= {'button ' + text}
+       aria-label= {`button ${text}`}
        >
         <Body1Styled>{text}</Body1Styled>
       </BotaoStyled>

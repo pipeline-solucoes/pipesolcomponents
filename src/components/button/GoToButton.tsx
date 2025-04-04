@@ -10,15 +10,19 @@ interface GoToButtonButtonProps {
   background_color?: string;
   color: string;
   color_hover?: string; 
+  border_color?: string;
   border_radius?: string; 
   text_decoration: 'none' | 'underline';
   layout: 'button' | 'link';
+  width: string;
   children: React.ReactNode;
   afterNavigation?: () => void;   
 }
 
-const GoToButton: React.FC<GoToButtonButtonProps> = ({ id_section, url, aria_label, background_color,
-  color, color_hover, border_radius, text_decoration, layout, children, afterNavigation }) => {
+const GoToButton: React.FC<GoToButtonButtonProps> = ({ 
+  id_section, url, aria_label, background_color,
+  color, color_hover, border_radius, border_color, text_decoration, 
+  layout, width, children, afterNavigation }) => {
   
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {      
       e.preventDefault();
@@ -42,11 +46,12 @@ const GoToButton: React.FC<GoToButtonButtonProps> = ({ id_section, url, aria_lab
 
   if (text_decoration === 'underline'){
     return (
-      <ButtonHoverBorderBottomStyled 
+      <ButtonHoverBorderBottomStyled width={width}
         background_color={background_color}
         color={color} 
         color_hover={color_hover}
         border_radius={border_radius}
+        border_color={border_color}
         padding={layout === 'button' ? 'default' : 'none'}
         aria-label= {aria_label}
         onClick={handleClick}>        
@@ -56,11 +61,12 @@ const GoToButton: React.FC<GoToButtonButtonProps> = ({ id_section, url, aria_lab
   }
   else if (text_decoration === 'none'){
     return (
-      <ButtonHoverColorStyled 
+      <ButtonHoverColorStyled width={width}
         background_color={background_color}
         color={color} 
         color_hover={color_hover}
-        border_radius={border_radius}     
+        border_radius={border_radius} 
+        border_color={border_color}    
         padding={layout === 'button' ? 'default' : 'none'}
         aria-label= {aria_label}
         onClick={handleClick}>        

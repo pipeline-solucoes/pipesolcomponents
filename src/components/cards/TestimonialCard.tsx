@@ -40,7 +40,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ children, name, socia
     <StyledStack $background_color={background_color} $color_boxshadow={color_boxshadow} 
       width={width} height={height}> 
       <Box>
-        <QuoteIcon $color={color_icon} />
+        <QuoteIcon $color={color_icon}></QuoteIcon>
       </Box>     
       <Box flex={1}>
         {children}

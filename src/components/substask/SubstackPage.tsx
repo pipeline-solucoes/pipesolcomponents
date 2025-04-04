@@ -28,5 +28,5 @@ export default async function SubstackPage({ url }: SubstackPageProps) {
   
   const posts = await fetchSubstackPosts(url);
 
-  return <SubstackPosts posts={posts} />;
+  return <SubstackPosts posts={posts}></SubstackPosts>;
 }

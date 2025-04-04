@@ -6,14 +6,19 @@ export const ButtonHoverBorderBottomStyled = styled.button.withConfig({
         'color', 
         'color_hover',          
         'padding', 
-        'border_radius'].includes(prop), })
+        'border_radius',
+        "border_color",
+        'width'].includes(prop), })
   <{
     background_color?: string;
     color: string; 
     color_hover?: string;     
-    padding: 'none' | 'default',
-    border_radius?: string
+    padding: 'none' | 'default';
+    border_radius?: string;
+    border_color?: string;
+    width: string;
  }>`  
+    width:  ${props => props.width}; 
     cursor: pointer;
     text-decoration: none;
     text-transform: none;  
@@ -23,7 +28,8 @@ export const ButtonHoverBorderBottomStyled = styled.button.withConfig({
     box-shadow: none;
     background-color:  ${props =>props.background_color || '#00000000'};
     color:  ${props => props.color};  
-    border-radius: ${props =>props.border_radius || '0px'};    
+    border-radius: ${props =>props.border_radius || '0px'}; 
+    border: ${props =>props.border_color ? `1px solid ${props.border_color}` : 'none' };   
     padding: ${(props) => (props.padding == 'default') ? '8px 24px' : '0px' };    
      
     &:hover {      
@@ -38,14 +44,19 @@ export const ButtonHoverColorStyled = styled.button.withConfig({
         'color', 
         'color_hover',          
         'padding', 
-        'border_radius'].includes(prop), })
+        'border_radius',
+        'border_color',
+        'width'].includes(prop), })
   <{
     background_color?: string;
     color: string; 
     color_hover?: string;     
-    padding: 'none' | 'default',
-    border_radius?: string
+    padding: 'none' | 'default';
+    border_radius?: string;
+    border_color?: string;
+    width: string;
  }>`  
+    width:  ${props => props.width};
     cursor: pointer;
     text-decoration: none;
     text-transform: none;  
@@ -54,7 +65,8 @@ export const ButtonHoverColorStyled = styled.button.withConfig({
     box-shadow: none;
     background-color:  ${props =>props.background_color || '#00000000'};
     color:  ${props => props.color};  
-    border-radius: ${props =>props.border_radius || '0px'};    
+    border-radius: ${props =>props.border_radius || '0px'};  
+    border: ${props =>props.border_color ? `1px solid ${props.border_color}` : 'none' };
     padding: ${(props) => (props.padding == 'default') ? '8px 24px' : '0px' };    
      
     &:hover {            

@@ -23,8 +23,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <CacheProvider value={cache}>
       <MuiThemeProvider theme={themePS}>
         <StyledThemeProvider theme={themePS}>
-          <CssBaseline />
-          <Component {...pageProps} />
+          <CssBaseline></CssBaseline>
+          <Component {...pageProps} ></Component>
         </StyledThemeProvider>
       </MuiThemeProvider>
     </CacheProvider>

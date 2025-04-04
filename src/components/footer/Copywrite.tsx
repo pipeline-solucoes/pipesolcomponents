@@ -3,13 +3,6 @@ import styled from 'styled-components';
 import { Stack, Box } from '@mui/material';
 import SpanBody1 from '../text/SpanBody1';
 
-
-const Container = styled.div<{$color_border: string}>`  
-  width: 100%;
-  padding: 16px 0px 0px;
-  border-top: 1px solid ${props => props.$color_border};
-`;
-
 const StyledLink = styled.a<{$color: string}>`
   color: ${props => props.$color}; 
 `;
@@ -23,7 +16,8 @@ export interface CopywriteProps {
 
 const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, children }) => (
     
-  <Container $color_border={color_border}>  
+  <Box sx={{ width: '100%', padding: '16px 0px 0px', 
+    borderTopColor: color_border, borderTopStyle: 'solid', borderTopWidth: '1px'}}>  
       <Stack direction={{xs: 'column', md: 'row' }} 
         justifyContent="center" alignItems="center" sx={{ width: '100%', gap: '16px' }}>        
         <Box>
@@ -43,7 +37,7 @@ const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, childre
             {children}
         </Box>               
       </Stack>
-    </Container>
+    </Box>
 );
 
 

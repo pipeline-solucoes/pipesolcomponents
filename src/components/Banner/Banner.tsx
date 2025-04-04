@@ -24,7 +24,7 @@ const Content = styled.div`
   z-index: 1;  
   display: flex;     
   justify-content: center;
-  height: 100%; 
+  height: 100%;
 `;
 
 interface BannerProps {  
@@ -42,15 +42,15 @@ const Banner: React.FC<BannerProps> = ({ src, alt, children }) => {
           src={src} 
           alt={alt} 
           fill 
-          style={{ objectFit: 'cover', objectPosition: 'center' }}           
+          style={{ objectFit: "cover", objectPosition: "center" }}           
           quality={80} 
-          priority
-        />
+          priority={true}
+        />          
       </BackgroundImage>
       <Content>
         <ContainerSafeSemMargem>
-        {children}        
-        </ContainerSafeSemMargem>                
+        {children}
+        </ContainerSafeSemMargem>                                               
       </Content>                 
     </Container>    
   );

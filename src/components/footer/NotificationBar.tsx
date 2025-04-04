@@ -3,7 +3,6 @@
 import styled from 'styled-components';
 import { Stack, Box } from '@mui/material';
 import React, {useState} from 'react';
-import SpanBody2 from '../text/SpanBody2';
 
 const Container = styled.div<{$show: string, $background_color: string}>`
   position: fixed;
@@ -26,6 +25,22 @@ const BotaoNotificationBar = styled.button<{$background_color: string,
   height: auto;
   width: auto;
   padding: 8px 24px;  
+
+  font-family:  ${props => props.theme.typography.fontFamily};             
+  font-weight: ${props => props.theme.typography.body2.fontWeight}; 
+  font-style: ${props => props.theme.typography.body2.fontStyle};       
+  line-height: ${props => props.theme.typography.body2.lineHeight};          
+  letter-spacing: ${props => props.theme.typography.body2.letterSpacing};    
+  font-size: ${props => props.theme.typography.body2.fontSize};
+  margin: ${props => props.theme.typography.body2.margin};
+  
+  @media (max-width: 600px) { 
+    font-size: ${(props) => props.theme.typography.body2['@media (max-width:600px)'].fontSize}; 
+  } 
+  
+  @media (min-width: 601px) and (max-width: 960px) { 
+    font-size: ${(props) => props.theme.typography.body2['@media (min-width:601px) and (max-width:960px)'].fontSize}; 
+  }
 `
 
 export interface NotificationBarProps {           
@@ -70,12 +85,12 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,
               
               <BotaoNotificationBar $color={background_color_button} 
                 $background_color={color_button} onClick={handleNotAccept}>
-                <SpanBody2 color={background_color_button}>{text_button_notaccept}</SpanBody2>
+                {text_button_notaccept}
               </BotaoNotificationBar>
 
               <BotaoNotificationBar $color={color_button} 
                 $background_color={background_color_button} onClick={handleAccept}>
-                <SpanBody2 color={color_button}>{text_button_accept}</SpanBody2>
+                {text_button_accept}
               </BotaoNotificationBar>
               
             </Stack>             

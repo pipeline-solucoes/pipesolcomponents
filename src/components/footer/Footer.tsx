@@ -1,17 +1,6 @@
 import React from 'react';
 import { Box, Container, Stack} from '@mui/material';
-import styled from 'styled-components';
 import { ContainerSafe } from '../ContainerSafe';
-
-const FooterWrapper = styled.div<{background_color: string}>`
-  background-color: ${props => props.background_color};
-  width: 100%;
-  height: auto;
-  display: flex;    
-  align-items: center;
-  justify-content: center;  
-  padding: 24px 0px 0px;  
-`;
 
 interface FooterProps {      
     background_color: string;               
@@ -26,7 +15,8 @@ const Footer: React.FC <FooterProps> =  ({background_color, renderColuna01,
     renderColuna02, renderColuna03, renderColuna04, renderCopywriter}) => {
 
   return (
-    <FooterWrapper background_color={background_color}>
+    <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center' 
+        sx={{ backgroundColor: background_color, padding:'24px 0px 0px', width:'100%', height:'auto' }}>
         <ContainerSafe>
             <Stack direction="column" sx={{ gap: '32px' }}>
                 <Box component="footer" sx={{ py: 4, paddingTop: '0px' }}>
@@ -53,12 +43,12 @@ const Footer: React.FC <FooterProps> =  ({background_color, renderColuna01,
                         </Stack>
                     </Container>
                 </Box>
-                <Stack direction="row" alignItems="center" justifyContent="center">
+                <Box display='flex' flexDirection="row" alignItems="center" justifyContent="center">
                  {renderCopywriter()}
-                </Stack>
+                </Box>
             </Stack>
         </ContainerSafe>
-    </FooterWrapper>
+    </Box>
   );
 };
 

@@ -18,6 +18,7 @@ const ItemMenu: React.FC<ItemMenuProps> = ({sectionId, url, text,
   if (sectionId){   
     return (        
         <GoToButton 
+          width='auto'
           id_section={sectionId} 
           color={color} 
           color_hover={color_hover} 
@@ -33,6 +34,7 @@ const ItemMenu: React.FC<ItemMenuProps> = ({sectionId, url, text,
   else if (url){    
     return (          
         <GoToButton 
+          width='auto'
           url={url} 
           color={color} 
           color_hover={color_hover} 

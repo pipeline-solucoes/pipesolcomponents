@@ -32,12 +32,15 @@ const ImageCard : React.FC<CardBookProps> = ({src, alt, height, widthImage,
     <StyledStack $border_radius={border_radius} $background_color={background_color} 
         $width={widthImage} $height={height}>            
       <Box flex={1}>                          
-        <Image src={src} alt={alt}   
+        <Image 
+          src={src} 
+          alt={alt}   
           width={widthImage}
           height={heightImage}       
-          style={{ objectFit: 'cover', objectPosition: 'center' }} 
+          style={{ objectFit: "cover", objectPosition: "center" }} 
           quality={80}        
-        />                       
+        />
+        
       </Box>
       <Box>
         {children}

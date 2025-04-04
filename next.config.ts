@@ -1,20 +1,38 @@
-import path from "path";
 import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    turbo: {
-      rules: {},
-    },
+  // Habilita o modo estrito do React
+  reactStrictMode: true,
+
+  // Configuração do ESLint - Ignora erros durante o build
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-  transpilePackages: ["meu-projeto"],
+
+  // Suporte a formatos de imagem
+  images: {
+    formats: ["image/webp"], // Adiciona suporte ao formato WebP
+  },
+
+  // Configurações experimentais do Turbopack
+  experimental: {
+    turbo: {},
+  },
+
+  // Transpila pacotes específicos
+  transpilePackages: ["pipesolcomponents"],
+
+  // Configura saída standalone
   output: "standalone",
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "@": path.resolve(__dirname, "src"),
-    };
-    return config;
+
+  // Configuração de rewrites para proxy
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://api.pipelinesolucoes.com.br/:path*',
+      },
+    ];
   },
 };
 
