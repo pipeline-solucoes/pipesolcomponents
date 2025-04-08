@@ -2,7 +2,7 @@ import React from 'react';
 import GoToButton from '../button/GoToButton';
 import { Body1Styled } from '../Typography';
 
-export interface ItemMenuProps {
+interface ItemMenuProps {
     sectionId?: string;
     url?: string;    
     text: string;

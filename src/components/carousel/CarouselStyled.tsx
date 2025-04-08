@@ -11,19 +11,19 @@ export const CarouselStyled = styled(Carousel).withConfig({
       'color_indicator_focus'
     ].includes(prop), })
 <{
-  width?: string;
+  width: string;
   height: string;
   margin: string;   
   color_indicators: string;
   color_indicator_focus: string;
 }>`  
   margin-top: ${(props) => props.margin};
-  width: ${(props) => props.width || 'auto'};
+  width: ${(props) => props.width};
   max-width: 100%;
 
   .carousel .slider-wrapper {
-    background: #00000000 !important; 
-    height:  ${(props) => props.height};
+    background-color: #00000000 !important; 
+    height: ${(props) => props.height};
   }
 
   .carousel .control-dots .dot {
@@ -39,7 +39,7 @@ export const CarouselStyled = styled(Carousel).withConfig({
   }  
 
   .carousel .control-arrow {
-    background-color: ${(props) => props.color_indicator_focus};
+    background-color: ${(props) => props.color_indicators};
   }
 
   .carousel .control-arrow:hover {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const ContainerSafe = styled.div`
         
-    margin: 48px 0px; 
+    margin: 48px 0px;     
 
     @media (max-width: 600px) { 
         width: calc(100% - 32px) 
@@ -28,7 +28,8 @@ export const ContainerSafe = styled.div`
 
 export const ContainerSafeSemMargem = styled.div`
         
-    margin: 0px 0px; 
+    margin: 0px 0px;
+    z-index: 1;
 
     @media (max-width: 600px) { 
         width: calc(100% - 32px) 

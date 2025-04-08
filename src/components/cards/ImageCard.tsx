@@ -1,51 +1,77 @@
 import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Stack, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-interface CardBookProps {  
+interface CardBookProps {
   src: string;
-  alt: string;
-  height: string; 
-  widthImage: number;
+  alt: string;    
+  widthImage: number; 
   heightImage: number; 
   border_radius?: string;
   background_color?: string;
-  children: React.ReactNode;   
+  children: React.ReactNode;
 }
 
-const StyledStack = styled(Stack)<{$border_radius?:string, 
-    $background_color?: string, $width: number, 
-    $height: string}>`   
+const Container = styled(Box).withConfig({
+  shouldForwardProp: (prop) =>
+    !['border_radius', 'background_color', 'width', 'height'].includes(prop),
+})<{
+  border_radius: string;
+  background_color: string;
+}>`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: ${(props) => props.$border_radius || '0px'};
-  width: ${(props) => `${props.$width}px`};
-  height: ${(props) => props.$height};
-  background-color: ${(props) => props.$background_color || '#00000000'};
+  border-radius: ${(props) => props.border_radius};
+  width: fit-content;
+  height: fit-content;
+  background-color: ${(props) => props.background_color};
 `;
 
-const ImageCard : React.FC<CardBookProps> = ({src, alt, height, widthImage,
-    heightImage, border_radius, background_color, children})  => {
 
+const DivImage = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['border_radius', 'width', 'height'].includes(prop),
+})<{
+  border_radius: string;
+  width: number;
+  height: number;
+}>`
+  width: ${props =>`${props.width}px`};
+  height:  ${props =>`${props.height}px`};
+  position: relative;
+  overflow: hidden;
+  border-radius: ${(props) => props.border_radius} ${(props) => props.border_radius} 0 0;
+`;
+
+
+const ImageCard: React.FC<CardBookProps> = ({
+  src,
+  alt,
+  widthImage, 
+  heightImage, 
+  border_radius = '0px',
+  background_color = 'transparent', 
+  children,
+}) => {
   return (
-    <StyledStack $border_radius={border_radius} $background_color={background_color} 
-        $width={widthImage} $height={height}>            
-      <Box flex={1}>                          
-        <Image 
-          src={src} 
-          alt={alt}   
+    <Container
+      border_radius={border_radius}
+      background_color={background_color}      
+    >
+      <DivImage border_radius={border_radius} width={widthImage} height={heightImage}>
+        <Image
+          src={src}
+          alt={alt}
           width={widthImage}
-          height={heightImage}       
-          style={{ objectFit: "cover", objectPosition: "center" }} 
-          quality={80}        
+          height={heightImage}
+          style={{ objectFit: 'cover' }}
+          quality={80}
         />
-        
-      </Box>
-      <Box>
+      </DivImage>
+      <Box sx={{height: 'auto'}}>
         {children}
-      </Box>
-    </StyledStack>
+      </Box>      
+    </Container>
   );
 };
 

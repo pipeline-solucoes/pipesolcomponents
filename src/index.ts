@@ -1,9 +1,9 @@
 export { default as Banner } from './components/banner/Banner';
-export { default as ContainerBanner } from './components/banner/ContainerBanner';
-export { default as ContainerBannerVertical } from './components/banner/ContainerBannerVertical';
 export { default as TitleBanner } from './components/banner/TitleBanner';
+export { ContentBannerCenter, ContentBannerLeft } from './components/banner/BannerStyled';
 
 export { default as BarraDeFerramentas } from './components/barra_ferramentas/BarraFerramentas';
+export { default as BarraFerramentasHamburguer } from './components/barra_ferramentas/BarraFerramentasHamburguer';
 
 export { default as ScrollToSectionButton} from './components/button/ScrollToSectionButton';
 export { default as WhatsAppButton} from './components/button/WhatsAppButton';
@@ -31,9 +31,10 @@ export { default as SocialMediaIconLinkWithBorder} from './components/social_med
 export { default as IconText} from './components/text/IconText';
 export { default as TextWithSeparador} from './components/text/TextWithSeparador';
 
-export { default as ResponsiveImage } from './components/ResponsiveImage';
+export { default as ImageWithPlaceHolder } from './components/ImageWithPlaceHolder';
 export { TabStyled, TabsStyled } from './components/TabStyled';
 export { default as useResponsive } from './components/useResponsive';
+export { default as VideoPlayer } from './components/VideoPlayer';
 
 export { default as Form } from './components/form/Form';
 

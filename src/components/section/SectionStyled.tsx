@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 
 export const ContentSectionWrapStyled = styled.div`
-        
+
+  width: 100%;      
   height: 100%;
   gap: 24px;
   display: flex;
@@ -9,5 +10,4 @@ export const ContentSectionWrapStyled = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-  width: 100%;
 `; 

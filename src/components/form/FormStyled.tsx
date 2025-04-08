@@ -3,11 +3,11 @@ import { TextField } from '@mui/material';
 
 export const StyledTextField = styled(TextField).withConfig({
   shouldForwardProp: (prop) =>
-    !["backgroundColor", "color", "borderRadius"].includes(prop),
+    !["background_color", "color", "border_radius"].includes(prop),
 })<{
-  backgroundColor?: string;
+  background_color: string;
   color: string;
-  borderRadius?: string;
+  border_radius: string;
 }>`
 
   /* Estilos gerais */
@@ -17,14 +17,12 @@ export const StyledTextField = styled(TextField).withConfig({
 
   & .MuiInputBase-input::placeholder {
     color: ${(props) => props.color};
-    opacity: 1; /* Garantir visibilidade total do placeholder */
   }
 
   & .MuiInputBase-root {
-    background-color: ${(props) => props.backgroundColor || "transparent"};
-    border-radius: ${(props) => props.borderRadius || "0px"}; /* Valor padrão */
+    background-color: ${(props) => props.background_color};
+    border-radius: ${(props) => props.border_radius}; 
     color: ${(props) => props.color};
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transições suaves */
   }
 
   & .MuiOutlinedInput-notchedOutline {
