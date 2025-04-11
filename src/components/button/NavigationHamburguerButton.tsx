@@ -3,9 +3,8 @@
 import React from 'react';
 import { ButtonHoverBorderBottomStyled, ButtonHoverColorStyled } from './ButtonStyled';
 
-interface GoToButtonButtonProps {
-  id_section?: string;
-  url?: string;
+interface NavigationHamburguerButtonProps {
+  url: string;
   aria_label: string;
   background_color?: string;
   color: string;
@@ -16,32 +15,32 @@ interface GoToButtonButtonProps {
   layout: 'button' | 'link';
   width: string;
   children: React.ReactNode;
-  afterNavigation?: () => void;   
+  afterNavigation: () => void;   
 }
 
-const GoToButton: React.FC<GoToButtonButtonProps> = ({ 
-  id_section, url, aria_label, background_color,
+const NavigationHamburguerButton: React.FC<NavigationHamburguerButtonProps> = ({ 
+  url, aria_label, background_color,
   color, color_hover, border_radius, border_color, text_decoration, 
   layout, width, children, afterNavigation }) => {
   
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {      
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+
       e.preventDefault();
-      if (url){
-          if (url.indexOf('http') == -1)        
-            window.location.href = url; // Redireciona para outra página na mesma aba
-          else
-            window.open(url, '_blank', 'noopener noreferrer');
-      }
-      else if (id_section){
-        const targetElement = document.querySelector(id_section);
+      
+      if (url.indexOf('#') != -1){
+        const targetElement = document.querySelector(url);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth' });
-          window.history.pushState(null, '', id_section); // Atualiza a URL sem recarregar a página
+          window.history.pushState(null, '', url); // Atualiza a URL sem recarregar a página
         }
       }
-      if (afterNavigation) {
-        afterNavigation(); // Chama a função após a navegação
-      }
+      else if (url.indexOf('http') == -1)
+        window.open(url, '_blank', 'noopener noreferrer');            
+      else
+        window.location.href = url; // Redireciona para outra página na mesma aba
+
+      
+      afterNavigation(); // Chama a função após a navegação      
     };
 
   if (text_decoration === 'underline'){
@@ -76,4 +75,4 @@ const GoToButton: React.FC<GoToButtonButtonProps> = ({
   }
 };
 
-export default GoToButton;
+export default NavigationHamburguerButton;

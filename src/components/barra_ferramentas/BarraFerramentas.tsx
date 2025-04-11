@@ -1,11 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import Toolbar from '@mui/material/Toolbar';
-import MenuHorizontalBarraFerramentas from './MenuHorizontalBarraFerramentas';
-import { Bar, ContainerRedeSocialHorizontal, CustomContainer } from './BarraFerramentasStyled';
+import { Bar, ContainerRedeSocialHorizontal, CustomToolbar } from './BarraFerramentasStyled';
 import styled from 'styled-components';
 import { ItemMenuProps } from '../menu/ItemMenuProps';
+import { useEffect } from 'react';
+import NavigationButton from '../button/NavigationButton';
+import { Typography } from '@mui/material';
 
 interface BarraFerramentasProps {    
     listaItemMenu: ItemMenuProps[];   
@@ -13,6 +14,7 @@ interface BarraFerramentasProps {
     color: string;    
     color_hover: string;    
     text_decoration: 'none' | 'underline';
+    renderLogo: () => React.ReactElement;    
     renderSocialMedia: () => React.ReactElement;    
 }
 
@@ -21,34 +23,70 @@ const DivStyled = styled.div`
   flex-grow: 1;
 `;
 
+const ContainerMenuHorizontal = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  gap: 16px;
+`
+
 const BarraFerramentas: React.FC<BarraFerramentasProps> = ({
-    listaItemMenu, 
+    listaItemMenu,
+    renderLogo, 
     renderSocialMedia, 
     background_color, color, color_hover, 
     text_decoration}) => {
 
   const background_color_bar = background_color || 'transparent';
+  const [buttons, setButtons] = React.useState<React.ReactNode[] | null>(null);
+    
+    useEffect(() => {
+      if (listaItemMenu) {
+          const constructedButtons = listaItemMenu.map((item) => (
+              <NavigationButton
+                key={item.url}
+                url={item.url}
+                color={color}
+                color_hover={color_hover}
+                aria_label={`item menu ${item.text}`}
+                layout="button"
+                width="auto"
+                background_color="transparent"
+                border_color={color}
+                border_radius="0px"
+                text_decoration={text_decoration}
+              >
+                {item.text}
+              </NavigationButton>
+          ));
+          setButtons(constructedButtons);
+      }
+  }, [listaItemMenu, color, color_hover, text_decoration]);
 
-  return (
+  if (buttons){
+    return (
+      <Bar background_color={background_color_bar}>        
+          <CustomToolbar disableGutters>
+            {renderLogo()}
+            <DivStyled>              
+              <ContainerMenuHorizontal>
+                {buttons}
+              </ContainerMenuHorizontal>
+              <ContainerRedeSocialHorizontal>
+                {renderSocialMedia()}
+              </ContainerRedeSocialHorizontal> 
+            </DivStyled>
+          </CustomToolbar>        
+      </Bar>
+    );
+  }
+  else{
     <Bar background_color={background_color_bar}>
-      <CustomContainer>
-        <Toolbar disableGutters sx={{ padding: 0 }}>
-          <DivStyled>
-            <MenuHorizontalBarraFerramentas 
-              listaItemMenu={listaItemMenu} 
-              color={color} 
-              color_hover={color_hover} 
-              text_decoration={text_decoration} >
-            </MenuHorizontalBarraFerramentas>
-
-            <ContainerRedeSocialHorizontal>
-              {renderSocialMedia()}
-            </ContainerRedeSocialHorizontal> 
-          </DivStyled>
-        </Toolbar>
-      </CustomContainer>
+      <Typography variant='body1' color={color}>carregando...</Typography>
     </Bar>
-  );
+  }
 }
 
 export default BarraFerramentas;

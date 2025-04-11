@@ -1,3 +1,5 @@
+export { default as HeaderBarTop } from './components/header/HeaderBarTop';
+
 export { default as Banner } from './components/banner/Banner';
 export { default as TitleBanner } from './components/banner/TitleBanner';
 export { ContentBannerCenter, ContentBannerLeft } from './components/banner/BannerStyled';
@@ -5,10 +7,11 @@ export { ContentBannerCenter, ContentBannerLeft } from './components/banner/Bann
 export { default as BarraDeFerramentas } from './components/barra_ferramentas/BarraFerramentas';
 export { default as BarraFerramentasHamburguer } from './components/barra_ferramentas/BarraFerramentasHamburguer';
 
-export { default as ScrollToSectionButton} from './components/button/ScrollToSectionButton';
 export { default as WhatsAppButton} from './components/button/WhatsAppButton';
-export { default as GoToButton} from './components/button/GoToButton';
+export { default as NavigationButton} from './components/button/NavigationButton';
 export { default as ScrollToTopButton} from './components/button/ScrollToTopButton';
+
+export { default as SiteMap} from './components/menu/SiteMap';
 
 export { default as TestimonialCard} from './components/cards/TestimonialCard';
 export { default as ImageCard} from './components/cards/ImageCard';
@@ -18,8 +21,6 @@ export { CarouselStyled} from './components/carousel/CarouselStyled';
 export { default as Copywrite} from './components/footer/Copywrite';
 export { default as Footer} from './components/footer/Footer';
 export { default as NotificationBar} from './components/footer/NotificationBar';
-
-export { default as ItemMenu} from './components/menu/ItemMenu';
 
 export { default as Section} from './components/section/Section';
 export { default as SectionGradiente} from './components/section/SectionGradiente';

@@ -1,9 +1,10 @@
-import { Container } from '@mui/material';
+import { Toolbar } from '@mui/material';
 import styled from 'styled-components';
 
-export const CustomContainer = styled(Container)`
+export const CustomToolbar = styled(Toolbar)`
 
-    margin: 0px 0px;
+    margin: 0px;
+    padding: 0px;
     width: '100%';
 
     @media (max-width: 600px) {

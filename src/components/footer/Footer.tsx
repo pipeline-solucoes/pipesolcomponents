@@ -1,54 +1,66 @@
 import React from 'react';
-import { Box, Container, Stack} from '@mui/material';
+import { Box } from '@mui/material';
 import { ContainerSafe } from '../ContainerSafe';
+import styled from 'styled-components';
 
 interface FooterProps {      
     background_color: string;               
-    renderColuna01: () => React.ReactElement;
-    renderColuna02?: () => React.ReactElement;
-    renderColuna03?: () => React.ReactElement;
-    renderColuna04?: () => React.ReactElement;
+    renderColunas: () => React.ReactElement;
     renderCopywriter: () => React.ReactElement;
   }
 
-const Footer: React.FC <FooterProps> =  ({background_color, renderColuna01, 
-    renderColuna02, renderColuna03, renderColuna04, renderCopywriter}) => {
+  const FooterStyled = styled('footer').withConfig({
+    shouldForwardProp: (prop) =>
+      !['background_color'].includes(prop)})
+    <{background_color: string}>`
+  
+    position: relative;
+    background-color: ${(props) => props.background_color};
+    display: flex;      
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    width: 100%;   
+`;
+
+const ContainerFooter = styled.div`  
+    position: relative;
+    display: flex;      
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    width: 100%; 
+    padding: 24px 0px 0px;  
+    height: auto;
+    gap: 32px;
+`;
+
+const ContentWrapStyled = styled.div`
+  width: 100%;      
+  height: 100%;
+  gap: 24px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;  
+
+const Footer: React.FC <FooterProps> =  ({ background_color, renderColunas, renderCopywriter}) => {
 
   return (
-    <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center' 
-        sx={{ backgroundColor: background_color, padding:'24px 0px 0px', width:'100%', height:'auto' }}>
+    <FooterStyled background_color={background_color}>        
         <ContainerSafe>
-            <Stack direction="column" sx={{ gap: '32px' }}>
-                <Box component="footer" sx={{ py: 4, paddingTop: '0px' }}>
-                    <Container maxWidth="lg">                        
-                        <Stack direction={{ xs: 'column', md: 'row' }} spacing={4}>                
-                            <Box textAlign={{ xs: 'center', md: 'left' }}>
-                                {renderColuna01()}                                
-                            </Box>                           
-                            <Box textAlign={{ xs: 'center', md: 'left' }} 
-                                display={renderColuna02 ? 'block' : 'none'} 
-                                flex={renderColuna02 ? 1 : 0}>
-                                {renderColuna02 && renderColuna02()}                                 
-                            </Box>
-                            <Box textAlign={{ xs: 'center', md: 'left' }} 
-                                display={renderColuna03 ? 'block' : 'none'} 
-                                flex={renderColuna03 ? 1 : 0}>
-                                {renderColuna03 && renderColuna03()} 
-                            </Box>                            
-                            <Box textAlign={{ xs: 'center', md: 'left' }} 
-                                display={renderColuna04 ? 'block' : 'none'} 
-                                flex={renderColuna04 ? 1 : 0}>
-                                {renderColuna04 && renderColuna04()}    
-                            </Box>
-                        </Stack>
-                    </Container>
+            <ContainerFooter>
+                <ContentWrapStyled>                
+                    {renderColunas()}                                    
+                </ContentWrapStyled>
+                <Box display='flex' flexDirection="row" alignItems="center" justifyContent="center" sx={{ width: '100%' }}>
+                    {renderCopywriter()}
                 </Box>
-                <Box display='flex' flexDirection="row" alignItems="center" justifyContent="center">
-                 {renderCopywriter()}
-                </Box>
-            </Stack>
+            </ContainerFooter>
         </ContainerSafe>
-    </Box>
+    </FooterStyled>
   );
 };
 

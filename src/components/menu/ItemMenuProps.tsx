@@ -1,7 +1,6 @@
-export type ItemMenuProps = {
-    sectionId?: string;
-    url?: string;    
-    text: string;   
+export type ItemMenuProps = {    
+    url: string;    
+    text: string;
 };
 
 

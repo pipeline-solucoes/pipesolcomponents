@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { ContainerSafeSemMargem } from '../ContainerSafe';
-import { Skeleton } from '@mui/material';
 
 const Container = styled.div.withConfig({
   shouldForwardProp: (prop) => !['height'].includes(prop) })
@@ -22,21 +21,15 @@ interface BannerProps {
   children: React.ReactNode;
 }
 
-const Banner: React.FC<BannerProps> = ({ src, alt, height = "600px", children }) => {  
-
-  const [isLoading, setIsLoading] = useState(true);
+const Banner: React.FC<BannerProps> = ({ src, alt, height = "600px", children }) => { 
 
   return (
-    <Container height={height}>
-      {isLoading && (
-        <Skeleton variant="rectangular" width="100%" height={height} />
-      )}
+    <Container height={height}>      
       <Image
         src={src}
         alt={alt}
         fill
-        style={{ objectFit: 'cover', display: isLoading ? 'none' : 'block' }}
-        onLoad={() => setIsLoading(false)}
+        style={{ objectFit: 'cover'}}
         priority={true}
       />      
       <ContainerSafeSemMargem id="areasafebanner">
@@ -44,6 +37,7 @@ const Banner: React.FC<BannerProps> = ({ src, alt, height = "600px", children })
       </ContainerSafeSemMargem>
     </Container>    
   );
+
 };
 
 export default Banner;

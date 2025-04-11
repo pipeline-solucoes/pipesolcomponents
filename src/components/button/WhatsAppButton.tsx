@@ -24,6 +24,7 @@ interface WhatsAppButtonProps {
 }
 
 const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({ whatsapp }) => {
+  
   const handleClick = () => {
     window.open(`https://wa.me/${whatsapp}`, '_blank');
   };
