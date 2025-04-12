@@ -1,50 +1,48 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-const SectionStyled = styled('section').withConfig({
-  shouldForwardProp: (prop) =>
-    !['color1', 'color2', 'color3' ].includes(prop)})
-  <{color1: string; color2: string; color3: string}>`  
+const SectionStyled = styled('section', {
+  shouldForwardProp: (prop) => !['color1', 'color2', 'color3'].includes(prop as string),
+})<{
+  color1: string;
+  color2: string;
+  color3: string;
+}>(({ color1, color2, color3 }) => ({
+  position: 'relative',
+  background: `linear-gradient(to bottom, ${color1}, ${color2}, ${color3})`,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+}));
 
-  position: relative;
-  background: linear-gradient(to bottom, ${(props) => props.color1}, ${(props) => props.color2}, ${(props) => props.color3});
-  display: flex;      
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-  width: 100%;     
-`;
+export const ContainerSafe = styled('div')(({ theme }) => ({
+  margin: '48px 0px',
+  height: '100%',
+  gap: '24px',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  width: '100%', // Default width for all screens
 
- const ContainerSafe = styled.div`
-        
-    margin: 48px 0px; 
-    height: 100%;
-    gap: 24px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-
-    @media (max-width: 600px) { 
-        width: calc(100% - 32px) 
-    }
-
-    @media (min-width: 600px) {
-        width: calc(100% - 48px) 
-    }
-
-    @media (min-width: 960px) {
-        width: calc(100% - 54px); 
-    }
-
-    @media (min-width:1280px) {
-        width: 1200px; 
-    }
-
-    @media (min-width: 1920px) {
-        width: 1200px; 
-    }    
-`; 
+  [theme.breakpoints.down('sm')]: {
+    width: 'calc(100% - 32px)',
+  },
+  [theme.breakpoints.up('sm')]: {
+    width: 'calc(100% - 48px)',
+  },
+  [theme.breakpoints.up('md')]: {
+    width: 'calc(100% - 54px)',
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: '1200px',
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '1200px',
+  },
+}));
 
   interface SectionProps {   
     children: React.ReactNode;   

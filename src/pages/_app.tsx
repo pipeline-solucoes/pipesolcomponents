@@ -5,7 +5,8 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { AppProps } from 'next/app';
-import { themePS } from '../theme';
+import { theme } from '@/theme';
+
 
 // Crie uma instância de cache para o Emotion
 const cache = createCache({ key: 'css', prepend: true });
@@ -21,8 +22,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <CacheProvider value={cache}>
-      <MuiThemeProvider theme={themePS}>
-        <StyledThemeProvider theme={themePS}>
+      <MuiThemeProvider theme={theme}>
+        <StyledThemeProvider theme={theme}>
           <CssBaseline></CssBaseline>
           <Component {...pageProps} ></Component>
         </StyledThemeProvider>

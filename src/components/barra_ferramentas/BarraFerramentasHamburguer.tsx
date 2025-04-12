@@ -7,7 +7,7 @@ import Menu from '@mui/material/Menu';
 import { Bar, ContainerRedeSocialHorizontal, CustomToolbar } from './BarraFerramentasStyled';
 import { ItemMenuProps } from '../menu/ItemMenuProps';
 import NavigationHamburguerButton from '../button/NavigationHamburguerButton';
-import { Body1Styled } from '../Typography';
+import { StyledSpanBody1 } from '../text/SpanStyled';
 
 interface BarraFerramentasHamburguerProps {    
     listaItemMenu: ItemMenuProps[];   
@@ -74,7 +74,7 @@ const BarraFerramentasHamburguer: React.FC<BarraFerramentasHamburguerProps> = ({
                   afterNavigation={handleCloseNavMenu}
                   aria_label={'menu ' + item.text}
                   layout='button'>
-                  <Body1Styled>{item.text}</Body1Styled>
+                  <StyledSpanBody1 text_color={color}>{item.text}</StyledSpanBody1>
                 </NavigationHamburguerButton>   
               ))}             
             </Box>

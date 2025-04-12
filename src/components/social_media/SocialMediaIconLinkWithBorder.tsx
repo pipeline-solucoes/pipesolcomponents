@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Box, IconButton } from '@mui/material';
-import styled from 'styled-components'; 
+import { styled } from '@mui/material/styles';
 
 export interface SocialMediaIconLinkWithBorderProps {
   children: React.ReactNode; 
@@ -11,16 +11,15 @@ export interface SocialMediaIconLinkWithBorderProps {
   aria_label: string;
 }
 
-const StyledBox = styled(Box).withConfig({
-  shouldForwardProp: (prop) =>
-    !['background_color'].includes(prop)})
-  <{background_color: string}>`
-  background-color: ${(props) => props.background_color};
-  padding: 4px;
-  border-radius: 50%; 
-  display: inline-block;
-  border: 2px solid #00000000;
-`;
+export const StyledBox = styled(Box, {
+  shouldForwardProp: (prop) => !['background_color'].includes(prop as string),
+})<{ background_color: string }>(({ background_color }) => ({
+  backgroundColor: background_color,
+  padding: '4px',
+  borderRadius: '50%',
+  display: 'inline-block',
+  border: '2px solid transparent',
+}));
 
 const SocialMediaIconLinkWithBorder: React.FC<SocialMediaIconLinkWithBorderProps> = ({ url,
    background_color, aria_label, children }) => {

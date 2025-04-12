@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import styled from 'styled-components';
+import { styled } from '@mui/material';
+
 
 interface ImageWithPlaceHolderProps {
   width: number;
@@ -9,15 +10,14 @@ interface ImageWithPlaceHolderProps {
   alt: string;
 }
 
-const Container = styled.div.withConfig({
-  shouldForwardProp: (prop) =>
-    !['width','height'].includes(prop), })
-  <{ width: number, height: number; }>`  
-  width: ${props => `${props.width}px`}; 
-  height:  ${props =>`${props.height}px`}; 
-  position: relative;
-  overflow: hidden;
-`;
+const Container = styled('div', {
+  shouldForwardProp: (prop) => !['width', 'height'].includes(prop as string),
+})<{ width: number; height: number }>(({ width, height }) => ({
+  width: `${width}px`,
+  height: `${height}px`,
+  position: 'relative',
+  overflow: 'hidden',
+}));
 
 const ImageWithPlaceHolder: React.FC<ImageWithPlaceHolderProps> = ({ src, alt, width, height }) => {
   
@@ -33,10 +33,7 @@ const ImageWithPlaceHolder: React.FC<ImageWithPlaceHolderProps> = ({ src, alt, w
           objectFit: "scale-down",
           objectPosition: "center",                   
         }}
-        quality={80}
-        onLoad={() => {
-          console.log('Imagem carregada com sucesso:', src);          
-        }}
+        quality={80}        
         onError={() => {
           console.error('Erro ao carregar a imagem:', src);          
         }}        

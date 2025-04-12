@@ -1,11 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Stack, Box } from '@mui/material';
-import SpanBody1 from '../text/SpanBody1';
+import { Box, styled } from '@mui/material';
+import { StyledSpanBody1 } from '../text/SpanStyled';
+import NavigationButton from '../button/NavigationButton';
 
-const StyledLink = styled.a<{$color: string}>`
-  color: ${props => props.$color}; 
-`;
+interface StyledTextProps {
+  color_border: string;
+}
+
+const ContentWrapStyled = styled('div', {
+  shouldForwardProp: (prop) =>
+    !['color_border'].includes(prop as string),
+})<StyledTextProps>(({ color_border }) => ({
+  width: '100%',
+  height: '100%',
+  gap: '24px',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  borderTopStyle: 'solid',
+  borderTopWidth: '1px',
+  padding: '16px 0px 0px',
+  borderTopColor: color_border,
+}));
 
 export interface CopywriteProps {      
     ano: string;
@@ -16,28 +34,27 @@ export interface CopywriteProps {
 
 const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, children }) => (
     
-  <Box sx={{ width: '100%', padding: '16px 0px 0px', 
-    borderTopColor: color_border, borderTopStyle: 'solid', borderTopWidth: '1px'}}>  
-      <Stack direction={{xs: 'column', md: 'row' }} 
-        justifyContent="center" alignItems="center" sx={{ width: '100%', gap: '16px' }}>        
-        <Box>
-            <SpanBody1 color={color}>
-              Copyright ©{ano} todos os direitos reservados.               
-            </SpanBody1>            
-        </Box>
-        <Box flex={1}>
-            <SpanBody1 color={color}>              
-              Criado por <StyledLink href='https://www.instagram.com/pipelinesolucoes/'
-                target="_blank" rel="noopener noreferrer" $color={color}>
-                <SpanBody1 color={color}>Pipeline Soluções</SpanBody1>
-              </StyledLink>
-            </SpanBody1>            
-        </Box> 
-        <Box>
-            {children}
-        </Box>               
-      </Stack>
-    </Box>
+    <ContentWrapStyled color_border={color_border}>        
+      <Box>
+        <StyledSpanBody1 text_color={color}>
+          Copyright ©{ano} todos os direitos reservados.
+        </StyledSpanBody1>
+      </Box>
+        
+      <Box flex={1}>
+        <StyledSpanBody1 text_color={color}>
+          Criado por <NavigationButton url='https://www.instagram.com/pipelinesolucoes/' 
+            color={color} aria_label='link Pipeline Soluções' 
+            text_decoration='none' layout='link' width='auto'>
+            Pipeline Soluções
+          </NavigationButton>
+        </StyledSpanBody1>
+      </Box>
+
+      <Box>        
+        {children}
+      </Box>    
+    </ContentWrapStyled>
 );
 
 

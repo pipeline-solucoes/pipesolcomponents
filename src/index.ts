@@ -33,7 +33,6 @@ export { default as IconText} from './components/text/IconText';
 export { default as TextWithSeparador} from './components/text/TextWithSeparador';
 
 export { default as ImageWithPlaceHolder } from './components/ImageWithPlaceHolder';
-export { TabStyled, TabsStyled } from './components/TabStyled';
 export { default as useResponsive } from './components/useResponsive';
 export { default as VideoPlayer } from './components/VideoPlayer';
 
@@ -41,5 +40,3 @@ export { default as Form } from './components/form/Form';
 
 export { default as SubstackPage } from './components/substask/SubstackPage';
 export { default as SubstackPosts } from './components/substask/SubstackPosts';
-
-export { themePS, GlobalStyle } from './theme';

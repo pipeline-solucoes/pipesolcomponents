@@ -1,18 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
 import Image from 'next/image';
 import { ContainerSafeSemMargem } from '../ContainerSafe';
+import { styled } from '@mui/material/styles';
 
-const Container = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['height'].includes(prop) })
-  <{  height: string; }>`  
-  width: 100%;
-  height:  ${props => props.height}; 
-  position: relative;
-  overflow: hidden;
-  display: flex;     
-  justify-content: center;
-`;
+const Container = styled('div', {
+  shouldForwardProp: (prop) => !['height'].includes(prop as string),
+})<{ height: string }>(({ height }) => ({
+  width: '100%',
+  height: height,
+  position: 'relative',
+  overflow: 'hidden',
+  display: 'flex',
+  justifyContent: 'center',
+}));
 
 interface BannerProps {  
   src: string; 

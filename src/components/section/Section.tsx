@@ -1,51 +1,47 @@
 
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-const SectionStyled = styled('section').withConfig({
-  shouldForwardProp: (prop) =>
-    !['background_color'].includes(prop)})
-  <{background_color: string}>`
+const SectionStyled = styled('section', {
+  shouldForwardProp: (prop) => !['background_color'].includes(prop as string),
+})<{
+  background_color: string;
+}>(({ background_color }) => ({
+  position: 'relative',
+  backgroundColor: background_color,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+}));
 
-  position: relative;
-  background-color: ${(props) => props.background_color};
-  display: flex;      
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-  width: 100%;   
-`;
+export const ContainerSafe = styled('div')(({ theme }) => ({
+  margin: '48px 0px',
+  height: '100%',
+  gap: '24px',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  width: '100%', // Default width
 
-export const ContainerSafe = styled.div`
-        
-    margin: 48px 0px; 
-    height: 100%;
-    gap: 24px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-
-    @media (max-width: 600px) { 
-        width: calc(100% - 32px) 
-    }
-
-    @media (min-width: 600px) {
-        width: calc(100% - 48px) 
-    }
-
-    @media (min-width: 960px) {
-        width: calc(100% - 54px); 
-    }
-
-    @media (min-width:1280px) {
-        width: 1200px; 
-    }
-
-    @media (min-width: 1920px) {
-        width: 1200px; 
-    }    
-`; 
+  [theme.breakpoints.down('sm')]: {
+    width: 'calc(100% - 32px)',
+  },
+  [theme.breakpoints.up('sm')]: {
+    width: 'calc(100% - 48px)',
+  },
+  [theme.breakpoints.up('md')]: {
+    width: 'calc(100% - 54px)',
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: '1200px',
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '1200px',
+  },
+}));
  
 
 interface SectionProps { 

@@ -1,21 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
 import VideoPlayer from '../VideoPlayer';
+import { styled } from '@mui/material/styles';
 
-const Container = styled.div`
-  width: 100%;
-  height: 600px;
-  position: relative;
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 24px;
-  align-items: center;
-  justify-content: center;
-`;
-
+const Container = styled('div')(() => ({
+  width: '100%',
+  height: '600px',
+  position: 'relative',
+  overflow: 'hidden',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  gap: '24px',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
 
 interface BannerProps {  
   src_video: string; 

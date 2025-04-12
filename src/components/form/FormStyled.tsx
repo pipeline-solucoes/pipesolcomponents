@@ -1,49 +1,110 @@
-import styled from 'styled-components';
-import { TextField } from '@mui/material';
+import { Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
 
-export const StyledTextField = styled(TextField).withConfig({
-  shouldForwardProp: (prop) =>
-    !["background_color", "color", "border_radius"].includes(prop),
-})<{
+interface StyledTextFieldProps {
   background_color: string;
-  color: string;
+  text_color: string;
   border_radius: string;
-}>`
+}
 
-  /* Estilos gerais */
-  & .MuiInputLabel-root {
-    color: ${(props) => props.color};
-  }
+export const StyledTextField = styled(TextField, {
+  shouldForwardProp: (prop) =>
+    !['background_color', 'text_color', 'border_radius'].includes(prop as string),
+})<StyledTextFieldProps>(({ theme, background_color, text_color, border_radius }) => ({
+  '& .MuiInputLabel-root': {
+    color: text_color,
+  },
+  '& .MuiInputBase-input::placeholder': {
+    color: text_color,
+  },
+  '& .MuiInputBase-root': {
+    backgroundColor: background_color,
+    borderRadius: border_radius,
+    color: text_color,
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'transparent',
+  },
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.body1?.fontSize,
+  fontWeight: theme.typography.body1?.fontWeight,
+  fontStyle: theme.typography.body1?.fontStyle,
+  lineHeight: theme.typography.body1?.lineHeight,
+  letterSpacing: theme.typography.body1?.letterSpacing,
+  margin: theme.typography.body1?.margin,
+}));
 
-  & .MuiInputBase-input::placeholder {
-    color: ${(props) => props.color};
-  }
+interface StyledButtonProps {
+  width: string;
+  height: string;
+  background_color: string;
+  text_color: string;
+  border_radius: string;
+}
 
-  & .MuiInputBase-root {
-    background-color: ${(props) => props.background_color};
-    border-radius: ${(props) => props.border_radius}; 
-    color: ${(props) => props.color};
-  }
+export const StyledButton = styled(Button, {
+  shouldForwardProp: (prop) =>
+    !['width', 'height', 'background_color', 'text_color', 'border_radius'].includes(prop as string),
+})<StyledButtonProps>(({ theme, width, height, background_color, text_color, border_radius }) => ({
+  
+  color: text_color,
+  backgroundColor: background_color,
+  borderRadius: border_radius,
+  textTransform: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  padding: '8px 24px',
+  boxShadow: 'none',
+  width: width,
+  height: height,
+  
+  // Tipografia
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.body1?.fontWeight,
+  fontStyle: theme.typography.body1?.fontStyle,
+  lineHeight: theme.typography.body1?.lineHeight,
+  letterSpacing: theme.typography.body1?.letterSpacing,
+  fontSize: theme.typography.body1?.fontSize,
+  margin: theme.typography.body1?.margin,
 
-  & .MuiOutlinedInput-notchedOutline {
-    border-color: transparent;
-  }
+  // Hover state (opcional)
+  '&:hover': {
+    backgroundColor: background_color,
+    opacity: 0.9,
+  },
+}));
 
-  /* Tipografia dinâmica */
-  font-family: ${(props) => props.theme.typography.fontFamily};
-  font-size: ${(props) => props.theme.typography.body1.fontSize};
-  font-weight: ${(props) => props.theme.typography.body1.fontWeight};
-  font-style: ${(props) => props.theme.typography.body1.fontStyle};
-  line-height: ${(props) => props.theme.typography.body1.lineHeight};
-  letter-spacing: ${(props) => props.theme.typography.body1.letterSpacing};
-  margin: ${(props) => props.theme.typography.body1.margin};
 
-  /* Responsividade */
-  @media (max-width: 600px) {
-    font-size: ${(props) => props.theme.typography.body1["@media (max-width:600px)"].fontSize};
-  }
 
-  @media (min-width: 601px) and (max-width: 960px) {
-    font-size: ${(props) => props.theme.typography.body1["@media (min-width:601px) and (max-width:960px)"].fontSize};
-  }
-`;
+
+interface FixedSizeTextFieldProps {
+  background_color: string;
+  text_color: string;
+  border_radius: string;
+}
+
+export const FixedSizeTextField = styled(TextField, {
+  shouldForwardProp: (prop) =>
+    !['background_color', 'text_color', 'border_radius'].includes(prop as string),
+})<FixedSizeTextFieldProps>(({ background_color, text_color, border_radius }) => ({
+  '& .MuiInputLabel-root': {
+    color: text_color,
+  },
+  '& .MuiInputBase-input::placeholder': {
+    color: text_color,
+  },
+  '& .MuiInputBase-root': {
+    transition: 'none !important',
+    alignItems: 'flex-start',
+    width: '100%',
+    overflowY: 'auto',
+    height: '150px',
+    backgroundColor: background_color,
+    borderRadius: border_radius,
+    color: text_color,
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'transparent',
+  },
+}));

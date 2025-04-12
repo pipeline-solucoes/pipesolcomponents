@@ -1,5 +1,5 @@
+import { styled } from "@mui/material";
 import React from "react";
-import styled from "styled-components";
 
 type VideoPlayerProps = {
   videoSrc: string; // Caminho para o vídeo
@@ -10,11 +10,11 @@ type VideoPlayerProps = {
   loop?: boolean; // Indica se o vídeo deve repetir
 };
 
-const Container = styled.div`
-    text-align: "center";
-    width: '100%';
-    height: '100%';
-`;
+const Container = styled('div')(() => ({
+  textAlign: 'center', // Ajustado para usar camelCase
+  width: '100%', // Ajustado para usar aspas corretas
+  height: '100%', // Ajustado para usar aspas corretas
+}));
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
   videoSrc,

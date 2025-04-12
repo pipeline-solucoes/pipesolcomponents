@@ -1,23 +1,22 @@
 'use client';
 
 import React from 'react';
-import { Fab } from '@mui/material';
 import { WhatsApp } from '@mui/icons-material';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
+import Fab from '@mui/material/Fab';
 
-const StyledFab = styled(Fab)`
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  background-color: #25D366; 
-  color: white;
+const StyledFab = styled(Fab)({
+  position: 'fixed',
+  bottom: '20px',
+  right: '20px',
+  zIndex: 1000,
+  backgroundColor: '#25D366',
+  color: 'white',
 
-  &:hover {
-    background-color: #1EBE5D;
-  }
-`;
-
+  '&:hover': {
+    backgroundColor: '#1EBE5D',
+  },
+});
 
 interface WhatsAppButtonProps {
   whatsapp: string;

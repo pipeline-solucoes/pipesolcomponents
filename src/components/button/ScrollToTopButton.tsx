@@ -1,29 +1,33 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import IconButton from '@mui/material/IconButton';
+import { styled } from '@mui/material/styles';
 
-const ButtonStyled = styled(IconButton)<{$show: string, 
-  $background_color?: string, $border_radius: string, 
-  $background_color_hover?: string}>`
+const ButtonStyled = styled(IconButton, {
+  shouldForwardProp: (prop) => !['$show', '$background_color', '$border_radius', '$background_color_hover'].includes(prop as string),
+})<{
+  $show: string;
+  $background_color?: string;
+  $border_radius: string;
+  $background_color_hover?: string;
+}>(({ $show, $background_color, $border_radius, $background_color_hover }) => ({
+  display: $show === 'true' ? 'flex' : 'none',
+  position: 'fixed',
+  bottom: '165px',
+  right: '20px',
+  cursor: 'pointer',
+  zIndex: 1000,
+  width: 'auto',
+  height: 'auto',
+  border: `1px solid ${$background_color || '#00000000'}`,
+  backgroundColor: $background_color || '#00000000',
+  borderRadius: $border_radius,
+  '&:hover': {
+    backgroundColor: $background_color_hover || $background_color,
+  },
+}));
 
-  display: ${(props) => ((props.$show == 'true') ? 'flex' : 'none')};
-  position: fixed;
-  bottom: 165px;
-  right: 20px;
-  cursor: pointer;
-  z-index: 1000;
-  width: auto;
-  height: auto;
-  border: 1px solid ${(props) => props.$background_color || '#00000000'};
-  background-color: ${(props) => props.$background_color || '#00000000'};
-  border-radius: ${(props) => props.$border_radius};
-
-  &:hover{
-    background-color: ${(props) => props.$background_color_hover || props.$background_color};
-  }
-`;
 
 export interface ScrollToTopButtonProps {   
     show: boolean;            

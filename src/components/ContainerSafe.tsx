@@ -1,53 +1,49 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
+export const ContainerSafe = styled('div')(({ theme }) => ({
+  margin: '48px 0px',
 
-export const ContainerSafe = styled.div`
-        
-    margin: 48px 0px;     
+  // Breakpoints definidos utilizando o tema
+  [theme.breakpoints.down('sm')]: {
+    // Para telas menores que 600px
+    width: 'calc(100% - 32px)',
+  },
+  [theme.breakpoints.up('sm')]: {
+    // Para telas maiores que 600px
+    width: 'calc(100% - 48px)',
+  },
+  [theme.breakpoints.up('md')]: {
+    // Para telas maiores que 960px
+    width: 'calc(100% - 54px)',
+  },
+  [theme.breakpoints.up('lg')]: {
+    // Para telas maiores que 1280px
+    width: '1200px',
+  },
+  [theme.breakpoints.up('xl')]: {
+    // Para telas maiores que 1920px
+    width: '1200px',
+  },
+}));
 
-    @media (max-width: 600px) { 
-        width: calc(100% - 32px) 
-    }
+export const ContainerSafeSemMargem = styled('div')(({ theme }) => ({
+  margin: '0px 0px',
+  zIndex: 1,
 
-    @media (min-width: 600px) {
-        width: calc(100% - 48px) 
-    }
-
-    @media (min-width: 960px) {
-        width: calc(100% - 54px); 
-    }
-
-    @media (min-width:1280px) {
-        width: 1200px; 
-    }
-
-    @media (min-width: 1920px) {
-        width: 1200px; 
-    }    
-`; 
-
-export const ContainerSafeSemMargem = styled.div`
-        
-    margin: 0px 0px;
-    z-index: 1;
-
-    @media (max-width: 600px) { 
-        width: calc(100% - 32px) 
-    }
-
-    @media (min-width: 600px) {
-        width: calc(100% - 48px) 
-    }
-
-    @media (min-width: 960px) {
-        width: calc(100% - 54px); 
-    }
-
-    @media (min-width:1280px) {
-        width: 1200px; 
-    }
-
-    @media (min-width: 1920px) {
-        width: 1200px; 
-    }    
-`; 
+  // Breakpoints para diferentes larguras de tela
+  [theme.breakpoints.down('sm')]: {
+    width: 'calc(100% - 32px)', // Menor que 600px
+  },
+  [theme.breakpoints.up('sm')]: {
+    width: 'calc(100% - 48px)', // Entre 600px e 960px
+  },
+  [theme.breakpoints.up('md')]: {
+    width: 'calc(100% - 54px)', // Entre 960px e 1280px
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: '1200px', // Entre 1280px e 1920px
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '1200px', // Acima de 1920px
+  },
+}));

@@ -1,7 +1,64 @@
 'use client';
 
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
+
+const ButtonStyled = styled('a', {
+  shouldForwardProp: (prop) =>
+    ![
+      'background_color',
+      'background_color_hover',
+      'color',
+      'color_hover',
+      'padding',
+      'border_radius',
+      'border_color',
+      'border_color_underline',
+      'width',
+      'margin',
+    ].includes(prop as string),
+})<{
+  background_color: string;
+  background_color_hover: string;
+  color: string;
+  color_hover: string;
+  padding: string;
+  border_radius: string;
+  border_color: string;
+  border_color_underline: string;
+  width: string;
+  margin: string;
+}>(({ 
+  background_color,
+  background_color_hover,
+  color,
+  color_hover,
+  padding,
+  border_radius,
+  border_color,
+  border_color_underline,
+  width,
+  margin,
+}) => ({
+  width: width,
+  cursor: 'pointer',
+  textDecoration: 'none',
+  textTransform: 'none',
+  textAlign: 'center',
+  boxShadow: 'none',
+  backgroundColor: background_color,
+  color: color,
+  border: `1px solid ${border_color}`,
+  borderRadius: border_radius,
+  padding: padding,
+  margin: margin,
+
+  '&:hover': {
+    backgroundColor: background_color_hover,
+    borderBottom: `1px solid ${border_color_underline}`,
+    color: color_hover,
+  },
+}));
 
 interface NavigationButtonProps {  
   url: string;
@@ -18,54 +75,6 @@ interface NavigationButtonProps {
   margin?: string;
   children: React.ReactNode;     
 }
-
-const ButtonStyled = styled.a.withConfig({
-  shouldForwardProp: (prop) =>
-    !['background_color',
-      'background_color_hover',
-      'color', 
-      'color_hover',          
-      'padding', 
-      'border_radius',
-      "border_color",
-      "border_color_underline",
-      'width', 'margin'].includes(prop), })
-<{
-  background_color: string;
-  background_color_hover: string;
-  color: string; 
-  color_hover: string;     
-  padding: string;  
-  border_radius: string;
-  border_color: string;
-  border_color_underline: string;
-  width: string;
-  margin: string;
-}>`  
-  width: ${props => props.width}; 
-  cursor: pointer;
-  text-decoration: none;
-  text-transform: none;
-  text-align: center;    
-  margin: 0px;
-  box-shadow: none;
-  background-color:  ${props => props.background_color};
-  color:  ${props => props.color};  
-  border: none;
-  border-radius: ${props => props.border_radius}; 
-  border-top: ${props => `1px solid ${props.border_color}`}; 
-  border-left: ${props => `1px solid ${props.border_color}`}; 
-  border-right: ${props => `1px solid ${props.border_color}`}; 
-  border-bottom: ${props => `1px solid ${props.border_color}`};     
-  padding: ${ (props) => props.padding };
-  margin: ${ (props) => props.margin };    
-   
-  &:hover {
-    background-color:  ${props => props.background_color_hover};      
-    border-bottom: 1px solid ${props => props.border_color_underline};
-    color: ${props => props.color_hover};
-  }
-`;
 
 const NavigationButton: React.FC<NavigationButtonProps> = ({ 
   url, aria_label, background_color, background_color_hover,

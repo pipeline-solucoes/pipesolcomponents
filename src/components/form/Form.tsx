@@ -1,91 +1,21 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
-import { TextField } from '@mui/material';
-import styled from 'styled-components';
-import { StyledTextField } from './FormStyled';
-import { Body1Styled } from '../Typography';
+import { FixedSizeTextField, StyledButton, StyledTextField } from './FormStyled';
 
-const FormContainer = styled.div`
+import { styled } from '@mui/material/styles';
+import { StyledSpanBody1 } from '../text/SpanStyled';
 
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
-  margin: auto;
-  padding: 0px;
-`;
+const FormContainer = styled('div')(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '16px',
+  width: '100%',
+  margin: 'auto',
+  padding: '0px',
+}));
 
-const StyledButton = styled.button.withConfig({
-  shouldForwardProp: (prop) =>
-    !["background_color", "color", "border_radius"].includes(prop),
-})<{
-  background_color: string;
-  color: string;
-  border_radius: string;
-}>`
-
-  color: ${(props) => props.color};
-  background-color: ${(props) => props.background_color};
-  border-radius:${(props) => props.border_radius};
-  text-transform: none;
-  border: none;  
-  cursor: pointer;
-  padding: 8px 24px;
-  box-shadow: none;
-
-  font-family:  ${props => props.theme.typography.fontFamily};             
-  font-weight: ${props => props.theme.typography.body1.fontWeight}; 
-  font-style: ${props => props.theme.typography.body1.fontStyle};       
-  line-height: ${props => props.theme.typography.body1.lineHeight};          
-  letter-spacing: ${props => props.theme.typography.body1.letterSpacing};    
-  font-size: ${props => props.theme.typography.body1.fontSize};
-  margin: ${props => props.theme.typography.body1.margin};     
-  @media (max-width: 600px) { 
-    font-size: ${(props) => props.theme.typography.body1['@media (max-width:600px)'].fontSize}; 
-  } 
-  
-  @media (min-width: 601px) and (max-width: 960px) { 
-    font-size: ${(props) => props.theme.typography.body1['@media (min-width:601px) and (max-width:960px)'].fontSize}; 
-  }    
-`;
-
-const FixedSizeTextField = styled(TextField).withConfig({
-  shouldForwardProp: (prop) =>
-    !['background_color',
-      'color',        
-      'border_radius'].includes(prop), })
-<{
-  background_color: string;
-  color: string;   
-  border_radius: string
-}>`  
-
-  .MuiInputLabel-root {
-    color: ${(props) => props.color};
-  }
-
-  .MuiInputBase-input::placeholder {
-    color: ${(props) => props.color}; 
-  }
-
-  & .MuiInputBase-root {  
-    transition: none !important;
-    align-items: flex-start; 
-    width: 100%;         
-    overflow-y: auto;  
-    height: 150px;
-    background-color: ${(props) => props.background_color};
-    border-radius:${(props) => props.border_radius};
-    color: ${(props) => props.color};
-  }
-
-  & .MuiOutlinedInput-notchedOutline {
-    border-color: transparent;
-  }
-`;
-
-export interface FormProps {                    
+export interface FormProps {                       
     color: string;
     background_color?: string; 
     border_radius?: string;
@@ -216,7 +146,7 @@ export interface FormProps {
           error={errors.nome}
           required={true}
           background_color={background_color}
-          color={color}
+          text_color={color}
           border_radius={border_radius}
         ></StyledTextField>
         <StyledTextField
@@ -230,7 +160,7 @@ export interface FormProps {
           helperText={errors.email && 'Email inválido'}
           required={true}
           background_color={background_color}
-          color={color}
+          text_color={color}
           border_radius={border_radius}
         ></StyledTextField>
         <StyledTextField
@@ -244,7 +174,7 @@ export interface FormProps {
           required={true}
           placeholder="21999999999"
           background_color={background_color}
-          color={color}
+          text_color={color}
           border_radius={border_radius}
         ></StyledTextField>
         <FixedSizeTextField
@@ -258,24 +188,29 @@ export interface FormProps {
           required={true}
           multiline
           background_color={background_color}
-          color={color}
+          text_color={color}
           border_radius={border_radius}
         ></FixedSizeTextField>
-        <StyledButton          
+        <StyledButton    
+          width='100%'
+          height='100%'      
           onClick={handleSubmit}
           background_color={background_color_button}
-          color={color_button}
+          text_color={color_button}
           border_radius={border_radius_button}
           disabled={isLoading}
         >
           {text_button}
         </StyledButton>
-        { mensagemApi && 
-          <Body1Styled color={corMensagemApi}>
-            {isLoading ? 'Enviando...' : mensagemApi}
-          </Body1Styled>}
+        { mensagemApi &&          
+          <StyledSpanBody1 text_color={corMensagemApi}>{isLoading ? 'Enviando...' : mensagemApi}</StyledSpanBody1>
+        }
       </FormContainer>
     );
   };
   
 export default Form;
+
+
+
+

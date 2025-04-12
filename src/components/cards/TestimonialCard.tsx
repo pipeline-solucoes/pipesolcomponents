@@ -1,57 +1,83 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Box, Stack } from '@mui/material';
+import { styled } from '@mui/material';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import SpanBody1 from '../text/SpanBody1';
-import SpanBody2 from '../text/SpanBody2';
+import { StyledSpanBody1, StyledSpanBody2 } from '../text/SpanStyled';
 
-interface TestimonialCardProps {
-  children: React.ReactNode;
-  name: string;
-  socialMedia: string;
+interface TestimonialCardProps {  
   background_color?: string;
   color: string;
   color_icon: string;
   height: string;
   width: string;
   color_boxshadow?: string;
+  children: React.ReactNode;
+  name: string;
+  socialMedia: string;
 }
 
-const StyledStack = styled(Stack)<{$background_color?: string, 
-  $color_boxshadow?: string, height: string, width: string}>` 
-  margin: 20px auto;
-  padding: 20px;
-  box-shadow: 0 4px 8px ${(props) => props.$color_boxshadow ?? "#00000000"};
-  background-color: ${(props) => props.$background_color ?? "#00000000"};
-  width: ${(props) => props.width };
-  height: ${(props) => props.height };
-  gap: 16px;
-`;
+interface ContainerStyledProps {
+  color_boxshadow: string;
+  background_color: string;
+  width: string;
+  height: string;
+}
 
-const QuoteIcon = styled(FormatQuoteIcon)<{$color: string}>`
-  color: ${(props) => props.$color};
-  font-size: 40px;
-  margin-right: 10px;
-`;
+export const ContainerStyled = styled('div', {
+  shouldForwardProp: (prop) =>
+    !['color_boxshadow', 'background_color', 'width', 'height'].includes(prop as string),
+})<ContainerStyledProps>(({ color_boxshadow, background_color, width, height }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center', // Centraliza os itens horizontalmente
+  justifyContent: 'center', // Centraliza os itens verticalmente
+  margin: '20px auto',
+  padding: '20px',
+  boxShadow: `0 4px 8px ${color_boxshadow}`, // Corrigido para usar camelCase
+  backgroundColor: background_color, // Corrigido para usar camelCase
+  width: width,
+  height: height,
+  gap: '16px',
+}));
+
+const ContentFooterStyled = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center', 
+  justifyContent: 'center', 
+});
+
+const ContentMessageStyled = styled('div')({
+  flex: '1',
+});
+
+
+const QuoteIcon = styled(FormatQuoteIcon, {
+  shouldForwardProp: (prop) => !['$color'].includes(prop as string),
+})<{ $color: string }>(({ $color }) => ({
+  color: $color,
+  fontSize: '40px',
+  marginRight: '10px',
+}));
+
   
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ children, name, socialMedia, 
   background_color, color, color_icon, color_boxshadow, height,  width}) => {
+
+  const card_background_color: string = background_color ?? "transparent";
+  const card_color_boxshadow : string = color_boxshadow ?? 'transparent';
+
   return (
-    <StyledStack $background_color={background_color} $color_boxshadow={color_boxshadow} 
+    <ContainerStyled background_color={card_background_color} color_boxshadow={card_color_boxshadow} 
       width={width} height={height}> 
-      <Box>
-        <QuoteIcon $color={color_icon}></QuoteIcon>
-      </Box>     
-      <Box flex={1}>
+      <QuoteIcon $color={color_icon}></QuoteIcon>         
+      <ContentMessageStyled>
         {children}
-      </Box>
-      <Box>
-        <Stack direction='column' justifyContent="center">
-          <SpanBody2 color={color}>{name}</SpanBody2>
-          <SpanBody1 color={color}>{socialMedia}</SpanBody1>
-        </Stack>
-      </Box>      
-    </StyledStack>
+      </ContentMessageStyled>
+      <ContentFooterStyled>        
+        <StyledSpanBody2 text_color={color}>{name}</StyledSpanBody2>
+        {socialMedia && <StyledSpanBody1 text_color={color}>{socialMedia}</StyledSpanBody1>}
+      </ContentFooterStyled>      
+    </ContainerStyled>
   );
 };
 

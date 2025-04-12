@@ -1,11 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import styled from 'styled-components';
 import { ItemMenuProps } from './ItemMenuProps';
 import { useEffect } from 'react';
 import NavigationButton from '../button/NavigationButton';
-import { Typography } from '@mui/material';
+import { styled } from '@mui/material';
 
 interface SiteMapProps {    
     listaItemMenu: ItemMenuProps[];   
@@ -13,14 +12,14 @@ interface SiteMapProps {
     color_hover: string;       
 }
 
-const ContainerMenuHorizontal = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  flex-grow: 1;
-  gap: 16px;
-`
+const ContainerMenuHorizontal = styled('div')(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  flexGrow: 1,
+  gap: '16px',
+}));
 
 const SiteMap: React.FC<SiteMapProps> = ({
     listaItemMenu, color, color_hover }) => {
@@ -58,7 +57,7 @@ const SiteMap: React.FC<SiteMapProps> = ({
   }
   else{
     <ContainerMenuHorizontal>
-      <Typography variant='body1' color={color}>carregando...</Typography>
+      carregando...
     </ContainerMenuHorizontal>
   }
 }

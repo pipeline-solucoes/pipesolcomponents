@@ -1,45 +1,52 @@
-import { Toolbar } from '@mui/material';
-import styled from 'styled-components';
 
-export const CustomToolbar = styled(Toolbar)`
+import { styled } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
 
-    margin: 0px;
-    padding: 0px;
-    width: '100%';
+export const CustomToolbar = styled(Toolbar)(({ theme }) => ({
+  margin: '0px',
+  padding: '0px',
+  width: '100%',
 
-    @media (max-width: 600px) {
-      width: calc(100% - 32px);
-    }
-    
-    @media (min-width: 600px) and (max-width: 960px) {
-      width: calc(100% - 48px);
-    }
-    
-    @media (min-width: 960px) {
-      width: calc(100% - 54px);
-    }
+  [theme.breakpoints.down('sm')]: {
+    // Máximo de 600px
+    width: 'calc(100% - 32px)',
+  },
 
-    @media (min-width: 1280px) {
-      width: 1200px;
-    }
-`;
+  [theme.breakpoints.between('sm', 'md')]: {
+    // Entre 601px e 960px
+    width: 'calc(100% - 48px)',
+  },
 
-export const ContainerRedeSocialHorizontal = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center; 
-  margin: 16px 0px;
-`
+  [theme.breakpoints.up('md')]: {
+    // A partir de 960px
+    width: 'calc(100% - 54px)',
+  },
 
-export const Bar = styled.div.withConfig({
-  shouldForwardProp: (prop) =>
-    !['background_color'].includes(prop), })
-<{background_color: string;}>`  
+  [theme.breakpoints.up('lg')]: {
+    // A partir de 1280px
+    width: '1200px',
+  },
+}));
 
-  display: flex;    
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-  background-color: ${props =>props.background_color};
-  width: 100%;
-`;
+export const ContainerRedeSocialHorizontal = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center', 
+  margin: '16px 0px',
+});
+
+
+interface BarProps {
+  background_color: string;
+}
+
+export const Bar = styled('div', {
+  shouldForwardProp: (prop) => !['background_color'].includes(prop as string),
+})<BarProps>(({ background_color }) => ({
+  display: 'flex',
+  flexDirection: 'column', // Layout flex vertical
+  alignItems: 'center', // Centraliza horizontalmente
+  justifyContent: 'center', // Centraliza verticalmente
+  backgroundColor: background_color, // Define a cor de fundo
+  width: '100%', // Largura total
+}));

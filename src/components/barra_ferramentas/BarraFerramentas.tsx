@@ -2,11 +2,11 @@
 
 import * as React from 'react';
 import { Bar, ContainerRedeSocialHorizontal, CustomToolbar } from './BarraFerramentasStyled';
-import styled from 'styled-components';
 import { ItemMenuProps } from '../menu/ItemMenuProps';
 import { useEffect } from 'react';
 import NavigationButton from '../button/NavigationButton';
-import { Typography } from '@mui/material';
+import { StyledSpanBody2 } from '../text/SpanStyled';
+import { styled } from '@mui/material';
 
 interface BarraFerramentasProps {    
     listaItemMenu: ItemMenuProps[];   
@@ -18,19 +18,19 @@ interface BarraFerramentasProps {
     renderSocialMedia: () => React.ReactElement;    
 }
 
-const DivStyled = styled.div`  
-  display: flex;
-  flex-grow: 1;
-`;
+const DivStyled = styled('div')({
+  display: 'flex',
+  flex: '1',
+});
 
-const ContainerMenuHorizontal = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  gap: 16px;
-`
+const ContainerMenuHorizontal = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexGrow: 1,
+  gap: '16px',
+});
 
 const BarraFerramentas: React.FC<BarraFerramentasProps> = ({
     listaItemMenu,
@@ -84,7 +84,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({
   }
   else{
     <Bar background_color={background_color_bar}>
-      <Typography variant='body1' color={color}>carregando...</Typography>
+      <StyledSpanBody2 text_color={color}>carregando...</StyledSpanBody2>
     </Bar>
   }
 }

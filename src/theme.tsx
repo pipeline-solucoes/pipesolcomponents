@@ -1,32 +1,48 @@
-import { createGlobalStyle } from 'styled-components';
 import { createTheme } from '@mui/material/styles';
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    padding: ${props => props.theme.spacing(4)}px;    
-  }
-`;
-
 declare module '@mui/material/styles' {
-  
-  interface PaletteOptions {
-    custom?: {
-      backgroundSectionMain?: string;      
-      backgroundSectionAlternative?: string;
+  interface Palette {
+    custom: {
+      transparent: string;
+
+      backgroundSectionMain: string;      
+      backgroundSectionAlternative: string;
       backgroundSectionHighlight?: string;
 
-      colorSectionMain?: string;
-      colorSectionAlternative?: string;
-      colorSectionHighlight?: string;
+      colorSectionMain: string;      
+
+      backgroundButtonCTA: string,
+      backgroundHoverButtonCTA: string,
+      colorButtonCTA: string,
+      colorHoverButtonCTA: string,
+      borderRadiusButtonCTA: string,
+
+      carouselColorIndicators: string,
+      carouselColorFocus: string,
+    };
+  }
+  interface PaletteOptions {
+    custom?: {
+      transparent: string;
+
+      backgroundSectionMain: string;      
+      backgroundSectionAlternative: string;
+      backgroundSectionHighlight?: string;     
+
+      backgroundButtonCTA: string,
+      backgroundHoverButtonCTA: string,
+      colorButtonCTA: string,
+      colorHoverButtonCTA: string,
+      borderRadiusButtonCTA: string,
+
+      carouselColorIndicators: string,
+      carouselColorFocus: string,
     };
   }
 }
 
 // Definindo o tema personalizado
-const themePS = createTheme({
+const theme = createTheme({
   breakpoints: { 
     values: { 
       xs: 0, // Extra small devices (phones) 
@@ -41,58 +57,69 @@ const themePS = createTheme({
   },
   palette: {
     primary: {
-      main: "#007E6A", // Verde Musgo
+      main: "#3f4f44" , // Verde musgo
+      dark: "#1e2a24" , //Verde mais escuro
       contrastText: "#ffffff" //Branco
     },
     secondary: {
-      main: '#C4A27D', // Dourado Leve
+      main: '#8c6d32', // Dourado 
+      light: '#b68d40', // Dourado mais claro
       contrastText: "#ffffff" //Branco
     },    
     text: {
-      primary: '#707070',
+      primary: '#555f56',
       secondary: '#ffffff',
       disabled: '#707070',
     },       
     custom: {
-      backgroundSectionMain: '#f0f8ff',
-      backgroundSectionAlternative: '#ffe4e1',
+      transparent: '#00000000',
 
-      colorSectionMain:'#707070',
-      colorSectionAlternative: '#707070',
+      backgroundSectionMain: '#ffffff',
+      backgroundSectionAlternative: '#ede8de',      
+
+      backgroundButtonCTA: "#D9D9D950",
+      backgroundHoverButtonCTA: '#b68d40',
+      colorButtonCTA: '#ffffff',
+      colorHoverButtonCTA: '#ffffff',
+      borderRadiusButtonCTA: "25px",  
+      
+      carouselColorIndicators: 'gray',
+      carouselColorFocus: '#8c6d32',
     },
     info: {
-      main: '#4a90e2',
+      main: '#4CAF50',
     },
     error: {
-      main: '#4a90e2',
+      main: '#F44336',
     }    
   },
   typography: {
     fontFamily: 'Inter, Arial, sans-serif',
-    h1: {       
-      fontSize: '58px', // Desktop     
-      lineHeight: '1',
+    h1: {         
+      fontSize: '56px', // Desktop     
+      lineHeight: '0.5',
       letterSpacing: '0.01em',
       fontWeight: 600,
       margin: 0,
       fontStyle: 'normal',
       color: '#ffffff',
+      padding: '8px 0px',    
       '@media (min-width:601px) and (max-width:960px)': {
-        fontSize: '40px', // Tablet
+        fontSize: '46px', // Tablet
       },
       '@media (max-width:600px)': {
-        fontSize: '48px', // Mobile
+        fontSize: '36px', // Mobile
       },
     },
     h2: {      
-      fontSize: '16px', // Desktop
+      fontSize: '20px', // Desktop
       lineHeight: '1.5',
       letterSpacing: '0.01em',
       fontWeight: 400,
-      margin: 0,      
-      color: '#ffffff',
+      margin: 0,
+      color: '#ffffff',    
       '@media (min-width:601px) and (max-width:960px)': {
-        fontSize: '16px', // Tablet
+        fontSize: '20px', // Tablet
       },
       fontStyle: 'normal',
       '@media (max-width:600px)': {
@@ -100,31 +127,31 @@ const themePS = createTheme({
       },
     },
     h3: {
-      fontSize: '32px', // Desktop
+      fontSize: '28px', // Desktop
       lineHeight: '1.5',
       letterSpacing: '0.01em',
-      fontWeight: 400,
+      fontWeight: 600,
       margin: 0,
       fontStyle: 'normal',      
       '@media (min-width:601px) and (max-width:960px)': {
-        fontSize: '32px', // Tablet
+        fontSize: '28px', // Tablet
       },
       '@media (max-width:600px)': {
-        fontSize: '32px', // Mobile
+        fontSize: '28px', // Mobile
       },
     },
     h4: {
-      fontSize: '2rem', // Desktop
+      fontSize: '20px', // Desktop
       lineHeight: '1.5',
       letterSpacing: '0.01em',
-      fontWeight: 400,
+      fontWeight: 600,
       margin: 0,
       fontStyle: 'normal',      
       '@media (min-width:601px) and (max-width:960px)': {
-        fontSize: '1.75rem', // Tablet
+        fontSize: '20px', // Tablet
       },
       '@media (max-width:600px)': {
-        fontSize: '1.25rem', // Mobile
+        fontSize: '20px', // Mobile
       },
     },
     body1: { //Normal
@@ -157,4 +184,4 @@ const themePS = createTheme({
   spacing: 8,
 });
 
-export { themePS, GlobalStyle };
+export { theme };
