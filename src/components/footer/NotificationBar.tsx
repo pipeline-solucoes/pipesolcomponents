@@ -24,13 +24,16 @@ export interface NotificationBarProps {
     text_button_accept: string; 
     text_button_notaccept: string;   
     children: React.ReactNode;
+    border_radius_button?: string;
   }
 
 const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,  
-  background_color, background_color_button, color_button, 
+  background_color, background_color_button, color_button, border_radius_button,
   text_button_accept, text_button_notaccept }) =>  {            
 
     const [showNotification, setShowNotification] = useState(show);
+
+    const borderRadiusButton = border_radius_button ?? '0px';
 
     const handleAccept = () => {
       // Lógica para salvar a aceitação do usuário pode ser adicionada aqui
@@ -59,7 +62,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,
               <StyledButton 
                 width='auto'
                 height='auto'
-                border_radius='0px'
+                border_radius={borderRadiusButton}
                 text_color={background_color_button} 
                 background_color={color_button}                 
                 onClick={handleNotAccept}>
@@ -69,7 +72,7 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,
               <StyledButton 
                 width='auto'
                 height='auto'
-                border_radius='0px'
+                border_radius={borderRadiusButton}
                 text_color={color_button} 
                 background_color={background_color_button}                 
                 onClick={handleAccept}>

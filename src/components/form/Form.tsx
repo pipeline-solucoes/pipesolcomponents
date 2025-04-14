@@ -144,9 +144,11 @@ export interface FormProps {
           onChange={(e) => setNome(e.target.value)}
           onBlur={() => handleBlur('nome')}
           error={errors.nome}
+          helperText={errors.nome && <span style={{ color: color_message_erro }}>Nome é obrigatório</span>} 
           required={true}
           background_color={background_color}
           text_color={color}
+          text_color_error={color_message_erro}
           border_radius={border_radius}
         ></StyledTextField>
         <StyledTextField
@@ -157,10 +159,11 @@ export interface FormProps {
           onChange={(e) => setEmail(e.target.value)}
           onBlur={() => handleBlur('email')}
           error={errors.email}
-          helperText={errors.email && 'Email inválido'}
+          helperText={errors.email && <span style={{ color: color_message_erro }}>Email inválido</span>}
           required={true}
           background_color={background_color}
           text_color={color}
+          text_color_error={color_message_erro}
           border_radius={border_radius}
         ></StyledTextField>
         <StyledTextField
@@ -170,11 +173,12 @@ export interface FormProps {
           onChange={(e) => setTelefone(e.target.value)}
           onBlur={() => handleBlur('telefone')}
           error={errors.telefone}
-          helperText={errors.telefone && 'Telefone inválido'}
+          helperText={errors.telefone && <span style={{ color: color_message_erro }}>Telefone inválido</span>}
           required={true}
           placeholder="21999999999"
           background_color={background_color}
           text_color={color}
+          text_color_error={color_message_erro}
           border_radius={border_radius}
         ></StyledTextField>
         <FixedSizeTextField
@@ -185,10 +189,12 @@ export interface FormProps {
           onChange={(e) => setMensagem(e.target.value)}
           onBlur={() => handleBlur('mensagem')}
           error={errors.mensagem}
+          helperText={errors.nome && <span style={{ color: color_message_erro }}>Mensagem é obrigatória</span>}
           required={true}
           multiline
           background_color={background_color}
           text_color={color}
+          text_color_error={color_message_erro}
           border_radius={border_radius}
         ></FixedSizeTextField>
         <StyledButton    
@@ -196,7 +202,7 @@ export interface FormProps {
           height='100%'      
           onClick={handleSubmit}
           background_color={background_color_button}
-          text_color={color_button}
+          text_color={color_button}          
           border_radius={border_radius_button}
           disabled={isLoading}
         >
@@ -210,7 +216,5 @@ export interface FormProps {
   };
   
 export default Form;
-
-
 
 

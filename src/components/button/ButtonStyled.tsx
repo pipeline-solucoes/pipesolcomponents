@@ -6,7 +6,7 @@ export const ButtonHoverBorderBottomStyled = styled('button', {
       'background_color',
       'color',
       'color_hover',
-      'padding',
+      'type_padding',
       'border_radius',
       'border_color',
       'width',
@@ -15,11 +15,11 @@ export const ButtonHoverBorderBottomStyled = styled('button', {
   background_color?: string;
   color: string;
   color_hover?: string;
-  padding: 'none' | 'default';
+  type_padding: 'none' | 'default';
   border_radius?: string;
   border_color?: string;
   width: string;
-}>(({ background_color, color, color_hover, padding, border_radius, border_color, width }) => ({
+}>(({ background_color, color, color_hover, type_padding, border_radius, border_color, width }) => ({
   width: width,
   cursor: 'pointer',
   textDecoration: 'none',
@@ -31,7 +31,7 @@ export const ButtonHoverBorderBottomStyled = styled('button', {
   color: color,
   borderRadius: border_radius || '0px',
   border: border_color ? `1px solid ${border_color}` : 'none',
-  padding: padding === 'default' ? '8px 24px' : '0px',
+  padding: type_padding === 'default' ? '8px 24px' : '0px',
 
   '&:hover': {
     borderBottom: `2px solid ${color_hover || color}`,
@@ -46,7 +46,7 @@ export const ButtonHoverColorStyled = styled('button', {
       'background_color',
       'color',
       'color_hover',
-      'padding',
+      'type_padding',
       'border_radius',
       'border_color',
       'width',
@@ -55,11 +55,11 @@ export const ButtonHoverColorStyled = styled('button', {
   background_color?: string;
   color: string;
   color_hover?: string;
-  padding: 'none' | 'default';
+  type_padding: 'none' | 'default';
   border_radius?: string;
   border_color?: string;
   width: string;
-}>(({ background_color, color, color_hover, padding, border_radius, border_color, width }) => ({
+}>(({ background_color, color, color_hover, type_padding, border_radius, border_color, width }) => ({
   width: width,
   cursor: 'pointer',
   textDecoration: 'none',
@@ -70,7 +70,7 @@ export const ButtonHoverColorStyled = styled('button', {
   color: color,
   borderRadius: border_radius || '0px',
   border: border_color ? `1px solid ${border_color}` : 'none',
-  padding: padding === 'default' ? '8px 24px' : '0px',
+  padding: type_padding === 'default' ? '8px 24px' : '0px',
 
   '&:hover': {
     color: color_hover || color,

@@ -18,7 +18,7 @@ const ContentWrapStyled = styled('div', {
   flexDirection: 'row',
   flexWrap: 'wrap',
   alignItems: 'flex-start',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   borderTopStyle: 'solid',
   borderTopWidth: '1px',
   padding: '16px 0px 0px',
@@ -30,9 +30,10 @@ export interface CopywriteProps {
     color_border: string; 
     color: string;
     children?: React.ReactNode;
+    color_link_pipeline: string;
   }
 
-const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, children }) => (
+const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, children, color_link_pipeline }) => (
     
     <ContentWrapStyled color_border={color_border}>        
       <Box>
@@ -44,7 +45,7 @@ const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, childre
       <Box flex={1}>
         <StyledSpanBody1 text_color={color}>
           Criado por <NavigationButton url='https://www.instagram.com/pipelinesolucoes/' 
-            color={color} aria_label='link Pipeline Soluções' 
+            color={color_link_pipeline} aria_label='link Pipeline Soluções' 
             text_decoration='none' layout='link' width='auto'>
             Pipeline Soluções
           </NavigationButton>

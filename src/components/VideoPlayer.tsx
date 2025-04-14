@@ -33,6 +33,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         style={{ objectFit: "cover", width: width, height: height }}
       >
         <source src={videoSrc} type="video/mp4" />
+        <track kind="captions" src="legendas.vtt" srcLang="pt" label="Português" default />
         Seu navegador não suporta vídeos HTML5.
       </video>
     </Container>

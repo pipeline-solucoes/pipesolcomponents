@@ -9,10 +9,6 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
 
-  compiler: {
-     styledComponents: true,
-  },
-
   // Suporte a formatos de imagem
   images: {
     formats: ["image/webp"], // Adiciona suporte ao formato WebP

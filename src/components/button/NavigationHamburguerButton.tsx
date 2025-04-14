@@ -51,7 +51,7 @@ const NavigationHamburguerButton: React.FC<NavigationHamburguerButtonProps> = ({
         color_hover={color_hover}
         border_radius={border_radius}
         border_color={border_color}
-        padding={layout === 'button' ? 'default' : 'none'}
+        type_padding={layout === 'button' ? 'default' : 'none'}
         aria-label= {aria_label}
         onClick={handleClick}>        
           {children}             
@@ -66,7 +66,7 @@ const NavigationHamburguerButton: React.FC<NavigationHamburguerButtonProps> = ({
         color_hover={color_hover}
         border_radius={border_radius} 
         border_color={border_color}    
-        padding={layout === 'button' ? 'default' : 'none'}
+        type_padding={layout === 'button' ? 'default' : 'none'}
         aria-label= {aria_label}
         onClick={handleClick}>        
           {children}             

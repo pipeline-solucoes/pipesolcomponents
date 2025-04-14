@@ -1,48 +1,65 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
+import createCache from "@emotion/cache";
+import createEmotionServer from "@emotion/server/create-instance";
+import { CacheProvider } from "@emotion/react";
+
+// Função para criar o cache do Emotion
+const createEmotionCache = () => {
+  return createCache({ key: "css", prepend: true });
+};
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet(); // Cria a instância para SSR
+    const cache = createEmotionCache();
+    const { extractCriticalToChunks } = createEmotionServer(cache);
+
     const originalRenderPage = ctx.renderPage;
 
     try {
-      // Captura os estilos do servidor
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props}></App>),
+          enhanceApp: (App) => (props) =>
+            (
+              <CacheProvider value={cache}>
+                <App {...props} />
+              </CacheProvider>
+            ),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
+
+      // Extrai os estilos críticos para renderização no lado do servidor
+      const emotionStyles = extractCriticalToChunks(initialProps.html);
+      const emotionStyleTags = emotionStyles.styles.map((style) => (
+        <style
+          key={style.key}
+          data-emotion={`${style.key} ${style.ids.join(" ")}`}
+          dangerouslySetInnerHTML={{ __html: style.css }}
+        />
+      ));
 
       return {
         ...initialProps,
         styles: (
           <>
             {initialProps.styles}
-            {sheet.getStyleElement()}
+            {emotionStyleTags}
           </>
         ),
       };
     } finally {
-      sheet.seal();
+      // Nada a liberar como no caso do styled-components
     }
   }
 
   render() {
     return (
-      <Html lang="en">
-        <Head>
-          <meta name="format-detection" content="telephone=no, date=no, email=no, address=no"></meta>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-          </link>          
+      <Html lang="pt">
+        <Head>                 
         </Head>
         <body>
-          <Main></Main>
-          <NextScript></NextScript>
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );

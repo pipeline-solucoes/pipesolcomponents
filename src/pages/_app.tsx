@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { AppProps } from 'next/app';
@@ -23,10 +22,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <CacheProvider value={cache}>
       <MuiThemeProvider theme={theme}>
-        <StyledThemeProvider theme={theme}>
-          <CssBaseline></CssBaseline>
-          <Component {...pageProps} ></Component>
-        </StyledThemeProvider>
+        <CssBaseline></CssBaseline>
+        <Component {...pageProps} ></Component>        
       </MuiThemeProvider>
     </CacheProvider>
   );

@@ -5,18 +5,23 @@ import TextField from '@mui/material/TextField';
 interface StyledTextFieldProps {
   background_color: string;
   text_color: string;
+  text_color_error: string;
   border_radius: string;
 }
 
 export const StyledTextField = styled(TextField, {
   shouldForwardProp: (prop) =>
-    !['background_color', 'text_color', 'border_radius'].includes(prop as string),
-})<StyledTextFieldProps>(({ theme, background_color, text_color, border_radius }) => ({
+    !['background_color', 'text_color', 'text_color_error', 'border_radius'].includes(prop as string),
+})<StyledTextFieldProps>(({ theme, background_color, text_color, text_color_error, border_radius, error }) => ({
+
   '& .MuiInputLabel-root': {
-    color: text_color,
+    color: error ? text_color_error : text_color, // Label em vermelho em caso de erro
+    '& .MuiInputLabel-asterisk': {
+      color: error ? text_color_error : text_color, // Asterisco em vermelho no caso de erro
+    },
   },
   '& .MuiInputBase-input::placeholder': {
-    color: text_color,
+    color: error ? text_color_error : text_color, // Placeholder também em vermelho, opcional
   },
   '& .MuiInputBase-root': {
     backgroundColor: background_color,
@@ -24,8 +29,15 @@ export const StyledTextField = styled(TextField, {
     color: text_color,
   },
   '& .MuiOutlinedInput-notchedOutline': {
-    borderColor: 'transparent',
+    borderColor: error ? text_color_error : 'transparent', // Borda em vermelho em caso de erro
   },
+  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: error ? text_color_error : 'default', // Também mantém o hover em vermelho
+  },
+  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: error ? text_color_error : 'default', // Foco em vermelho no caso de erro
+  },
+
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.body1?.fontSize,
   fontWeight: theme.typography.body1?.fontWeight,
@@ -77,22 +89,26 @@ export const StyledButton = styled(Button, {
 
 
 
-
 interface FixedSizeTextFieldProps {
   background_color: string;
   text_color: string;
+  text_color_error: string;
   border_radius: string;
 }
 
 export const FixedSizeTextField = styled(TextField, {
   shouldForwardProp: (prop) =>
-    !['background_color', 'text_color', 'border_radius'].includes(prop as string),
-})<FixedSizeTextFieldProps>(({ background_color, text_color, border_radius }) => ({
-  '& .MuiInputLabel-root': {
-    color: text_color,
+    !['background_color', 'text_color', 'text_color_error', 'border_radius'].includes(prop as string),
+})<FixedSizeTextFieldProps>(({ theme, background_color, text_color, text_color_error, border_radius, error }) => ({
+
+'& .MuiInputLabel-root': {
+    color: error ? text_color_error : text_color, // Label em vermelho em caso de erro
+    '& .MuiInputLabel-asterisk': {
+      color: error ? text_color_error : text_color, // Asterisco em vermelho no caso de erro
+    },
   },
   '& .MuiInputBase-input::placeholder': {
-    color: text_color,
+    color: error ? text_color_error : text_color, // Placeholder também em vermelho, opcional
   },
   '& .MuiInputBase-root': {
     transition: 'none !important',
@@ -105,6 +121,20 @@ export const FixedSizeTextField = styled(TextField, {
     color: text_color,
   },
   '& .MuiOutlinedInput-notchedOutline': {
-    borderColor: 'transparent',
+    borderColor: error ? text_color_error : 'transparent', // Borda em vermelho em caso de erro
   },
+  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: error ? text_color_error : 'default', // Também mantém o hover em vermelho
+  },
+  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: error ? text_color_error : 'default', // Foco em vermelho no caso de erro
+  },
+
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.body1?.fontSize,
+  fontWeight: theme.typography.body1?.fontWeight,
+  fontStyle: theme.typography.body1?.fontStyle,
+  lineHeight: theme.typography.body1?.lineHeight,
+  letterSpacing: theme.typography.body1?.letterSpacing,
+  margin: theme.typography.body1?.margin,
 }));
