@@ -27,6 +27,7 @@ export interface FormProps {
     color_message_sucess: string;
     color_message_erro: string;
     message_sucess: string;
+    message_erro?: string;
   }
 
   const Form: React.FC<FormProps> = ({
@@ -40,7 +41,8 @@ export interface FormProps {
     token,
     color_message_sucess,
     color_message_erro,
-    message_sucess
+    message_sucess,
+    message_erro
   }) => {
     const [mensagemApi, setMensagemApi] = useState('');
     const [corMensagemApi, setCorMensagemApi] = useState(color_message_erro);
@@ -85,8 +87,13 @@ export interface FormProps {
     };
   
     const handleSubmit = async (e: React.FormEvent) => {
+
       e.preventDefault();
       const hasErrors = Object.keys(errors).some((key) => errors[key]);
+
+      const messageError : string = message_erro ?? 
+        `Houve um problema ao enviar sua mensagem. Por favor, verifique sua conexão e tente novamente mais tarde. 
+        Caso o erro persista, saiba que você também pode nos contatar pelos outros canais disponíveis.`;
   
       if (!hasErrors) {
         setIsLoading(true); // Inicia o estado de loading
@@ -114,14 +121,12 @@ export interface FormProps {
             setMensagem('');            
           } else {
             setCorMensagemApi(color_message_erro);
-            setMensagemApi(`Houve um problema ao enviar sua mensagem. Por favor, verifique sua conexão e tente novamente mais tarde. 
-            Caso o erro persista, saiba que você também pode nos contatar pelos outros canais disponíveis.`);
+            setMensagemApi(messageError);
             console.log('Erro ao enviar dados:', response.statusText);
           }
         } catch (error) {
           setCorMensagemApi(color_message_erro);
-          setMensagemApi(`Houve um problema ao enviar sua mensagem. Por favor, verifique sua conexão e tente novamente mais tarde. 
-            Caso o erro persista, saiba que você também pode nos contatar pelos outros canais disponíveis.`);
+          setMensagemApi(messageError);
           console.log('Erro na solicitação:', error);
         } finally {
           setIsLoading(false); 

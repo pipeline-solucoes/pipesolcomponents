@@ -16,9 +16,6 @@ export const StyledTextField = styled(TextField, {
 
   '& .MuiInputLabel-root': {
     color: error ? text_color_error : text_color, // Label em vermelho em caso de erro
-    '& .MuiInputLabel-asterisk': {
-      color: error ? text_color_error : text_color, // Asterisco em vermelho no caso de erro
-    },
   },
   '& .MuiInputBase-input::placeholder': {
     color: error ? text_color_error : text_color, // Placeholder também em vermelho, opcional
@@ -31,13 +28,7 @@ export const StyledTextField = styled(TextField, {
   '& .MuiOutlinedInput-notchedOutline': {
     borderColor: error ? text_color_error : 'transparent', // Borda em vermelho em caso de erro
   },
-  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-    borderColor: error ? text_color_error : 'default', // Também mantém o hover em vermelho
-  },
-  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-    borderColor: error ? text_color_error : 'default', // Foco em vermelho no caso de erro
-  },
-
+  
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.body1?.fontSize,
   fontWeight: theme.typography.body1?.fontWeight,
@@ -103,9 +94,6 @@ export const FixedSizeTextField = styled(TextField, {
 
 '& .MuiInputLabel-root': {
     color: error ? text_color_error : text_color, // Label em vermelho em caso de erro
-    '& .MuiInputLabel-asterisk': {
-      color: error ? text_color_error : text_color, // Asterisco em vermelho no caso de erro
-    },
   },
   '& .MuiInputBase-input::placeholder': {
     color: error ? text_color_error : text_color, // Placeholder também em vermelho, opcional
@@ -122,12 +110,6 @@ export const FixedSizeTextField = styled(TextField, {
   },
   '& .MuiOutlinedInput-notchedOutline': {
     borderColor: error ? text_color_error : 'transparent', // Borda em vermelho em caso de erro
-  },
-  '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-    borderColor: error ? text_color_error : 'default', // Também mantém o hover em vermelho
-  },
-  '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-    borderColor: error ? text_color_error : 'default', // Foco em vermelho no caso de erro
   },
 
   fontFamily: theme.typography.fontFamily,

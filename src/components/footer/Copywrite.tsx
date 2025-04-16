@@ -47,7 +47,7 @@ const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, childre
           Criado por <NavigationButton url='https://www.instagram.com/pipelinesolucoes/' 
             color={color_link_pipeline} aria_label='link Pipeline Soluções' 
             text_decoration='none' layout='link' width='auto'>
-            Pipeline Soluções
+            @pipelinesolucoes
           </NavigationButton>
         </StyledSpanBody1>
       </Box>

@@ -1,7 +1,8 @@
 import React from 'react';
 import { styled } from '@mui/material';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import { StyledSpanBody1, StyledSpanBody2 } from '../text/SpanStyled';
+import { StyledSpanBody2 } from '../text/SpanStyled';
+import NavigationButton from '../button/NavigationButton';
 
 interface TestimonialCardProps {  
   background_color?: string;
@@ -12,14 +13,15 @@ interface TestimonialCardProps {
   color_boxshadow?: string;
   children: React.ReactNode;
   name: string;
-  socialMedia: string;
+  socialMedia?: string;
+  urlSocialMedia?: string;
 }
 
 interface ContainerStyledProps {
   color_boxshadow: string;
   background_color: string;
   width: string;
-  height: string;
+  height: string;  
 }
 
 export const ContainerStyled = styled('div', {
@@ -44,6 +46,7 @@ const ContentFooterStyled = styled('div')({
   flexDirection: 'column',
   alignItems: 'center', 
   justifyContent: 'center', 
+  gap:'8px',
 });
 
 const ContentMessageStyled = styled('div')({
@@ -61,7 +64,7 @@ const QuoteIcon = styled(FormatQuoteIcon, {
 
   
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ children, name, socialMedia, 
-  background_color, color, color_icon, color_boxshadow, height,  width}) => {
+  background_color, color, color_icon, color_boxshadow, height,  width, urlSocialMedia}) => {
 
   const card_background_color: string = background_color ?? "transparent";
   const card_color_boxshadow : string = color_boxshadow ?? 'transparent';
@@ -75,7 +78,19 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ children, name, socia
       </ContentMessageStyled>
       <ContentFooterStyled>        
         <StyledSpanBody2 text_color={color}>{name}</StyledSpanBody2>
-        {socialMedia && <StyledSpanBody1 text_color={color}>{socialMedia}</StyledSpanBody1>}
+        {socialMedia && urlSocialMedia &&
+         <NavigationButton 
+          url={urlSocialMedia} 
+          color={color} 
+          layout='link' 
+          aria_label={`link para ${socialMedia}`}
+          width='100%'
+          text_decoration='none'
+         >
+            <StyledSpanBody2 text_color={color}>{socialMedia}</StyledSpanBody2>
+         </NavigationButton>
+        }
+        
       </ContentFooterStyled>      
     </ContainerStyled>
   );

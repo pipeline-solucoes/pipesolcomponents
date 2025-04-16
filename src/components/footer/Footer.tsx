@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, styled } from '@mui/material';
+import { Box, Container, Stack, styled } from '@mui/material';
 import { ContainerSafe } from '../ContainerSafe';
 
 interface FooterProps {      
@@ -22,8 +22,10 @@ interface FooterProps {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%'   
+    width: '100%',
+    height: 'auto'
 }));
+
 
 export const ContainerFooter = styled('div')(() => ({
   position: 'relative',
@@ -54,9 +56,11 @@ const Footer: React.FC <FooterProps> =  ({ background_color, renderColunas, rend
     <FooterStyled background_color={background_color}>        
         <ContainerSafe>
             <ContainerFooter>
-                <ContentWrapStyled>                
-                    {renderColunas()}                                    
-                </ContentWrapStyled>
+                <Container maxWidth="lg">                        
+                  <Stack direction={{ xs: 'column', md: 'row' }} spacing={4}>
+                    {renderColunas()}
+                  </Stack>                    
+                </Container>
                 <Box display='flex' flexDirection="row" alignItems="center" justifyContent="center" sx={{ width: '100%' }}>
                   {renderCopywriter()}
                 </Box>
