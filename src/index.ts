@@ -7,6 +7,7 @@ export { ContentBannerCenter, ContentBannerLeft } from './components/banner/Bann
 export { default as BarraDeFerramentas } from './components/barra_ferramentas/BarraFerramentas';
 export { default as BarraFerramentasHamburguer } from './components/barra_ferramentas/BarraFerramentasHamburguer';
 
+export { default as WhatsAppIcon} from './components/button/WhatsAppIcon';
 export { default as WhatsAppButton} from './components/button/WhatsAppButton';
 export { default as NavigationButton} from './components/button/NavigationButton';
 export { default as ScrollToTopButton} from './components/button/ScrollToTopButton';
@@ -24,7 +25,7 @@ export { default as NotificationBar} from './components/footer/NotificationBar';
 
 export { default as Section} from './components/section/Section';
 export { default as SectionGradiente} from './components/section/SectionGradiente';
-export { ContentSectionWrapStyled } from './components/section/SectionStyled';
+export { ContentSectionWrapStyled, ContentSectionWrapCenterStyled } from './components/section/SectionStyled';
 
 export { default as SocialMediaIconLink} from './components/social_media/SocialMediaIconLink';
 export { default as SocialMediaIconLinkWithBorder} from './components/social_media/SocialMediaIconLinkWithBorder';
@@ -40,3 +41,6 @@ export { default as Form } from './components/form/Form';
 
 export { default as SubstackPage } from './components/substask/SubstackPage';
 export { default as SubstackPosts } from './components/substask/SubstackPosts';
+
+export { default as useResponsiveCarousel } from './hooks/useResponsiveCarousel';
+

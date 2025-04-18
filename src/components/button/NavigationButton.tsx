@@ -85,7 +85,7 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({
     const backgroundColorHover : string = background_color_hover ?? backgroundColor;
     const colorHover : string = color_hover ?? color;    
     const borderRadius : string = border_radius ?? '0px';
-    const padding : string = layout == 'button' ? '8px 24px' : 'none';
+    const padding : string = layout == 'button' ? '8px 24px' : '0px';
 
     const borderColor : string = text_decoration == 'underline' ? 'transparent' : (border_color ?? 'transparent');
     const borderColorUnderline : string = (text_decoration == 'underline') ? color : (border_color ?? 'transparent');

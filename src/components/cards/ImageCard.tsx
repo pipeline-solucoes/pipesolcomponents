@@ -10,22 +10,25 @@ interface CardBookProps {
   heightImage: number; 
   border_radius?: string;
   background_color?: string;
+  margin?: string;
   children: React.ReactNode;
 }
 
 const Container = styled(Box, {
   shouldForwardProp: (prop) =>
-    !['border_radius', 'background_color'].includes(prop as string),
+    !['border_radius', 'background_color', 'margin_card'].includes(prop as string),
 })<{
   border_radius: string;
   background_color: string;
-}>(({ border_radius, background_color }) => ({
+  margin_card: string;
+}>(({ border_radius, background_color,  margin_card }) => ({
 
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   borderRadius: border_radius,
   width: 'fit-content',
   height: 'fit-content',
   backgroundColor: background_color,
+  margin: margin_card,
 }));
 
 const DivImage = styled('div', {
@@ -50,12 +53,14 @@ const ImageCard: React.FC<CardBookProps> = ({
   heightImage, 
   border_radius = '0px',
   background_color = 'transparent', 
+  margin = '0px',
   children,
 }) => {
   return (
     <Container
       border_radius={border_radius}
-      background_color={background_color}      
+      background_color={background_color}  
+      margin_card={margin}    
     >
       <DivImage border_radius={border_radius} width={widthImage} height={heightImage}>
         <Image
