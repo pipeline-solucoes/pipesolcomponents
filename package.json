@@ -1,6 +1,6 @@
 {
   "name": "pipesolcomponents",
-  "version": "0.4.58",
+  "version": "0.4.61",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,6 +26,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.4",
     "@mui/material": "^6.4.4",
+    "framer-motion": "^12.9.4",
     "next": "^15.2.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

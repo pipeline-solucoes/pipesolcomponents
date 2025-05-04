@@ -3,7 +3,8 @@ export { default as HeaderBarTop } from './components/header/HeaderBarTop';
 export { default as Banner } from './components/banner/Banner';
 export { default as ResponsiveBanner } from './components/banner/ResponsiveBanner';
 export { default as TitleBanner } from './components/banner/TitleBanner';
-export { ContentBannerCenter, ContentBannerLeft } from './components/banner/BannerStyled';
+export { default as TitleBannerWithImage } from './components/banner/TitleBannerWithImage';
+export { ContentBannerCenter, ContentBannerLeft, ContentBanner2Columns } from './components/banner/BannerStyled';
 
 export { default as BarraDeFerramentas } from './components/barra_ferramentas/BarraFerramentas';
 export { default as BarraFerramentasHamburguer } from './components/barra_ferramentas/BarraFerramentasHamburguer';
@@ -11,6 +12,7 @@ export { default as BarraFerramentasHamburguer } from './components/barra_ferram
 export { default as WhatsAppIcon} from './components/button/WhatsAppIcon';
 export { default as WhatsAppButton} from './components/button/WhatsAppButton';
 export { default as NavigationButton} from './components/button/NavigationButton';
+export { default as NavigationButtonMotion} from './components/button/NavigationButtonMotion';
 export { default as ScrollToTopButton} from './components/button/ScrollToTopButton';
 
 export { default as TestimonialCard} from './components/cards/TestimonialCard';
