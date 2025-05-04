@@ -19,6 +19,7 @@ export { default as ImageCard} from './components/cards/ImageCard';
 export { CarouselStyled} from './components/carousel/CarouselStyled';
 
 export { default as Copywrite} from './components/footer/Copywrite';
+export { default as CopywriteCenter} from './components/footer/CopywriteCenter';
 export { default as Footer} from './components/footer/Footer';
 export { default as NotificationBar} from './components/footer/NotificationBar';
 export { TitleFooterStyle, TitleFooterCenterToMobileStyle, 
