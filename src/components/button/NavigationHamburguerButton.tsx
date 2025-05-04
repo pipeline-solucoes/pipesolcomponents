@@ -27,21 +27,25 @@ const NavigationHamburguerButton: React.FC<NavigationHamburguerButtonProps> = ({
 
       e.preventDefault();
       
-      if (url.indexOf('#') != -1){
-        const targetElement = document.querySelector(url);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-          window.history.pushState(null, '', url); // Atualiza a URL sem recarregar a página
+      if (url.indexOf('#') !== -1) {
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+          const targetElement = document.querySelector(url);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+            window.history.pushState(null, '', url);
+          }
+        } else {          
+          window.location.href = url; 
         }
-      }
+      }      
       else if (url.indexOf('http') == -1)
         window.open(url, '_blank', 'noopener noreferrer');            
       else
-        window.location.href = url; // Redireciona para outra página na mesma aba
+        window.location.href = url; 
 
       
       afterNavigation(); // Chama a função após a navegação      
-    };
+  };
 
   if (text_decoration === 'underline'){
     return (

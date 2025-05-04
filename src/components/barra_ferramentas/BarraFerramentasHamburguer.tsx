@@ -89,7 +89,7 @@ const BarraFerramentasHamburguer: React.FC<BarraFerramentasHamburguerProps> = ({
     <Bar background_color={background_color_bar}>      
       <CustomToolbar disableGutters>
         <Box>
-          { renderMenu() }
+          { listaItemMenu.length > 0 && renderMenu() }
         </Box>
         <Box flex={1} display="flex" alignItems="center" justifyContent="center">
           { renderLogo() }

@@ -15,19 +15,20 @@ const Container = styled('div', {
 }));
 
 interface BannerProps {  
-  src: string; 
-  alt: string;
-  height: string;
+  src: string;   
+  dispositivo: 'small' | 'medium' | 'large';
   children: React.ReactNode;
 }
 
-const Banner: React.FC<BannerProps> = ({ src, alt, height = "600px", children }) => { 
+const Banner: React.FC<BannerProps> = ({ src, dispositivo, children }) => { 
+  
+  const height : string = (dispositivo == 'large' ? '600px' : (dispositivo == 'medium' ? '600px' : '800px'));
 
   return (
     <Container height={height}>      
       <Image
         src={src}
-        alt={alt}
+        alt='imagem do banner'
         fill
         style={{ objectFit: 'cover'}}
         priority={true}

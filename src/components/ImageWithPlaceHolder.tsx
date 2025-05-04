@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import { styled } from '@mui/material';
 
-
 interface ImageWithPlaceHolderProps {
   width: number;
   height: number;
@@ -30,7 +29,7 @@ const ImageWithPlaceHolder: React.FC<ImageWithPlaceHolderProps> = ({ src, alt, w
         width={width}
         height={height}
         style={{
-          objectFit: "scale-down",
+          objectFit: 'scale-down' ,
           objectPosition: "center",                   
         }}
         quality={80}        

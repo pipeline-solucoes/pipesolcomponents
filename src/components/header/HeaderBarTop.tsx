@@ -1,22 +1,36 @@
 'use cliente';
 
+import { Box, styled } from '@mui/material';
 import React from 'react';
-import { Box } from '@mui/material';
 
-interface HeaderBarTopProps {    
-  height: string;
+
+const Container = styled(Box)(({ theme }) => ({
+  
+  width: '100%',  
+  backgroundColor:'#ededed', 
+
+  [theme.breakpoints.only('xs')]: {
+    height: '880px',
+  },
+  [theme.breakpoints.up('sm')]: {
+    height: '680px',
+  },
+}));
+
+
+interface HeaderBarTopProps {      
   renderBar: () => React.ReactElement;    
   renderBanner: () => React.ReactElement;
 }
 
-const HeaderBarTop: React.FC<HeaderBarTopProps> = ({ height, renderBar,
+const HeaderBarTop: React.FC<HeaderBarTopProps> = ({ renderBar,
     renderBanner}) => {  
 
   return (
-      <Box sx={{height: height, width: '100%', backgroundColor:'#ededed'}}>
-        {renderBar()}
-        {renderBanner()}          
-      </Box>
+      <Container>        
+        {renderBar()}       
+        {renderBanner()}                
+      </Container>
   );  
     
 };

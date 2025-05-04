@@ -1,25 +1,17 @@
 'use client';
 
 import * as React from 'react';
-import { ItemMenuProps } from './ItemMenuProps';
+import { ItemMenuProps } from '../menu/ItemMenuProps';
 import { useEffect } from 'react';
 import NavigationButton from '../button/NavigationButton';
-import { styled } from '@mui/material';
+import { ContentColFooter } from './footerStyled';
+import { StyledSpanBody1 } from '../text/SpanStyled';
 
 interface SiteMapProps {    
     listaItemMenu: ItemMenuProps[];   
     color: string;    
     color_hover: string;       
 }
-
-const ContainerMenuHorizontal = styled('div')(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'flex-start',
-  flexGrow: 1,
-  gap: '16px',
-}));
 
 const SiteMap: React.FC<SiteMapProps> = ({
     listaItemMenu, color, color_hover }) => {
@@ -41,7 +33,7 @@ const SiteMap: React.FC<SiteMapProps> = ({
             width="auto"                                   
             text_decoration="none"
           >
-            {item.text}
+            <StyledSpanBody1 text_color={color}>{item.text}</StyledSpanBody1>
           </NavigationButton>
         ));
         setButtons(constructedButtons);
@@ -50,15 +42,15 @@ const SiteMap: React.FC<SiteMapProps> = ({
 
   if (buttons){
     return (                
-      <ContainerMenuHorizontal>
+      <ContentColFooter>
         {buttons}
-      </ContainerMenuHorizontal>                    
+      </ContentColFooter>                    
     );
   }
   else{
-    <ContainerMenuHorizontal>
+    <ContentColFooter>
       carregando...
-    </ContainerMenuHorizontal>
+    </ContentColFooter>
   }
 }
 

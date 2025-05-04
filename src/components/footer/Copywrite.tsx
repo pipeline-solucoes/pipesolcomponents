@@ -21,7 +21,7 @@ const ContentWrapStyled = styled('div', {
   justifyContent: 'flex-start',
   borderTopStyle: 'solid',
   borderTopWidth: '1px',
-  padding: '16px 0px 0px',
+  padding: '16px',
   borderTopColor: color_border,
 }));
 

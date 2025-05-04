@@ -41,8 +41,11 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({
 
   const background_color_bar = background_color || 'transparent';
   const [buttons, setButtons] = React.useState<React.ReactNode[] | null>(null);
-    
+      
     useEffect(() => {
+
+      const borderColor = (text_decoration == 'none') ? 'transparent' : color;
+
       if (listaItemMenu) {
           const constructedButtons = listaItemMenu.map((item) => (
               <NavigationButton
@@ -54,7 +57,7 @@ const BarraFerramentas: React.FC<BarraFerramentasProps> = ({
                 layout="button"
                 width="auto"
                 background_color="transparent"
-                border_color={color}
+                border_color={borderColor}
                 border_radius="0px"
                 text_decoration={text_decoration}
               >

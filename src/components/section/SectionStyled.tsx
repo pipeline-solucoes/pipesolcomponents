@@ -22,4 +22,23 @@ export const ContentSectionWrapCenterStyled = styled('div')(() => ({
   justifyContent: 'center',
 }));
 
+export const SectionTextColumnStyle = styled('div', {
+  shouldForwardProp: (prop) =>
+    !['textColor'].includes(prop as string),
+})<{textColor: string}>(({ theme, textColor }) => ({
+
+    width: '100%',    
+    color: textColor,
+    flex: '1',
+
+    // Tipografia
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: theme.typography.body1?.fontWeight,
+    fontStyle: theme.typography.body1?.fontStyle,
+    lineHeight: theme.typography.body1?.lineHeight,
+    letterSpacing: theme.typography.body1?.letterSpacing,
+    fontSize: theme.typography.body1?.fontSize,
+    margin: theme.typography.body1?.margin,
+}));
+
 export default ContentSectionWrapStyled;

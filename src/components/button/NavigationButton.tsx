@@ -28,7 +28,7 @@ const ButtonStyled = styled('a', {
   border_color_underline: string;
   width: string;
   margin: string;
-}>(({ 
+}>(({
   background_color,
   background_color_hover,
   color,

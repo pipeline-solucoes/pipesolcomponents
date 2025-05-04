@@ -1,6 +1,6 @@
 {
   "name": "pipesolcomponents",
-  "version": "0.4.27",
+  "version": "0.4.56",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
