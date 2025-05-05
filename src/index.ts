@@ -17,6 +17,7 @@ export { default as ScrollToTopButton} from './components/button/ScrollToTopButt
 
 export { default as TestimonialCard} from './components/cards/TestimonialCard';
 export { default as ImageCard} from './components/cards/ImageCard';
+export { default as MapCard} from './components/cards/MapCard';
 
 export { CarouselStyled} from './components/carousel/CarouselStyled';
 

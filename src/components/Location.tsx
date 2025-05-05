@@ -11,7 +11,7 @@ const Container = styled('div', {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'flex-start',    
-    gap: '4px',
+    gap: '8px',
     width: '100%',
     color: text_color,
 
