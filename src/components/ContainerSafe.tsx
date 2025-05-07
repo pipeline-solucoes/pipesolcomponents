@@ -47,3 +47,31 @@ export const ContainerSafeSemMargem = styled('div')(({ theme }) => ({
     width: '1200px', // Acima de 1920px
   },
 }));
+
+export const ContainerSafeSection = styled('div')(({ theme }) => ({
+  margin: '48px 0px',
+  height: '100%',
+  gap: '24px',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  width: '100%', // Default width
+
+  [theme.breakpoints.down('sm')]: {
+    width: 'calc(100% - 32px)',
+  },
+  [theme.breakpoints.up('sm')]: {
+    width: 'calc(100% - 48px)',
+  },
+  [theme.breakpoints.up('md')]: {
+    width: 'calc(100% - 54px)',
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: '1200px',
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '1200px',
+  },
+}));

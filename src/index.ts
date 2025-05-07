@@ -34,6 +34,7 @@ export { default as SiteMap} from './components/footer/SiteMap';
 
 export { default as Section} from './components/section/Section';
 export { default as SectionGradiente} from './components/section/SectionGradiente';
+export { default as SectionImage} from './components/section/SectionImage';
 export { ContentSectionWrapStyled, ContentSectionWrapCenterStyled, SectionTextColumnStyle } from './components/section/SectionStyled';
 
 export { default as SocialMediaIconLink} from './components/social_media/SocialMediaIconLink';

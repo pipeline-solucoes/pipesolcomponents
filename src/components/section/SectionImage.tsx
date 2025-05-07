@@ -2,14 +2,12 @@ import { styled } from '@mui/material/styles';
 import { ContainerSafeSection } from '../ContainerSafe';
 
 const SectionStyled = styled('section', {
-  shouldForwardProp: (prop) => !['color1', 'color2', 'color3'].includes(prop as string),
+  shouldForwardProp: (prop) => !['background_image'].includes(prop as string),
 })<{
-  color1: string;
-  color2: string;
-  color3: string;
-}>(({ color1, color2, color3 }) => ({
+  background_image: string;  
+}>(({ background_image }) => ({
   position: 'relative',
-  background: `linear-gradient(to bottom, ${color1}, ${color2}, ${color3})`,
+  backgroundImage: background_image ? `url(${background_image})` : undefined,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -17,18 +15,18 @@ const SectionStyled = styled('section', {
   width: '100%',
 }));
 
+
+
   interface SectionProps {   
     children: React.ReactNode;   
-    color1: string;
-    color2: string;
-    color3: string;
+    src: string;
     section_id: string;
   }
 
-  const SectionGradiente: React.FC<SectionProps> = ({ children, color1, color2, color3, section_id}) => {
+  const SectionImage: React.FC<SectionProps> = ({ children, src, section_id}) => {
   
     return (
-      <SectionStyled id={section_id} color1={color1} color2={color2} color3={color3}>        
+      <SectionStyled id={section_id} background_image={src}>        
         <ContainerSafeSection>                                   
           { children }                        
         </ContainerSafeSection>                     
@@ -36,4 +34,4 @@ const SectionStyled = styled('section', {
     );  
 };
 
-export default SectionGradiente;
+export default SectionImage;

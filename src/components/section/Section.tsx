@@ -1,5 +1,6 @@
 
 import { styled } from '@mui/material/styles';
+import { ContainerSafeSection } from '../ContainerSafe';
 
 const SectionStyled = styled('section', {
   shouldForwardProp: (prop) => !['background_color'].includes(prop as string),
@@ -14,34 +15,6 @@ const SectionStyled = styled('section', {
   justifyContent: 'center',
   width: '100%',
 }));
-
-export const ContainerSafe = styled('div')(({ theme }) => ({
-  margin: '48px 0px',
-  height: '100%',
-  gap: '24px',
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  alignItems: 'flex-start',
-  justifyContent: 'center',
-  width: '100%', // Default width
-
-  [theme.breakpoints.down('sm')]: {
-    width: 'calc(100% - 32px)',
-  },
-  [theme.breakpoints.up('sm')]: {
-    width: 'calc(100% - 48px)',
-  },
-  [theme.breakpoints.up('md')]: {
-    width: 'calc(100% - 54px)',
-  },
-  [theme.breakpoints.up('lg')]: {
-    width: '1200px',
-  },
-  [theme.breakpoints.up('xl')]: {
-    width: '1200px',
-  },
-}));
  
 
 interface SectionProps { 
@@ -54,9 +27,9 @@ const Section: React.FC<SectionProps> = ({ section_id, background_color, childre
   
     return (
       <SectionStyled id={section_id} background_color={background_color}>                
-        <ContainerSafe>
+        <ContainerSafeSection>
           { children }
-        </ContainerSafe>
+        </ContainerSafeSection>
       </SectionStyled>
     );  
 };
