@@ -44,10 +44,10 @@ const Copywrite: React.FC<CopywriteProps> = ({ ano, color_border, color, childre
         
       <Box flex={1}>
         <StyledSpanBody1 text_color={color}>
-          Criado por <NavigationButton url='https://www.instagram.com/pipelinesolucoes/' 
+          Criado por <NavigationButton url='https://pipelinesolucoes.com.br/' 
             color={color_link_pipeline} aria_label='link Pipeline Soluções' 
             text_decoration='none' layout='link' width='auto'>
-            @pipelinesolucoes
+            Pipeline Soluções
           </NavigationButton>
         </StyledSpanBody1>
       </Box>

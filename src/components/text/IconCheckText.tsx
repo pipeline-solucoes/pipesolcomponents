@@ -1,8 +1,13 @@
 import React from 'react';
 import CheckIcon from '@mui/icons-material/Check';
+import VerifiedIcon from '@mui/icons-material/Verified';
 import { styled } from '@mui/material';
 
-export const Container = styled('div')(() => ({
+export const Container = styled('div', {
+  shouldForwardProp: (prop) =>
+    !['margin_left'].includes(prop as string),
+})<{margin_left: string}>(({ margin_left }) => ({
+
   display: 'flex',
   flexDirection: 'row',
   gap: '8px',
@@ -11,7 +16,7 @@ export const Container = styled('div')(() => ({
   position: 'relative',
   width: 'fit-content',
   flexGrow: 1,
-  marginLeft: '16px',
+  marginLeft: margin_left,
 }));
 
 export const Text = styled('div', {
@@ -34,17 +39,30 @@ export const Text = styled('div', {
 export interface IconTextProps { 
     iconColor: string;
     textColor: string;
+    typeCheck?: 'CheckIcon' | 'VerifiedIcon';
+    marginLeft?: string;
     children: React.ReactNode;        
 }
 
-const IconCheckText: React.FC<IconTextProps> = ({ children, iconColor, textColor }) => {            
+const IconCheckText: React.FC<IconTextProps> = ({ children, iconColor, textColor, typeCheck = 'CheckIcon', marginLeft = '16px' }) => {            
 
-    return(
-        <Container> 
+    if (typeCheck == 'CheckIcon'){
+      return(
+        <Container margin_left={marginLeft}> 
           <CheckIcon style={{ color: iconColor, fontSize: 24 }} /> 
           <Text text_color={textColor}>{children}</Text>
         </Container>
-    );
+      );
+    }
+    else
+    {
+      return(
+        <Container margin_left={marginLeft}> 
+          <VerifiedIcon style={{ color: iconColor, fontSize: 24 }} /> 
+          <Text text_color={textColor}>{children}</Text>
+        </Container>
+      );
+    }
 };
 
 export default IconCheckText;

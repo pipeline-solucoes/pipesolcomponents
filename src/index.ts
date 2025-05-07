@@ -18,6 +18,9 @@ export { default as ScrollToTopButton} from './components/button/ScrollToTopButt
 export { default as TestimonialCard} from './components/cards/TestimonialCard';
 export { default as ImageCard} from './components/cards/ImageCard';
 export { default as MapCard} from './components/cards/MapCard';
+export { default as BorderTopLeftRadiusCard} from './components/cards/BorderTopLeftRadiusCard'; 
+export { default as YoutubeCard} from './components/cards/YoutubeCard';
+export { default as GradientCard} from './components/cards/GradientCard'; 
 
 export { CarouselStyled} from './components/carousel/CarouselStyled';
 

@@ -51,10 +51,10 @@ const CopywriteCenter: React.FC<CopywriteProps> = ({ ano, color_border, color, c
         </div>
             
         <div>
-          Criado por <NavigationButton url='https://www.instagram.com/pipelinesolucoes/' 
+          Criado por <NavigationButton url='https://pipelinesolucoes.com.br/' 
             color={color_link_pipeline} aria_label='link Pipeline Soluções' 
             text_decoration='none' layout='link' width='auto'>
-            @pipelinesolucoes
+            Pipeline Soluções
           </NavigationButton>
         </div>
       
