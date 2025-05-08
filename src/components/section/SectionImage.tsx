@@ -7,15 +7,15 @@ const SectionStyled = styled('section', {
   background_image: string;  
 }>(({ background_image }) => ({
   position: 'relative',
-  backgroundImage: background_image ? `url(${background_image})` : undefined,
+  backgroundImage: `url(${background_image})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
 }));
-
-
 
   interface SectionProps {   
     children: React.ReactNode;   

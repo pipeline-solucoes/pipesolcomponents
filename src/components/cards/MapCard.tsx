@@ -36,7 +36,7 @@ const Map = styled('div', {
 
 const Content = styled('div')({ 
   height: 'auto', 
-  padding: '16px',  
+  padding: '20px',  
 });
 
 interface MapCardProps {  

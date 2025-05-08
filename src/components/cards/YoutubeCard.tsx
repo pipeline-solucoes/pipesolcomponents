@@ -33,7 +33,7 @@ const Video = styled('div', {
 
 const Content = styled('div')({ 
   height: 'auto', 
-  padding: '16px',  
+  padding: '20px',  
 });
 
 interface YoutubeCardProps {  
@@ -61,15 +61,15 @@ const YoutubeCard: React.FC<YoutubeCardProps> = ({
     >
       <Video border_radius={border_radius} width={width} height={height_video}>
         <iframe src={srcYoutube} 
-        title="YouTube video player"         
-        style={{
-          width: '100%',
-          height: '100%',
-          border: '0',             
-        }}     
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerPolicy="strict-origin-when-cross-origin" 
-        allowFullScreen></iframe>
+          title="YouTube video player"         
+          style={{
+            width: '100%',
+            height: '100%',
+            border: '0',             
+          }}     
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerPolicy="strict-origin-when-cross-origin" 
+          allowFullScreen/>
       </Video>
       <Content>
         {children}
