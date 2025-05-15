@@ -29,7 +29,7 @@ const SectionStyled = styled('section', {
   
     return (
       <SectionStyled id={section_id} color1={color1} color2={color2} color3={color3}>        
-        <ContainerSafeSection>                                   
+        <ContainerSafeSection border_radius='0px' background_color='transparent'>                                   
           { children }                        
         </ContainerSafeSection>                     
       </SectionStyled>

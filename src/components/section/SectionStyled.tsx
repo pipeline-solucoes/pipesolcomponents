@@ -1,6 +1,9 @@
 import { styled } from '@mui/material/styles';
 
-export const ContentSectionWrapStyled = styled('div')(() => ({
+export const ContentSectionWrapStyled = styled('div', {
+  shouldForwardProp: (prop) =>
+    !['marginTop', 'marginBottom'].includes(prop as string),
+})<{marginTop?: string; marginBottom?: string}>(({ marginTop = '0px', marginBottom = '0px' }) => ({
   width: '100%',
   height: '100%',
   gap: '24px',
@@ -9,6 +12,8 @@ export const ContentSectionWrapStyled = styled('div')(() => ({
   flexWrap: 'wrap',
   alignItems: 'flex-start',
   justifyContent: 'center',
+  marginTop: marginTop,
+  marginBottom: marginBottom
 }));
 
 export const ContentSectionWrapCenterStyled = styled('div')(() => ({

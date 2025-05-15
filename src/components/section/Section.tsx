@@ -18,16 +18,22 @@ const SectionStyled = styled('section', {
  
 
 interface SectionProps { 
-  section_id: string; 
-  background_color: string; 
-  children: React.ReactNode;   
+  section_id: string; //identificador da seção
+  background_color: string; //cor de fundo da secao       
+  background_color_container_safe?: string; // cor de fundo da area de segurança. (padrao: transparente)
+  border_radius_container_safe?: string; //arredondamento da borda da area de seguranca. (padrao: 0px)
+  children: React.ReactNode; //compnentes que serão exibidos na secao
 }
 
-const Section: React.FC<SectionProps> = ({ section_id, background_color, children }) => {
+const Section: React.FC<SectionProps> = ({ 
+    section_id, 
+    background_color, 
+    background_color_container_safe = 'transparent', 
+    border_radius_container_safe = '0px',  children }) => {
   
     return (
       <SectionStyled id={section_id} background_color={background_color}>                
-        <ContainerSafeSection>
+        <ContainerSafeSection border_radius={border_radius_container_safe} background_color={background_color_container_safe}>
           { children }
         </ContainerSafeSection>
       </SectionStyled>

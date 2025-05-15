@@ -27,7 +27,7 @@ const SectionStyled = styled('section', {
   
     return (
       <SectionStyled id={section_id} background_image={src}>        
-        <ContainerSafeSection>                                   
+        <ContainerSafeSection border_radius='0px' background_color='transparent'>                                   
           { children }                        
         </ContainerSafeSection>                     
       </SectionStyled>

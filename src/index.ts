@@ -20,7 +20,10 @@ export { default as ImageCard} from './components/cards/ImageCard';
 export { default as MapCard} from './components/cards/MapCard';
 export { default as BorderTopLeftRadiusCard} from './components/cards/BorderTopLeftRadiusCard'; 
 export { default as YoutubeCard} from './components/cards/YoutubeCard';
-export { default as GradientCard} from './components/cards/GradientCard'; 
+export { default as GradientCard} from './components/cards/GradientCard';
+export { default as ContainerAnimatedCard} from './components/cards/ContainerAnimatedCard';
+export { default as ShadowCard} from './components/cards/ShadowCard';
+export { default as ContentCardDescription} from './components/cards/ContentCardDescription';
 
 export { CarouselStyled} from './components/carousel/CarouselStyled';
 
@@ -49,6 +52,7 @@ export { default as ImageWithPlaceHolder } from './components/ImageWithPlaceHold
 export { default as ImageCover } from './components/ImageCover';
 export { default as VideoPlayer } from './components/VideoPlayer';
 export { default as Location } from './components/Location';
+export { default as ContainerAnimatedScroll } from './components/ContainerAnimatedScroll';
 
 export { ContainerList } from './components/containerStyled';
 
@@ -59,4 +63,6 @@ export { default as SubstackPosts } from './components/substask/SubstackPosts';
 
 export { default as useResponsiveCarousel } from './hooks/useResponsiveCarousel';
 export { default as useResponsive } from './hooks/useResponsive';
+
+export type { ShadowConfig } from './types/ShadowConfig';
 

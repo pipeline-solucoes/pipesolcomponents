@@ -2,33 +2,29 @@ import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Box, styled } from '@mui/material';
 import Image from 'next/image';
-
-interface CardBookProps {
-  src: string;
-  alt: string;    
-  widthImage: number; 
-  heightImage: number; 
-  border_radius?: string;
-  background_color?: string;
-  margin?: string;
-  children: React.ReactNode;
-}
+import { ShadowConfig } from '@/types/ShadowConfig';
 
 const Container = styled(Box, {
   shouldForwardProp: (prop) =>
-    !['border_radius', 'background_color', 'margin_card'].includes(prop as string),
+    !['border_radius', 'background_color', 'margin_card','sombraClara', 'sombraEscura'].includes(prop as string),
 })<{
   border_radius: string;
   background_color: string;
   margin_card: string;
-}>(({ border_radius, background_color,  margin_card }) => ({
-
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  sombraClara: ShadowConfig;
+  sombraEscura: ShadowConfig;
+}>(({ border_radius, background_color,  margin_card, sombraClara, sombraEscura }) => ({    
   borderRadius: border_radius,
   width: 'fit-content',
   height: 'fit-content',
   backgroundColor: background_color,
   margin: margin_card,
+  boxShadow: `
+    ${sombraClara.offsetX} ${sombraClara.offsetY} ${sombraClara.blur} ${sombraClara.color},
+    ${sombraEscura.offsetX} ${sombraEscura.offsetY} ${sombraEscura.blur} ${sombraEscura.color}
+  `,
+  borderTop: `3px solid ${sombraClara.color}`,
+  borderLeft: `3px solid ${sombraClara.color}`
 }));
 
 const DivImage = styled('div', {
@@ -46,7 +42,20 @@ const DivImage = styled('div', {
   borderRadius: `${border_radius} ${border_radius} 0 0`,
 }));
 
-const ImageCard: React.FC<CardBookProps> = ({
+interface ImageCardProps {
+  src: string;
+  alt: string;    
+  widthImage: number; 
+  heightImage: number; 
+  border_radius?: string;
+  background_color?: string;
+  margin?: string;
+  sombraClara?: ShadowConfig;
+  sombraEscura?: ShadowConfig;
+  children: React.ReactNode;
+}
+
+const ImageCard: React.FC<ImageCardProps> = ({
   src,
   alt,
   widthImage, 
@@ -54,29 +63,33 @@ const ImageCard: React.FC<CardBookProps> = ({
   border_radius = '0px',
   background_color = 'transparent', 
   margin = '0px',
+  sombraClara = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'},
+  sombraEscura = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'},
   children,
 }) => {
-  return (
-    <Container
-      border_radius={border_radius}
-      background_color={background_color}  
-      margin_card={margin}    
-    >
-      <DivImage border_radius={border_radius} width={widthImage} height={heightImage}>
-        <Image
-          src={src}
-          alt={alt}
-          width={widthImage}
-          height={heightImage}
-          style={{ objectFit: 'cover' }}
-          quality={80}
-        />
-      </DivImage>
-      <Box sx={{height: 'auto'}}>
-        {children}
-      </Box>      
-    </Container>
-  );
+  
+    return (
+        <Container border_radius={border_radius}
+          background_color={background_color}  
+          margin_card={margin}
+          sombraClara={sombraClara}
+          sombraEscura={sombraEscura}
+        >
+          <DivImage border_radius={border_radius} width={widthImage} height={heightImage}>
+            <Image
+              src={src}
+              alt={alt}
+              width={widthImage}
+              height={heightImage}
+              style={{ objectFit: 'cover' }}
+              quality={80}
+            />
+          </DivImage>
+          <Box sx={{height: 'auto'}}>
+            {children}
+          </Box>      
+        </Container>
+      );
 };
 
 export default ImageCard;

@@ -48,7 +48,14 @@ export const ContainerSafeSemMargem = styled('div')(({ theme }) => ({
   },
 }));
 
-export const ContainerSafeSection = styled('div')(({ theme }) => ({
+export const ContainerSafeSection = styled('div', {
+  shouldForwardProp: (prop) =>
+    !['border_radius', 'background_color'].includes(prop as string),
+})<{
+  border_radius: string;
+  background_color: string;    
+}>(({ theme, border_radius, background_color }) => ({
+    
   margin: '48px 0px',
   height: '100%',
   gap: '24px',
@@ -57,7 +64,9 @@ export const ContainerSafeSection = styled('div')(({ theme }) => ({
   flexWrap: 'wrap',
   alignItems: 'flex-start',
   justifyContent: 'center',
-  width: '100%', // Default width
+  width: '100%',
+  borderRadius: border_radius,    
+  backgroundColor: background_color, 
 
   [theme.breakpoints.down('sm')]: {
     width: 'calc(100% - 32px)',

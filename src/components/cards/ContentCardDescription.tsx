@@ -1,39 +1,13 @@
 import React from 'react';
 import { styled } from '@mui/material';
 
-const Container = styled('div', {
-  shouldForwardProp: (prop) =>
-    ![              
-      'margin_card',
-      'width_card',
-      'height_card',      
-      'color1',
-      'color2',
-      'color3',
-      'border_radius'
-    ].includes(prop as string),
-})<{  
-  margin_card: string;
-  width_card: string;
-  height_card: string;
-  color1: string;
-  color2: string;
-  color3: string;
-  border_radius: string;
-}>(
-  ({ margin_card, width_card, height_card, color1, color2, color3, border_radius }) => ({
-    
+const Container = styled('div')({    
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
-    padding: '20px',    
-    borderRadius: border_radius,
-    width: width_card,
-    height: height_card,    
-    margin: margin_card,
-    background: `linear-gradient(to bottom, ${color1}, ${color2}, ${color3})`,     
-  })
-);
+    height: '100%',
+    width: '100%',                   
+  });
 
 const ContentTitle = styled('div', {
   shouldForwardProp: (prop) =>
@@ -74,45 +48,23 @@ const ContentButton = styled('div')({
   height: 'auto'     
 });
 
-interface GradientCardProps {     
-  width: string; //largura do card
-  height: string; //altura do map    
-  margin?: string; //margem do card
-  color1: string; //cor do gradiente
-  color2: string; //cor do gradiente
-  color3: string; //cor do gradiente
+interface GradientCardProps {       
   title: string; //texto do titulo
   description: string; //texto do subtitulo  
-  children: React.ReactNode; //content do card 
-  border_radius?: string; //border radius do card 
+  children: React.ReactNode; //content do card   
   color_title: string;
   color_description: string;
 }
 
-const GradientCard: React.FC<GradientCardProps> = ({   
-  width, 
-  height,   
-  margin = '0px',
-  color1,
-  color2,
-  color3,
+const ContentCardDescription: React.FC<GradientCardProps> = ({     
   title,
-  description,
-  border_radius = '0px',
+  description,  
   color_title,
   color_description,
   children,
 }) => {
   return (
-    <Container       
-      margin_card={margin} 
-      width_card={width} 
-      height_card={height}
-      color1={color1}
-      color2={color2}
-      color3={color3}  
-      border_radius={border_radius}
-    >
+    <Container>
       <ContentTitle text_color={color_title}>
         {title}
       </ContentTitle>
@@ -126,4 +78,4 @@ const GradientCard: React.FC<GradientCardProps> = ({
   );
 };
 
-export default GradientCard;
+export default ContentCardDescription;
