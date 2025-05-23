@@ -1,29 +1,24 @@
 import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Box, styled } from '@mui/material';
-import { ShadowConfig } from '@/types/ShadowConfig';
+import { styled } from '@mui/material';
 
-const Container = styled(Box, {
+const Container = styled('div', {
   shouldForwardProp: (prop) =>
-    !['border_radius', 'background_color', 'width_card', 'sombraEscura', 'sombraClara'].includes(prop as string),
+    !['border_radius', 'background_color', 
+      'width_card', 'flex_direction'].includes(prop as string),
 })<{
   border_radius: string;
   background_color: string;  
-  width_card: string;
-  sombraClara: ShadowConfig;
-  sombraEscura: ShadowConfig;
-}>(({ border_radius, background_color,  width_card, sombraClara, sombraEscura }) => ({
+  width_card: string;  
+  flex_direction: 'row' | 'column';
+}>(({ border_radius, background_color,  width_card, flex_direction }) => ({
     
+  display: 'flex',
+  flexDirection: flex_direction,  
   borderRadius: border_radius,
   width: width_card,
   height: 'fit-content',
-  backgroundColor: background_color,
-  boxShadow: `
-    ${sombraClara.offsetX} ${sombraClara.offsetY} ${sombraClara.blur} ${sombraClara.color},
-    ${sombraEscura.offsetX} ${sombraEscura.offsetY} ${sombraEscura.blur} ${sombraEscura.color}
-  `,
-  borderTop: `3px solid ${sombraClara.color}`,
-  borderLeft: `3px solid ${sombraClara.color}`  
+  backgroundColor: background_color,  
 }));
 
 const Video = styled('div', {
@@ -46,13 +41,12 @@ const Content = styled('div')({
 });
 
 interface YoutubeCardProps {  
-  srcYoutube: string; //src do Youtube  
+  srcYoutube: string; //src do Youtube
   width: string; //largura do card
   height_video: string; //altura do map 
   border_radius?: string; //border radius
   background_color?: string; //cor de fundo do card 
-  sombraClara?: ShadowConfig; //Configuracao da Sombra Clara
-  sombraEscura?: ShadowConfig; //Configuracao da Sombra Escura 
+  flex_direction: 'row' | 'column';
   children: React.ReactNode; //content do card
 }
 
@@ -61,18 +55,17 @@ const YoutubeCard: React.FC<YoutubeCardProps> = ({
   width, 
   height_video, 
   border_radius = '0px',
-  background_color = 'transparent',
-  sombraClara = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'},
-  sombraEscura = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'},  
+  background_color = 'transparent', 
+  flex_direction = 'row',
   children,
-}) => {
+}) => { 
+
   return (
     <Container 
       border_radius={border_radius}
       background_color={background_color}         
-      width_card={width} 
-      sombraClara={sombraClara} 
-      sombraEscura={sombraEscura}  
+      width_card={width}
+      flex_direction={flex_direction}            
     >
       <Video border_radius={border_radius} width={width} height={height_video}>
         <iframe src={srcYoutube} 

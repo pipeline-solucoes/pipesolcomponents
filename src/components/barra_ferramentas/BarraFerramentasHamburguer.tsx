@@ -5,12 +5,12 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import { Bar, ContainerRedeSocialHorizontal, CustomToolbar } from './BarraFerramentasStyled';
-import { ItemMenuProps } from '../menu/ItemMenuProps';
+import { ItemMenuConfig } from '../../types/ItemMenuConfig';
 import NavigationHamburguerButton from '../button/NavigationHamburguerButton';
 import { StyledSpanBody1 } from '../text/SpanStyled';
 
 interface BarraFerramentasHamburguerProps {    
-    listaItemMenu: ItemMenuProps[];   
+    listaItemMenu: ItemMenuConfig[];   
     background_color?: string;
     color: string;    
     color_hover: string;       

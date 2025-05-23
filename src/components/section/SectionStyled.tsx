@@ -35,6 +35,7 @@ export const SectionTextColumnStyle = styled('div', {
     width: '100%',    
     color: textColor,
     flex: '1',
+    minWidth: '340px',
 
     // Tipografia
     fontFamily: theme.typography.fontFamily,

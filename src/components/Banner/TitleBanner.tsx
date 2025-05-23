@@ -1,23 +1,26 @@
 import React from 'react';
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
-interface TitleBannerProps {    
-  children?: React.ReactNode;
+interface TitleBannerProps {      
   width: string;
-  textTitle: () => React.ReactElement;    
-  renderSubtitle?: () => React.ReactElement;
+  textTitle: string;    
+  textSubTitle?: string;
+  textAlign: 'left' | 'center';
+  children?: React.ReactNode;
 }
 
 const TitleBanner: React.FC<TitleBannerProps> = ({ children, textTitle,
-  renderSubtitle, width }) => {  
+  textSubTitle, width, textAlign }) => {  
+
+  const alignItems = textAlign == 'left' ? 'flex-start' : 'center';   
 
   return (
-      <Stack direction="column" justifyContent="flex-start" alignItems="center" 
+      <Stack direction="column" justifyContent='flex-start' alignItems={alignItems} 
         gap={{ xs: '16px', sm: '24px'}} width={width}>          
           
-          {textTitle()}
+          <Typography variant='h1' component='h1' textAlign={textAlign} sx={{ width:'100%' }}>{textTitle}</Typography>
           
-          {renderSubtitle && renderSubtitle()}
+          {textSubTitle && <Typography variant='h2' component='h2' textAlign={textAlign} sx={{ width:'100%' }}>{textSubTitle}</Typography> }
           
           {children}
 

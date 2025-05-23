@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Stack, styled } from '@mui/material';
-import { ContainerSafe } from '../ContainerSafe';
+import { ContainerSafe } from '../containers/ContainerSafe';
 
 interface FooterProps {      
     background_color: string;               

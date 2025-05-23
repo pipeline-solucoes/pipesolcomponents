@@ -1,6 +1,6 @@
 import React from 'react';
-import { styled } from '@mui/material';
-import PlaceIcon from '@mui/icons-material/Place';
+import { Box, styled } from '@mui/material';
+import { SvgIconComponent } from '@mui/icons-material'
 
 const Container = styled('div', {
   shouldForwardProp: (prop) =>
@@ -34,21 +34,24 @@ export const Endereco = styled('div')(() => ({
     width: '100%',        
 }));
 
-export interface LocationProps { 
-    iconColor: string;
-    textColor: string;
+export interface LocationProps {     
+    textColor: string;    
     endereco: string;
     bairro: string;
     cidade: string;
     uf: string;
-    cep:string;        
+    cep:string;
+    Icon: SvgIconComponent;
+    iconColor: string;
 }
 
-const Location: React.FC<LocationProps> = ({ iconColor, textColor, endereco, bairro, cidade, uf, cep }) => {            
+const Location: React.FC<LocationProps> = ({ textColor, endereco, bairro, cidade, uf, cep, Icon, iconColor }) => {            
 
     return(
         <Container text_color={textColor}> 
-          <PlaceIcon style={{ color: iconColor, fontSize: 24 }} /> 
+          <Box fontSize={24} color={iconColor}>
+            <Icon/>
+          </Box> 
           <Endereco>
             <div>{endereco}</div>
             <div>{`${bairro} - ${cidade} / ${uf}`}</div>

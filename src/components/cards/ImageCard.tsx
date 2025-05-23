@@ -2,29 +2,22 @@ import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Box, styled } from '@mui/material';
 import Image from 'next/image';
-import { ShadowConfig } from '@/types/ShadowConfig';
 
 const Container = styled(Box, {
   shouldForwardProp: (prop) =>
-    !['border_radius', 'background_color', 'margin_card','sombraClara', 'sombraEscura'].includes(prop as string),
+    !['border_radius', 'background_color', 
+      'margin_card'].includes(prop as string),
 })<{
   border_radius: string;
   background_color: string;
-  margin_card: string;
-  sombraClara: ShadowConfig;
-  sombraEscura: ShadowConfig;
-}>(({ border_radius, background_color,  margin_card, sombraClara, sombraEscura }) => ({    
+  margin_card: string;  
+}>(({ border_radius, background_color,  
+      margin_card, }) => ({    
   borderRadius: border_radius,
   width: 'fit-content',
   height: 'fit-content',
   backgroundColor: background_color,
-  margin: margin_card,
-  boxShadow: `
-    ${sombraClara.offsetX} ${sombraClara.offsetY} ${sombraClara.blur} ${sombraClara.color},
-    ${sombraEscura.offsetX} ${sombraEscura.offsetY} ${sombraEscura.blur} ${sombraEscura.color}
-  `,
-  borderTop: `3px solid ${sombraClara.color}`,
-  borderLeft: `3px solid ${sombraClara.color}`
+  margin: margin_card,  
 }));
 
 const DivImage = styled('div', {
@@ -49,9 +42,7 @@ interface ImageCardProps {
   heightImage: number; 
   border_radius?: string;
   background_color?: string;
-  margin?: string;
-  sombraClara?: ShadowConfig;
-  sombraEscura?: ShadowConfig;
+  margin?: string; 
   children: React.ReactNode;
 }
 
@@ -62,9 +53,7 @@ const ImageCard: React.FC<ImageCardProps> = ({
   heightImage, 
   border_radius = '0px',
   background_color = 'transparent', 
-  margin = '0px',
-  sombraClara = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'},
-  sombraEscura = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'},
+  margin = '0px',  
   children,
 }) => {
   
@@ -72,8 +61,6 @@ const ImageCard: React.FC<ImageCardProps> = ({
         <Container border_radius={border_radius}
           background_color={background_color}  
           margin_card={margin}
-          sombraClara={sombraClara}
-          sombraEscura={sombraEscura}
         >
           <DivImage border_radius={border_radius} width={widthImage} height={heightImage}>
             <Image

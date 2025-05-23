@@ -25,7 +25,7 @@ const SocialMediaIconLink: React.FC<SocialMediaIconLinkProps> = ({
   }
   else{
     <IconButton aria-label={aria_label} disabled>
-        {children}
+      {children}
     </IconButton>
   }
 

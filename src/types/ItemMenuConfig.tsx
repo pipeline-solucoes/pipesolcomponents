@@ -1,4 +1,4 @@
-export type ItemMenuProps = {    
+export type ItemMenuConfig = {    
     url: string;    
     text: string;
 };

@@ -1,6 +1,6 @@
 
 import { styled } from '@mui/material/styles';
-import { ContainerSafeSection } from '../ContainerSafe';
+import { ContainerSafeSection } from '../containers/ContainerSafe';
 
 const SectionStyled = styled('section', {
   shouldForwardProp: (prop) => !['background_color'].includes(prop as string),

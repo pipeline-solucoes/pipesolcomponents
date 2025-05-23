@@ -2,14 +2,14 @@
 
 import * as React from 'react';
 import { Bar, ContainerRedeSocialHorizontal, CustomToolbar } from './BarraFerramentasStyled';
-import { ItemMenuProps } from '../menu/ItemMenuProps';
+import { ItemMenuConfig } from '../../types/ItemMenuConfig';
 import { useEffect } from 'react';
 import NavigationButton from '../button/NavigationButton';
 import { StyledSpanBody2 } from '../text/SpanStyled';
 import { styled } from '@mui/material';
 
 interface BarraFerramentasProps {    
-    listaItemMenu: ItemMenuProps[];   
+    listaItemMenu: ItemMenuConfig[];   
     background_color?: string;
     color: string;    
     color_hover: string;    

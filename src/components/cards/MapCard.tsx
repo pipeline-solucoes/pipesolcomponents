@@ -1,31 +1,22 @@
 import React from 'react';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Box, styled } from '@mui/material';
-import { ShadowConfig } from '@/types/ShadowConfig';
 
 const Container = styled(Box, {
   shouldForwardProp: (prop) =>
-    !['border_radius', 'background_color', 'margin_card', 'width_card', 'sombraClara', 'sombraEscura'].includes(prop as string),
+    !['border_radius', 'background_color', 
+      'margin_card', 'width_card'].includes(prop as string),
 })<{
   border_radius: string;
   background_color: string;
   margin_card: string;
-  width_card: string;
-  sombraClara: ShadowConfig;
-  sombraEscura: ShadowConfig;
-}>(({ border_radius, background_color,  margin_card, width_card, sombraClara, sombraEscura }) => ({
+  width_card: string; 
+}>(({ border_radius, background_color,  margin_card, width_card }) => ({
   
   borderRadius: border_radius,
   width: width_card,
   height: 'fit-content',
   backgroundColor: background_color,
-  margin: margin_card,
-  boxShadow: `
-    ${sombraClara.offsetX} ${sombraClara.offsetY} ${sombraClara.blur} ${sombraClara.color},
-    ${sombraEscura.offsetX} ${sombraEscura.offsetY} ${sombraEscura.blur} ${sombraEscura.color}
-  `,
-  borderTop: `3px solid ${sombraClara.color}`,
-  borderLeft: `3px solid ${sombraClara.color}`
+  margin: margin_card
 }));
 
 const Map = styled('div', {
@@ -53,9 +44,7 @@ interface MapCardProps {
   height_map: string; //altura do map 
   border_radius?: string; //border radius
   background_color?: string; //cor de fundo do card
-  margin?: string; //margem do card  
-  sombraClara?: ShadowConfig; //Configuracao da Sombra Clara
-  sombraEscura?: ShadowConfig; //Configuracao da Sombra Escura
+  margin?: string; //margem do card    
   children: React.ReactNode; //content do card
 }
 
@@ -65,20 +54,16 @@ const MapCard: React.FC<MapCardProps> = ({
   height_map, 
   border_radius = '0px',
   background_color = 'transparent', 
-  margin = '0px', 
-  sombraClara = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'},
-  sombraEscura = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'},
+  margin = '0px',  
   children,
 }) => {
-
+  
   return (
     <Container 
       border_radius={border_radius}
       background_color={background_color}  
       margin_card={margin} 
-      width_card={width}  
-      sombraClara={sombraClara} 
-      sombraEscura={sombraEscura}
+      width_card={width}      
     >
       <Map border_radius={border_radius} width={width} height={height_map}>
         <iframe 

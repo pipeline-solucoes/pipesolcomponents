@@ -3,12 +3,14 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-interface ContainerAnimatedCardProps {
+interface ContainerAnimatedIndexProps {
   children: React.ReactNode;
   index?: number;
 }
 
-export default function ContainerAnimatedCard({ children, index = 0 }: ContainerAnimatedCardProps) {
+const ContainerAnimatedIndex: React.FC<ContainerAnimatedIndexProps> = ({
+  children, index = 0
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -23,3 +25,5 @@ export default function ContainerAnimatedCard({ children, index = 0 }: Container
     </motion.div>
   );
 }
+
+export default ContainerAnimatedIndex;

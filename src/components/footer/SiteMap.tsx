@@ -1,14 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { ItemMenuProps } from '../menu/ItemMenuProps';
+import { ItemMenuConfig } from '../../types/ItemMenuConfig';
 import { useEffect } from 'react';
 import NavigationButton from '../button/NavigationButton';
 import { ContentColFooter } from './footerStyled';
 import { StyledSpanBody1 } from '../text/SpanStyled';
 
 interface SiteMapProps {    
-    listaItemMenu: ItemMenuProps[];   
+    listaItemMenu: ItemMenuConfig[];   
     color: string;    
     color_hover: string;       
 }

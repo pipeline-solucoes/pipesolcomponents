@@ -1,30 +1,51 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTheme } from '@mui/material/styles';
-import { ContainerSafeSemMargem } from '../ContainerSafe';
+import { ContainerSafeSemMargem } from '../containers/ContainerSafe';
 import { styled } from '@mui/material/styles';
+import { BannerResponsiveConfig } from '@/types/BannerResponsiveConfig';
 
-const Container = styled('div')(({ theme }) => ({
+const Container = styled('div', {
+  shouldForwardProp: (prop) =>
+    !['height_xs', 'height_sm', 'height_md', 'height_lg', 'height_xl'].includes(prop as string),
+})<{  
+  height_xs: string;
+  height_sm: string;
+  height_md: string;
+  height_lg: string;
+  height_xl: string;
+}>(({ theme, height_xs, height_sm, height_md, height_lg, height_xl }) => ({
+
   width: '100%',
   position: 'relative',
   overflow: 'hidden',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-
-  [theme.breakpoints.only('xs')]: {
-    height: '800px',
+  
+  // Breakpoints para diferentes larguras de tela
+  [theme.breakpoints.down('sm')]: {
+    height: height_xs, // Menor que 600px
   },
   [theme.breakpoints.up('sm')]: {
-    height: '600px',
+    height: height_sm, // Entre 600px e 960px
+  },
+  [theme.breakpoints.up('md')]: {
+    height: height_md, // Entre 960px e 1280px
+  },
+  [theme.breakpoints.up('lg')]: {
+    height: height_lg, // Entre 1280px e 1920px
+  },
+  [theme.breakpoints.up('xl')]: {
+    height: height_xl, // Acima de 1920px
   },
 }));
 
 interface BannerSources {
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
-  xl: string;
+  xs: BannerResponsiveConfig;
+  sm: BannerResponsiveConfig;
+  md: BannerResponsiveConfig;
+  lg: BannerResponsiveConfig;
+  xl: BannerResponsiveConfig;
 }
 
 interface BannerProps {
@@ -51,7 +72,9 @@ const ResponsiveBanner: React.FC<BannerProps> = ({ srcSet, children }) => {
   }, []);
 
   return (
-    <Container>
+    <Container height_xs={srcSet.xs.height} height_sm={srcSet.sm.height} 
+      height_md={srcSet.md.height} height_lg={srcSet.lg.height} 
+      height_xl={srcSet.xl.height}>
       {!isLoaded && (
         <div
           style={{
@@ -76,23 +99,23 @@ const ResponsiveBanner: React.FC<BannerProps> = ({ srcSet, children }) => {
       >
         <source
           media={`(min-width: ${theme.breakpoints.values.xs}px) and (max-width: ${theme.breakpoints.values.sm - 1}px)`}
-          srcSet={srcSet.xs}
+          srcSet={srcSet.xs.image}
         />
         <source
           media={`(min-width: ${theme.breakpoints.values.sm}px) and (max-width: ${theme.breakpoints.values.md - 1}px)`}
-          srcSet={srcSet.sm}
+          srcSet={srcSet.sm.image}
         />
         <source
           media={`(min-width: ${theme.breakpoints.values.md}px) and (max-width: ${theme.breakpoints.values.lg - 1}px)`}
-          srcSet={srcSet.md}
+          srcSet={srcSet.md.image}
         />
         <source
           media={`(min-width: ${theme.breakpoints.values.lg}px) and (max-width: ${theme.breakpoints.values.xl - 1}px)`}
-          srcSet={srcSet.lg}
+          srcSet={srcSet.lg.image}
         />
         <img
           ref={imgRef}
-          src={srcSet.xl}
+          src={srcSet.xl.image}
           alt="Banner"
           style={{
             width: '100%',
