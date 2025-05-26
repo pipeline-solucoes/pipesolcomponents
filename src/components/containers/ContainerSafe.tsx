@@ -30,6 +30,7 @@ export const ContainerSafeSemMargem = styled('div')(({ theme }) => ({
   margin: '0px 0px',
   zIndex: 1,
   height: '100%',
+  position: 'relative',
 
   // Breakpoints para diferentes larguras de tela
   [theme.breakpoints.down('sm')]: {

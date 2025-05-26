@@ -4,7 +4,7 @@ export { default as HeaderBarIn } from './components/header/HeaderBarIn';
 export { default as ResponsiveBanner } from './components/banner/ResponsiveBanner';
 export { default as ResponsiveBannerGradiente } from './components/banner/ResponsiveBannerGradiente';
 export { default as TitleBanner } from './components/banner/TitleBanner';
-export { ContentBannerCenter, ContentBannerLeft, ContentBanner2Columns } from './components/banner/BannerStyled';
+export { ContentBannerCenter, ContentBannerLeft, ContentBanner2Columns } from './components/banner/ContentBannerStyled';
 
 export { default as BarraDeFerramentas } from './components/barra_ferramentas/BarraFerramentas';
 export { default as BarraFerramentasHamburguer } from './components/barra_ferramentas/BarraFerramentasHamburguer';
@@ -51,9 +51,9 @@ export { default as IconText} from './components/text/IconText';
 export { default as IconCheckText} from './components/text/IconCheckText';
 export { default as IconLocationText} from './components/Location';
 export { default as TextWithSeparador} from './components/text/TextWithSeparador';
+export { default as InfiniteTicker} from './components/text/InfiniteTicker';
 
-export { default as ImageWithPlaceHolder } from './components/ImageWithPlaceHolder';
-export { default as ImageCover } from './components/ImageCover';
+export { default as ImageResponsive } from './components/ImageResponsive';
 export { default as VideoPlayer } from './components/VideoPlayer';
 export { default as Location } from './components/Location';
 

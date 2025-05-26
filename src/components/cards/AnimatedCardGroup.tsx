@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent, Typography, Box, styled } from '@mui/material'
 import { AnimatedCardData } from '@/types/AnimatedCardData'
 import { ShadowConfig } from '@/types/ShadowConfig'
+import { SvgIconComponent } from '@mui/icons-material'
 
-export const StyledCard = styled(Card, {
+const StyledCard = styled(Card, {
   shouldForwardProp: (prop) =>
     !['border_radius', 'background_color', 'color',
       'width_card', 'min_height_card', 
@@ -34,10 +35,11 @@ export const StyledCard = styled(Card, {
         ${sombraEscura.offsetX} ${sombraEscura.offsetY} ${sombraEscura.blur} ${sombraEscura.color}
     `,
     borderTop: `${border_width} solid ${sombraClara.color}`,
-    borderLeft: `${border_width} solid ${sombraClara.color}` 
+    borderLeft: `${border_width} solid ${sombraClara.color}`,
+    padding: '0px' 
 }))
 
-export const DivTitle = styled('div')(() => ({
+const DivTitle = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -45,25 +47,40 @@ export const DivTitle = styled('div')(() => ({
     gap: '16px',
     width: '100%',        
 }));
+
+const CustomCardContent = styled(CardContent)({
+  display: 'flex', 
+  flexDirection: 'column', 
+  alignItems: 'center', 
+  padding: '0px',
+  '&:last-child': {
+    padding: '8px 20px',
+  },
+});
  
-interface MapCardProps {
-  cards: AnimatedCardData[]
-  background_color: string;
-  background_color_hover: string;
-  color: string;
-  color_hover: string;
-  width_card: string;
-  min_height_card: string;
-  max_height_card: string;
-  border_radius: string;
+interface  AnimatedCardProps {
+  cards: AnimatedCardData[]; //Dados dos cards 
+  icon: SvgIconComponent; //Icone quando o card estiver collapsado
+  icon_expanded: SvgIconComponent; //Icone quando o card estiver expandido
+  background_color: string; //Fundo quando o card estiver collapsado
+  background_color_expanded: string; //Icone quando o card estiver expandido
+  color: string; //Cor da Fonte quando o card estiver collapsado
+  color_expanded: string; //Cor da Fonte quando o card estiver expandido
+  width_card: string; //Largura do card
+  min_height_card: string; //Altura mínima do card
+  max_height_card: string; //Altura máxima do card
+  border_radius?: string; //Arredondamento da borda do card
   sombraClara?: ShadowConfig; //Configuracao da Sombra Clara
   sombraEscura?: ShadowConfig; //Configuracao da Sombra Escura  
 }
 
-const AnimatedCardGroup: React.FC<MapCardProps> = ({ 
-  cards, background_color, background_color_hover,
-  color, color_hover, width_card, 
-  min_height_card, max_height_card, border_radius,
+//Componente que cria uma lista de cards com efeito collapse/expanded do Frame Motion
+const AnimatedCardGroup: React.FC<AnimatedCardProps> = ({ 
+  cards, icon, icon_expanded,
+  background_color, background_color_expanded,
+  color, color_expanded, width_card, 
+  min_height_card, max_height_card, 
+  border_radius = "0px",
   sombraClara = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'},
   sombraEscura = {offsetX:'0px', offsetY:'0px', blur:'0px', color:'transparent'}, 
 }) => {
@@ -74,9 +91,10 @@ const AnimatedCardGroup: React.FC<MapCardProps> = ({
 
   return (
     <Box display="flex" gap={2} justifyContent="center" flexWrap="wrap">
-      {cards.map(({ id, title, description, icon: Icon }) => {
+      {cards.map(({ id, title, description }) => {
         
         const isActive = activeCard === id;
+        const IconToRender = isActive ? icon_expanded : icon; 
 
         return (
           <motion.div
@@ -87,8 +105,8 @@ const AnimatedCardGroup: React.FC<MapCardProps> = ({
             style={{ cursor: 'pointer', width: width_card }}
           >
             <StyledCard 
-                background_color={isActive ? background_color_hover : background_color}
-                color={isActive ? color_hover : color} 
+                background_color={isActive ? background_color_expanded : background_color}
+                color={isActive ? color_expanded : color} 
                 width_card='100%'
                 min_height_card={ isActive ? max_height_card : min_height_card }
                 border_radius={border_radius}
@@ -96,14 +114,13 @@ const AnimatedCardGroup: React.FC<MapCardProps> = ({
                 sombraClara={sombraClara}
                 sombraEscura={sombraEscura}                                
             >
-              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                
+              <CustomCardContent>                
                 <DivTitle>                    
                     <Typography variant="h6" component="div" align="center" flex={1}>
                         {title}
                     </Typography>
                     <Box fontSize={32}>
-                      <Icon/>
+                      <IconToRender/>
                     </Box>
                 </DivTitle>
 
@@ -121,7 +138,7 @@ const AnimatedCardGroup: React.FC<MapCardProps> = ({
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </CardContent>
+              </CustomCardContent>
             </StyledCard>
           </motion.div>
         )

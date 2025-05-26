@@ -57,7 +57,7 @@ interface HeaderBarInProps {
   height_xl?: string;
   background_color: string;
   border_radius?: string;
-  top_bar: string;
+  top_bar?: number;
   renderBar: () => React.ReactElement;
   renderBanner: () => React.ReactElement;
 }
@@ -72,10 +72,10 @@ const HeaderBarIn: React.FC<HeaderBarInProps> = ({
   height_xl = "680px",
   background_color,
   border_radius = '0px',
-  top_bar = '10px'
+  top_bar = 10
 }) => {
   return (
-    <Container
+    <Container id="ContainerHeaderBarIn"
       height_xs={height_xs}
       height_sm={height_sm}
       height_md={height_md}
@@ -84,11 +84,10 @@ const HeaderBarIn: React.FC<HeaderBarInProps> = ({
       background_color={background_color}
       border_radius={border_radius}      
     >
-      <BarWrapper top={top_bar}>
+      <BarWrapper top={`${top_bar}px`}>
         {renderBar()}
-      </BarWrapper>
-
-      {renderBanner()}
+      </BarWrapper>      
+      {renderBanner()}           
     </Container>
   );
 };

@@ -62,7 +62,7 @@ const ResponsiveBannerGradiente: React.FC<BannerProps> = ({
   children,
 }) => {
   return (
-    <Container
+    <Container id="ContainerResponsiveBannerGradiente" 
       height_xs={height_xs}
       height_sm={height_sm}
       height_md={height_md}

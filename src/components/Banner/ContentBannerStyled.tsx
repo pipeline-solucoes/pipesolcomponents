@@ -28,16 +28,23 @@ export const ContentBannerLeft = styled('div')(() => ({
 
 //Usado para criar a area no banner com duas colunas. 50% cada coluna.
 //Para dispositivos menores será exibido 2 linhas.
-export const ContentBanner2Columns = styled('div')(({ theme }) => ({
+export const ContentBanner2Columns = styled('div', {
+  shouldForwardProp: (prop) =>
+    !['top','height'].includes(prop as string),
+})<{top: string; height: string}>(({ theme, top = '10px', height='100px'}) => ({
+
   display: 'grid',
+  gridTemplateRows: '1fr 1fr', 
   justifyItems: 'center',
   alignItems: 'center',
-  width: '100%',
-  height: '100%',
-  gridTemplateRows: '1fr 1fr', // Padrão (xs < 600px)
+  width: '100%',    
+  position: 'absolute',
+  top: top,
+  height: height,
 
   [theme.breakpoints.up('md')]: {
     gridTemplateRows: 'unset', // Remover gridTemplateRows para não conflitar
     gridTemplateColumns: '50% 50%',
   },
+
 }));

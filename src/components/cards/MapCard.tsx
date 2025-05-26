@@ -35,11 +35,12 @@ const Map = styled('div', {
 
 const Content = styled('div')({ 
   height: 'auto', 
-  padding: '20px',  
+  padding: '20px 8px',  
 });
 
 interface MapCardProps {  
   srcGoogle: string;  
+  titleFrame: string; //titulo do iframe (usado na acessibilidade)
   width: string; //largura do card
   height_map: string; //altura do map 
   border_radius?: string; //border radius
@@ -50,6 +51,7 @@ interface MapCardProps {
 
 const MapCard: React.FC<MapCardProps> = ({ 
   srcGoogle, 
+  titleFrame,
   width, 
   height_map, 
   border_radius = '0px',
@@ -67,7 +69,8 @@ const MapCard: React.FC<MapCardProps> = ({
     >
       <Map border_radius={border_radius} width={width} height={height_map}>
         <iframe 
-          src= {srcGoogle}               
+          src= {srcGoogle}
+          title={titleFrame}               
           style={{
             width: '100%',
             height: '100%',

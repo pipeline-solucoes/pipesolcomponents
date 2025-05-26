@@ -4,18 +4,15 @@ import { styled } from '@mui/material';
 
 const Container = styled('div', {
   shouldForwardProp: (prop) =>
-    !['border_radius', 'background_color', 
+    !['background_color', 
       'width_card', 'flex_direction'].includes(prop as string),
-})<{
-  border_radius: string;
+})<{  
   background_color: string;  
   width_card: string;  
   flex_direction: 'row' | 'column';
-}>(({ border_radius, background_color,  width_card, flex_direction }) => ({
-    
+}>(({ background_color,  width_card, flex_direction }) => ({    
   display: 'flex',
-  flexDirection: flex_direction,  
-  borderRadius: border_radius,
+  flexDirection: flex_direction,    
   width: width_card,
   height: 'fit-content',
   backgroundColor: background_color,  
@@ -23,21 +20,20 @@ const Container = styled('div', {
 
 const Video = styled('div', {
   shouldForwardProp: (prop) =>
-    !['border_radius', 'width', 'height'].includes(prop as string),
-})<{
-  border_radius: string;
+    !['width', 'height'].includes(prop as string),
+})<{  
   width: string;
   height: string;
-}>(({ border_radius, width, height }) => ({
+}>(({ width, height }) => ({
   width: width,
   height: height,
-  borderRadius: `${border_radius} ${border_radius} 0 0`, 
+  borderRadius: '20px', 
   position: 'relative', 
 }));
 
 const Content = styled('div')({ 
   height: 'auto', 
-  padding: '20px',  
+  padding: '20px 8px',  
 });
 
 interface YoutubeCardProps {  
@@ -53,28 +49,26 @@ interface YoutubeCardProps {
 const YoutubeCard: React.FC<YoutubeCardProps> = ({ 
   srcYoutube, 
   width, 
-  height_video, 
-  border_radius = '0px',
+  height_video,   
   background_color = 'transparent', 
   flex_direction = 'row',
   children,
 }) => { 
 
   return (
-    <Container 
-      border_radius={border_radius}
+    <Container       
       background_color={background_color}         
       width_card={width}
       flex_direction={flex_direction}            
     >
-      <Video border_radius={border_radius} width={width} height={height_video}>
+      <Video width={width} height={height_video}>
         <iframe src={srcYoutube} 
           title="YouTube video player"         
           style={{
             width: '100%',
             height: '100%',
             border: '0',  
-            borderRadius: `${border_radius} ${border_radius} 0 0`          
+            borderRadius: '20px'          
           }}     
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           referrerPolicy="strict-origin-when-cross-origin" 
