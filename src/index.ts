@@ -48,7 +48,6 @@ export { default as SocialMediaIconLink} from './components/social_media/SocialM
 export { default as SocialMediaIconLinkWithBorder} from './components/social_media/SocialMediaIconLinkWithBorder';
 
 export { default as IconText} from './components/text/IconText';
-export { default as IconCheckText} from './components/text/IconCheckText';
 export { default as IconLocationText} from './components/Location';
 export { default as TextWithSeparador} from './components/text/TextWithSeparador';
 export { default as InfiniteTicker} from './components/text/InfiniteTicker';
