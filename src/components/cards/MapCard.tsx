@@ -49,6 +49,7 @@ interface MapCardProps {
   background_color?: string;
   margin?: string;
   flex_direction?: 'row' | 'column';
+  root_margin?: string; 
   children: React.ReactNode;
 }
 
@@ -61,6 +62,7 @@ const MapCard: React.FC<MapCardProps> = ({
   background_color = 'transparent',
   margin = '0px',
   flex_direction = 'row',
+  root_margin = '300px',
   children,
 }) => {
   const [shouldLoad, setShouldLoad] = useState(false);
@@ -80,7 +82,7 @@ const MapCard: React.FC<MapCardProps> = ({
       },
       { 
         threshold: 0,
-        rootMargin: '300px', // Comece a observar 300px antes do componente realmente entrar na tela
+        rootMargin: root_margin, // Comece a observar 300px antes do componente realmente entrar na tela
       }
     );
 
