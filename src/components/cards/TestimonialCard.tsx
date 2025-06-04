@@ -49,8 +49,7 @@ const ContentFooterStyled = styled('div', {
 }));
 
 const ContentMessageStyled = styled('div')(({ theme }) => ({ 
-
-  flex: '1',
+  
   fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.body1?.fontWeight,
   fontStyle: theme.typography.body1?.fontStyle,

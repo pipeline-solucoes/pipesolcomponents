@@ -55,8 +55,10 @@ export { default as InfiniteTicker} from './components/text/InfiniteTicker';
 export { default as ImageResponsive } from './components/ImageResponsive';
 export { default as VideoPlayer } from './components/VideoPlayer';
 export { default as Location } from './components/Location';
+export { default as MensagemDeploy } from './components/MensagemDeploy';
 
 export { default as Form } from './components/form/Form';
+export { ButtonFormStyled, TextFieldStyled, TextFieldFixedSizeStyled } from './components/form/FormStyled';
 
 export { default as SubstackPage } from './components/substask/SubstackPage';
 export { default as SubstackPosts } from './components/substask/SubstackPosts';

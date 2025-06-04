@@ -1,8 +1,7 @@
 "use client";
 
-import { Stack, Box, styled } from '@mui/material';
+import { Stack, Box, styled, Button } from '@mui/material';
 import React, {useState} from 'react';
-import { StyledButton } from '../form/FormStyled';
 
 const Container = styled('div')<{
   $show: string;
@@ -14,6 +13,39 @@ const Container = styled('div')<{
   backgroundColor: $background_color,
   display: $show === 'true' ? 'block' : 'none',
   zIndex: 4000,
+}));
+
+
+const ButtonBarStyled = styled(Button, {
+  shouldForwardProp: (prop) =>
+    !['background_color', 'text_color', 'border_radius'].includes(prop as string),
+  })
+  <{ background_color: string; text_color: string; border_radius: string;}>
+  (({ theme, background_color, text_color, border_radius }) => ({
+  
+  color: text_color,
+  backgroundColor: background_color,
+  borderRadius: border_radius,
+  textTransform: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  padding: '8px 24px',
+  boxShadow: 'none',
+  width: 'auto',
+  height: 'auto',
+    
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.body1?.fontWeight,
+  fontStyle: theme.typography.body1?.fontStyle,
+  lineHeight: theme.typography.body1?.lineHeight,
+  letterSpacing: theme.typography.body1?.letterSpacing,
+  fontSize: theme.typography.body1?.fontSize,
+  margin: theme.typography.body1?.margin,
+  
+  '&:hover': {
+    backgroundColor: background_color,
+    opacity: 0.9,
+  },
 }));
 
 export interface NotificationBarProps {           
@@ -59,25 +91,21 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ show, children,
           <Box sx={{padding: "16px"}}>
             <Stack direction='row' justifyContent="center" alignItems="center" sx={{ gap: "16px" }}>
               
-              <StyledButton 
-                width='auto'
-                height='auto'
+              <ButtonBarStyled                 
                 border_radius={borderRadiusButton}
                 text_color={background_color_button} 
                 background_color={color_button}                 
                 onClick={handleNotAccept}>
                 {text_button_notaccept}
-              </StyledButton>
+              </ButtonBarStyled>
 
-              <StyledButton 
-                width='auto'
-                height='auto'
+              <ButtonBarStyled                
                 border_radius={borderRadiusButton}
                 text_color={color_button} 
                 background_color={background_color_button}                 
                 onClick={handleAccept}>
                 {text_button_accept}
-              </StyledButton>
+              </ButtonBarStyled>
               
             </Stack>             
           </Box>       

@@ -1,27 +1,27 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Box, styled } from '@mui/material';
 
 const Container = styled(Box, {
   shouldForwardProp: (prop) =>
-    !['border_radius', 'background_color', 
-      'margin_card', 'width_card'].includes(prop as string),
+    !['border_radius', 'background_color', 'margin_card', 'width_card', 'flex_direction'].includes(prop as string),
 })<{
   border_radius: string;
   background_color: string;
   margin_card: string;
-  width_card: string; 
-}>(({ border_radius, background_color,  margin_card, width_card }) => ({
-  
+  width_card: string;
+  flex_direction: 'row' | 'column';
+}>(({ border_radius, background_color, margin_card, width_card, flex_direction }) => ({
+  display: 'flex',
+  flexDirection: flex_direction,
   borderRadius: border_radius,
   width: width_card,
   height: 'fit-content',
   backgroundColor: background_color,
-  margin: margin_card
+  margin: margin_card,
 }));
 
 const Map = styled('div', {
-  shouldForwardProp: (prop) =>
-    !['border_radius', 'width', 'height'].includes(prop as string),
+  shouldForwardProp: (prop) => !['border_radius', 'width', 'height'].includes(prop as string),
 })<{
   border_radius: string;
   width: string;
@@ -29,60 +29,95 @@ const Map = styled('div', {
 }>(({ border_radius, width, height }) => ({
   width: width,
   height: height,
-  borderRadius: `${border_radius} ${border_radius} 0 0`, 
-  position: 'relative', 
+  borderRadius: `${border_radius} ${border_radius} 0 0`,
+  position: 'relative',
+  overflow: 'hidden',
 }));
 
-const Content = styled('div')({ 
-  height: 'auto', 
-  padding: '20px 8px',  
+const Content = styled('div')({
+  height: 'auto',
+  padding: '20px 8px',
+  flex: 1,
 });
 
-interface MapCardProps {  
-  srcGoogle: string;  
-  titleFrame: string; //titulo do iframe (usado na acessibilidade)
-  width: string; //largura do card
-  height_map: string; //altura do map 
-  border_radius?: string; //border radius
-  background_color?: string; //cor de fundo do card
-  margin?: string; //margem do card    
-  children: React.ReactNode; //content do card
+interface MapCardProps {
+  srcGoogle: string;
+  titleFrame: string;
+  width_map: string;
+  height_map: string;
+  border_radius?: string;
+  background_color?: string;
+  margin?: string;
+  flex_direction?: 'row' | 'column';
+  children: React.ReactNode;
 }
 
-const MapCard: React.FC<MapCardProps> = ({ 
-  srcGoogle, 
+const MapCard: React.FC<MapCardProps> = ({
+  srcGoogle,
   titleFrame,
-  width, 
-  height_map, 
+  width_map,
+  height_map,
   border_radius = '0px',
-  background_color = 'transparent', 
-  margin = '0px',  
+  background_color = 'transparent',
+  margin = '0px',
+  flex_direction = 'row',
   children,
 }) => {
-  
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const mapRef = useRef<HTMLDivElement | null>(null);
+
+  const borderRadius =
+    flex_direction === 'column' ? `${border_radius} ${border_radius} 0 0` : border_radius;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { 
+        threshold: 0,
+        rootMargin: '300px', // Comece a observar 300px antes do componente realmente entrar na tela
+      }
+    );
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <Container 
+    <Container
       border_radius={border_radius}
-      background_color={background_color}  
-      margin_card={margin} 
-      width_card={width}      
+      background_color={background_color}
+      margin_card={margin}
+      width_card="fit-content"
+      flex_direction={flex_direction}
     >
-      <Map border_radius={border_radius} width={width} height={height_map}>
-        <iframe 
-          src= {srcGoogle}
-          title={titleFrame}               
-          style={{
-            width: '100%',
-            height: '100%',
-            border: '0',             
-            borderRadius: `${border_radius} ${border_radius} 0 0`
-          }}              
-          loading="lazy" referrerPolicy="no-referrer-when-downgrade">
-        </iframe>
+      <Map ref={mapRef} border_radius={borderRadius} width={width_map} height={height_map}>
+        {shouldLoad && (
+          <iframe
+            src={srcGoogle}
+            title={titleFrame}
+            style={{
+              width: '100%',
+              height: '100%',
+              border: '0',
+              borderRadius: borderRadius,
+            }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        )}
       </Map>
-      <Content>
-        {children}
-      </Content>      
+      <Content>{children}</Content>
     </Container>
   );
 };

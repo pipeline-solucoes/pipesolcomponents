@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
-import { FixedSizeTextField, StyledButton, StyledTextField } from './FormStyled';
+import { TextFieldFixedSizeStyled, ButtonFormStyled, TextFieldStyled } from './FormStyled';
 
 import { styled } from '@mui/material/styles';
 import { StyledSpanBody1 } from '../text/SpanStyled';
@@ -141,7 +141,7 @@ export interface FormProps {
   
     return (
       <FormContainer>
-        <StyledTextField
+        <TextFieldStyled
           id='nome'
           label="Nome"
           placeholder="Nome"
@@ -155,8 +155,8 @@ export interface FormProps {
           text_color={color}
           text_color_error={color_message_erro}
           border_radius={border_radius}
-        ></StyledTextField>
-        <StyledTextField
+        ></TextFieldStyled>
+        <TextFieldStyled
           id="email"
           label="Email"
           placeholder="Email"
@@ -170,8 +170,8 @@ export interface FormProps {
           text_color={color}
           text_color_error={color_message_erro}
           border_radius={border_radius}
-        ></StyledTextField>
-        <StyledTextField
+        ></TextFieldStyled>
+        <TextFieldStyled
           id="telefone"
           label="Telefone"
           value={telefone}
@@ -185,8 +185,8 @@ export interface FormProps {
           text_color={color}
           text_color_error={color_message_erro}
           border_radius={border_radius}
-        ></StyledTextField>
-        <FixedSizeTextField
+        ></TextFieldStyled>
+        <TextFieldFixedSizeStyled
           id="mensagem"
           label="Mensagem"
           placeholder="Mensagem"
@@ -194,15 +194,15 @@ export interface FormProps {
           onChange={(e) => setMensagem(e.target.value)}
           onBlur={() => handleBlur('mensagem')}
           error={errors.mensagem}
-          helperText={errors.nome && <span style={{ color: color_message_erro }}>Mensagem é obrigatória</span>}
+          helperText={errors.mensagem && <span style={{ color: color_message_erro }}>Mensagem é obrigatória</span>}
           required={true}
           multiline
           background_color={background_color}
           text_color={color}
           text_color_error={color_message_erro}
           border_radius={border_radius}
-        ></FixedSizeTextField>
-        <StyledButton    
+        ></TextFieldFixedSizeStyled>
+        <ButtonFormStyled    
           width='100%'
           height='100%'      
           onClick={handleSubmit}
@@ -212,7 +212,7 @@ export interface FormProps {
           disabled={isLoading}
         >
           {text_button}
-        </StyledButton>
+        </ButtonFormStyled>
         { mensagemApi &&          
           <StyledSpanBody1 text_color={corMensagemApi}>{isLoading ? 'Enviando...' : mensagemApi}</StyledSpanBody1>
         }
